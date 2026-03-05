@@ -91,14 +91,22 @@ def ocr_pages(pdf_path, start, end, tag=""):
         log(f"    OCR error: {e}")
         return ""
 
-def ocr_first_and_last(pdf_path):
+def ocr_all_pages(pdf_path):
+    """OCR every page of the PDF. Returns (first_text, last_text, full_text)."""
     total = get_page_count(pdf_path)
     first_end = min(3, total)
     last_start = max(1, total - 4)
 
-    first_text = ocr_pages(pdf_path, 1, first_end, "first")
-    last_text = ocr_pages(pdf_path, last_start, total, "last")
-    return first_text, last_text
+    # OCR in chunks of 5 pages to avoid memory issues
+    full_text = ""
+    chunk = 5
+    for start in range(1, total + 1, chunk):
+        end = min(start + chunk - 1, total)
+        full_text += ocr_pages(pdf_path, start, end, f"p{start}")
+
+    first_text = "\n".join(full_text.split("\n")[:80])   # approx first 3 pages
+    last_text = "\n".join(full_text.split("\n")[-100:])  # approx last 4 pages
+    return first_text, last_text, full_text
 
 # ── Extraction ────────────────────────────────────────────────────────────────
 
@@ -132,6 +140,90 @@ def extract_case_number(first_text):
     if m:
         return f"ODPC Complaint No. {m.group(1)} of {m.group(2)}"
     return "See PDF"
+
+def extract_complaint_date(full_text):
+    """Extract the date the complaint was filed."""
+    t = full_text.upper()
+    patterns = [
+        r"COMPLAINT\s+(?:WAS\s+)?(?:FILED|RECEIVED|LODGED)\s+(?:ON\s+)?(?:THE\s+)?(\d{1,2}(?:ST|ND|RD|TH)?\s+\w+\s+\d{4}|\d{1,2}[\/\-]\d{1,2}[\/\-]\d{4}|\w+\s+\d{1,2},?\s+\d{4})",
+        r"RECEIVED\s+A\s+COMPLAINT\s+ON\s+(\d{1,2}(?:ST|ND|RD|TH)?\s+\w+\s+\d{4}|\w+\s+\d{1,2},?\s+\d{4})",
+        r"COMPLAINT\s+ON\s+(\d{1,2}\w*\s+\w+\s+\d{4})",
+    ]
+    for p in patterns:
+        m = re.search(p, t)
+        if m:
+            return m.group(1).strip().title()
+    return None
+
+def extract_legal_provisions(full_text):
+    """Extract which sections of the DPA were cited."""
+    t = full_text.upper()
+    sections = set()
+    for m in re.finditer(r"SECTION\s+(\d+(?:\(\d+\))?(?:\([A-Z]\))?)", t):
+        s = m.group(1)
+        # Only include substantive DPA sections (not procedural boilerplate)
+        try:
+            base = int(re.match(r"\d+", s).group())
+            if 20 <= base <= 70:  # Core DPA provisions
+                sections.add(f"Section {s}")
+        except:
+            pass
+    return sorted(sections)
+
+def extract_respondent_participated(full_text):
+    """Check if respondent responded to the complaint."""
+    t = full_text.upper()
+    non_participation = [
+        "FAILED TO RESPOND", "DID NOT RESPOND", "NO RESPONSE",
+        "RESPONDENT DID NOT FILE", "RESPONDENT FAILED TO FILE",
+        "DESPITE NOTIFICATION", "RESPONDENT HAS NOT RESPONDED"
+    ]
+    if any(p in t for p in non_participation):
+        return False
+    if "RESPONDENT" in t and ("RESPONDED" in t or "RESPONSE" in t or "AVERRED" in t):
+        return True
+    return None  # Unknown
+
+def extract_site_visit(full_text):
+    """Check if ODPC conducted a site visit."""
+    t = full_text.upper()
+    return bool(re.search(r"SITE\s+VISIT|VISITED\s+THE\s+RESPONDENT", t))
+
+def extract_complainant_count(full_text, url):
+    """Detect group complaints."""
+    fname = url.split("/")[-1].upper()
+    # Check filename for "22-OTHERS" style
+    m = re.search(r"(\d+)-OTHERS", fname)
+    if m:
+        return int(m.group(1)) + 1
+    m = re.search(r"(\d+)\s+OTHERS", full_text.upper())
+    if m:
+        return int(m.group(1)) + 1
+    # Check for multiple named complainants
+    if re.search(r"COMPLAINANTS\b", full_text.upper()):
+        return "Multiple -- see PDF"
+    return 1
+
+def extract_data_types(full_text):
+    """Identify categories of personal data involved."""
+    t = full_text.upper()
+    types = []
+    checks = [
+        ("Biometric data",      [r"BIOMETRIC", r"FINGERPRINT", r"IRIS", r"FACE.*RECOGNITION", r"WORLDCOIN"]),
+        ("Health data",         [r"HEALTH\s+DATA", r"MEDICAL\s+RECORD", r"PATIENT\s+DATA", r"HEALTH\s+INFORMATION"]),
+        ("Financial data",      [r"BANK\s+ACCOUNT", r"FINANCIAL\s+DATA", r"CREDIT\s+SCORE", r"LOAN\s+DATA", r"ACCOUNT\s+DETAILS"]),
+        ("Image / photo",       [r"IMAGE\b", r"PHOTO\b", r"PICTURE\b", r"SOCIAL MEDIA.*POST"]),
+        ("Contact data",        [r"PHONE\s+NUMBER", r"MOBILE\s+NUMBER", r"EMAIL\s+ADDRESS", r"CONTACT\s+LIST"]),
+        ("Identity documents",  [r"NATIONAL\s+ID", r"PASSPORT", r"ID\s+NUMBER", r"GOVERNMENT\s+ID"]),
+        ("Location data",       [r"LOCATION\s+DATA", r"GPS", r"ADDRESS\b"]),
+        ("Employment data",     [r"EMPLOYMENT", r"PAYROLL", r"SALARY", r"EMPLOYEE\s+DATA"]),
+    ]
+    for label, patterns in checks:
+        for p in patterns:
+            if re.search(p, t):
+                types.append(label)
+                break
+    return types or ["Personal data (unspecified)"]
 
 def extract_date(url):
     fname = url.split("/")[-1]
@@ -263,9 +355,9 @@ def main():
             results[url] = {"error": "download_failed", "pdf_url": url}
             continue
 
-        # OCR
-        first_text, last_text = ocr_first_and_last(pdf_path)
-        all_text = first_text + "\n" + last_text
+        # OCR -- full document
+        first_text, last_text, full_text = ocr_all_pages(pdf_path)
+        all_text = full_text  # alias for clarity
 
         # Extract parties
         ocr_complainant, ocr_respondent = extract_parties_ocr(first_text)
@@ -273,33 +365,66 @@ def main():
         complainant = ocr_complainant or fn_complainant
         respondent = ocr_respondent or fn_respondent
 
-        # Extract other fields
+        # Extract all fields
         case_num = extract_case_number(first_text)
         date_str, year_int = extract_date(url)
+        complaint_date = extract_complaint_date(full_text)
         outcome = extract_outcome(last_text)
         comp = extract_compensation(last_text)
         violations = extract_violations(all_text)
+        data_types = extract_data_types(all_text)
+        legal_provisions = extract_legal_provisions(all_text)
         sector = guess_sector(fname)
         enforcement = bool(re.search(r"ENFORCEMENT NOTICE", all_text.upper()))
         prosecution = bool(re.search(
             r"PROSECUTION.*RECOMMEND|RECOMMEND.*PROSECUTION|REFERRED.*PROSECUTION",
             all_text.upper()
         ))
+        respondent_participated = extract_respondent_participated(full_text)
+        site_visit = extract_site_visit(full_text)
+        complainant_count = extract_complainant_count(full_text, url)
+
+        # Calculate processing time if both dates available
+        processing_days = None
+        if complaint_date and date_str and len(date_str) == 10:
+            try:
+                from datetime import datetime as dt
+                months = {"january":1,"february":2,"march":3,"april":4,"may":5,"june":6,
+                         "july":7,"august":8,"september":9,"october":10,"november":11,"december":12}
+                parts = complaint_date.lower().split()
+                if len(parts) == 3:
+                    m_num = months.get(parts[1], 0)
+                    if m_num:
+                        c_date = dt(int(parts[2]), m_num, int(re.sub(r'\D','',parts[0])))
+                        d_date = dt.strptime(date_str, "%Y-%m-%d")
+                        processing_days = (d_date - c_date).days
+            except:
+                pass
 
         result = {
             "pdf_url": url,
             "case_number": case_num,
             "date_determined": date_str or str(year),
+            "date_complaint_filed": complaint_date,
+            "processing_days": processing_days,
             "year": year_int or int(year),
             "respondent": respondent,
             "complainant": complainant,
+            "complainant_count": complainant_count,
             "sector": sector,
             "violation_type": violations,
+            "data_types_involved": data_types,
+            "legal_provisions_cited": legal_provisions,
             "outcome": outcome,
             "compensation_kes": comp,
             "compensation_usd_approx": round(comp / 129) if comp else None,
             "enforcement_notice": enforcement,
             "prosecution_recommended": prosecution,
+            "respondent_participated": respondent_participated,
+            "site_visit_conducted": site_visit,
+            # Raw OCR text saved so Capybara can generate facts_summary
+            # after you push the results to GitHub
+            "_raw_ocr_text": full_text[:8000],  # capped at 8000 chars per case
         }
         results[url] = result
         log(f"  {respondent[:45]} | {outcome} | KES {comp}")

@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=odpc_ocr
-#SBATCH --time=02:00:00
-#SBATCH --mem=8G
+#SBATCH --time=04:00:00
+#SBATCH --mem=16G
 #SBATCH --cpus-per-task=4
 #SBATCH --output=odpc_ocr_%j.log
 #SBATCH --mail-type=END,FAIL
