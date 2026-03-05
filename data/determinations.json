@@ -7216,14 +7216,19 @@
       "complainant_category": "Individual",
       "sector": "Education",
       "violation_type": [
-        "See PDF"
+        "Unauthorised image use",
+        "Lack of consent",
+        "Commercial use of personal data",
+        "Failure to respond to erasure/deletion request",
+        "Unlawful processing of personal data",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "Edith Andeso v Olerai Schools. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Edith Andeso v Olerai Schools. Unauthorised image use. Outcome: Dismissed.",
+      "outcome": "Dismissed",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": false,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230731-EDITH-ANDESO-vs-OLERAI-SCHOOLS.pdf",
       "tags": [
         "education"
@@ -7253,7 +7258,7 @@
       ]
     },
     {
-      "id": "2023-20230717-isaya-lemerketo-vs-the-kenya-school-",
+      "id": "2023-20230717-isaya-lemerketo-vs-the-kenya-sc",
       "case_number": "See PDF",
       "date_determined": "2023-07-17",
       "year": 2023,
@@ -7262,44 +7267,49 @@
       "complainant_category": "Individual",
       "sector": "Education",
       "violation_type": [
-        "See PDF"
+        "Unauthorised image use",
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "Isaya Lemerketo v The Kenya School Of Law. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Isaya Lemerketo v The Kenya School Of Law. Unauthorised image use. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": true,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230717-ISAYA-LEMERKETO-vs-THE-KENYA-SCHOOL-OF-LAW.pdf",
       "tags": [
         "education"
       ]
     },
     {
-      "id": "2023-20230717-perpetual-wanjiku-vs-casa-vera-loung",
+      "id": "2023-20230717-perpetual-wanjiku-vs-casa-vera-",
       "case_number": "See PDF",
       "date_determined": "2023-07-17",
       "year": 2023,
       "respondent": "Casa Vera Lounge",
       "complainant": "Perpetual Wanjiku",
       "complainant_category": "Individual",
-      "sector": "Retail / Commerce",
+      "sector": "General",
       "violation_type": [
-        "See PDF"
+        "Unauthorised image use",
+        "Lack of consent",
+        "Commercial use of personal data",
+        "Failure to respond to erasure/deletion request",
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "Perpetual Wanjiku v Casa Vera Lounge. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Perpetual Wanjiku v Casa Vera Lounge. Unauthorised image use. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": true,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230717-PERPETUAL-WANJIKU-vs-CASA-VERA-LOUNGE.pdf",
       "tags": [
-        "retail"
+        "general"
       ]
     },
     {
-      "id": "2023-20230714-douglas-muiruri-mbugua-vs-standard-c",
+      "id": "2023-20230714-douglas-muiruri-mbugua-vs-stand",
       "case_number": "See PDF",
       "date_determined": "2023-07-14",
       "year": 2023,
@@ -7308,44 +7318,46 @@
       "complainant_category": "Individual",
       "sector": "Banking / Financial Services",
       "violation_type": [
-        "See PDF"
+        "Unlawful processing of personal data",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "Douglas Muiruri Mbugua v Standard Chartered Bank Kenya Limited. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Douglas Muiruri Mbugua v Standard Chartered Bank Kenya Limited. Unlawful processing of personal data. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": false,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230714-DOUGLAS-MUIRURI-MBUGUA-vs-STANDARD-CHARTERED-BANK-KENYA-LIMITED.pdf",
       "tags": [
         "banking"
       ]
     },
     {
-      "id": "2023-20230712-vishaal-shah-keval-shah-roshni-shah-",
+      "id": "2023-20230712-vishaal-shah-keval-shah-roshni-",
       "case_number": "See PDF",
       "date_determined": "2023-07-12",
       "year": 2023,
       "respondent": "Cyprian Nyakundi",
       "complainant": "Vishaal Shah Keval Shah Roshni Shah Shrikunj Shah Madhup Dokania",
       "complainant_category": "Individual",
-      "sector": "Legal / Professional Services",
+      "sector": "General",
       "violation_type": [
-        "See PDF"
+        "Lack of consent",
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "Vishaal Shah Keval Shah Roshni Shah Shrikunj Shah Madhup Dokania v Cyprian Nyakundi. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Vishaal Shah Keval Shah Roshni Shah Shrikunj Shah Madhup Dokania v Cyprian Nyakundi. Lack of consent. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": false,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230712-VISHAAL-SHAH-KEVAL-SHAH-ROSHNI-SHAH-SHRIKUNJ-SHAH-MADHUP-DOKANIA-vs-CYPRIAN-NYAKUNDI.pdf",
       "tags": [
-        "legal"
+        "general"
       ]
     },
     {
-      "id": "2023-20230707-harrison-kisaka-vs-faulu-microfinanc",
+      "id": "2023-20230707-harrison-kisaka-vs-faulu-microf",
       "case_number": "See PDF",
       "date_determined": "2023-07-07",
       "year": 2023,
@@ -7354,37 +7366,37 @@
       "complainant_category": "Individual",
       "sector": "Banking / Financial Services",
       "violation_type": [
-        "See PDF"
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "Harrison Kisaka v Faulu Microfinance Bank Limited. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Harrison Kisaka v Faulu Microfinance Bank Limited. Unlawful processing of personal data. Outcome: Upheld.",
+      "outcome": "Upheld",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230707-HARRISON-KISAKA-vs-FAULU-MICROFINANCE-BANK-LIMITED.pdf",
       "tags": [
         "banking"
       ]
     },
     {
-      "id": "2023-20230707-lucy-kinyanjui-easy-coach-limited",
+      "id": "2023-20230707-lucy-kinyanjui-easy-coach-limit",
       "case_number": "See PDF",
       "date_determined": "2023-07-07",
       "year": 2023,
-      "respondent": "Lucy Kinyanjui Easy Coach Limited",
-      "complainant": "See PDF",
+      "respondent": "Lucy-Kinyanjui-Easy-Coach-Limited",
+      "complainant": "Lucy Kinyanjui Easy Coach Limited",
       "complainant_category": "Individual",
       "sector": "General",
       "violation_type": [
-        "See PDF"
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "See PDF v Lucy Kinyanjui Easy Coach Limited. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Lucy Kinyanjui Easy Coach Limited v Lucy-Kinyanjui-Easy-Coach-Limited. Unlawful processing of personal data. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230707-LUCY-KINYANJUI-EASY-COACH-LIMITED.pdf",
       "tags": [
         "general"
@@ -7398,23 +7410,24 @@
       "respondent": "One Acre Fund",
       "complainant": "Jeff Nduko",
       "complainant_category": "Individual",
-      "sector": "Agriculture / NGO",
+      "sector": "General",
       "violation_type": [
-        "See PDF"
+        "Unlawful processing of personal data",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "Jeff Nduko v One Acre Fund. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Jeff Nduko v One Acre Fund. Unlawful processing of personal data. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": false,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230705-JEFF-NDUKO-vs-ONE-ACRE-FUND.pdf",
       "tags": [
-        "agriculture"
+        "general"
       ]
     },
     {
-      "id": "2023-20230626-shillah-t-m-k-michael-kangethe-elija",
+      "id": "2023-20230626-shillah-t-m-k-michael-kangethe-",
       "case_number": "See PDF",
       "date_determined": "2023-06-26",
       "year": 2023,
@@ -7423,21 +7436,22 @@
       "complainant_category": "Individual",
       "sector": "General",
       "violation_type": [
-        "See PDF"
+        "Unlawful processing of personal data",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "Shillah T.M.K Michael Kangethe Elijah Njoroge v Platinum Credit Limited. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Shillah T.M.K Michael Kangethe Elijah Njoroge v Platinum Credit Limited. Unlawful processing of personal data. Outcome: Upheld.",
+      "outcome": "Upheld",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230626-SHILLAH-T.M.K-MICHAEL-KANGETHE-ELIJAH-NJOROGE-vs-PLATINUM-CREDIT-LIMITED.pdf",
       "tags": [
         "general"
       ]
     },
     {
-      "id": "2023-20230612-chepkoech-lorna-22-others-vs-firch-i",
+      "id": "2023-20230612-chepkoech-lorna-22-others-vs-fi",
       "case_number": "See PDF",
       "date_determined": "2023-06-12",
       "year": 2023,
@@ -7446,14 +7460,17 @@
       "complainant_category": "Individual",
       "sector": "Fintech / Mobile Lending",
       "violation_type": [
-        "See PDF"
+        "Failure to respond to erasure/deletion request",
+        "Obstruction of Data Commissioner",
+        "Unlawful processing of personal data",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "Chepkoech Lorna 22 Others v Firch International Company Limited Ta Pesa Pay. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Chepkoech Lorna 22 Others v Firch International Company Limited Ta Pesa Pay. Failure to respond to erasure/deletion request. Outcome: Upheld.",
+      "outcome": "Upheld",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230612-CHEPKOECH-LORNA-22-OTHERS-vs-FIRCH-INTERNATIONAL-COMPANY-LIMITED-TA-PESA-PAY.pdf",
       "tags": [
         "fintech"
