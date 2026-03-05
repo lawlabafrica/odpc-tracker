@@ -7,7 +7,7 @@
   <meta name="description" content="Searchable database of every determination issued by Kenya's Office of the Data Protection Commissioner (ODPC). Updated as new determinations are published." />
   <meta property="og:title" content="ODPC Determinations Tracker | Law Lab Africa" />
   <meta property="og:description" content="Every ODPC determination, searchable by company, sector, and violation type." />
-  <meta property="og:url" content="https://research.lawlab.africa/odpc" />
+  <meta property="og:url" content="https://research.lawlab.africa" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -101,10 +101,7 @@
       border-bottom: 1px solid var(--border);
       padding: 48px 24px 40px;
     }
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; }
     .hero-tag {
       display: inline-block;
       font-size: 11px;
@@ -129,7 +126,7 @@
     .hero-sub {
       color: var(--text-muted);
       font-size: 15px;
-      max-width: 620px;
+      max-width: 660px;
       line-height: 1.65;
       margin-bottom: 28px;
     }
@@ -156,6 +153,19 @@
       letter-spacing: 0.06em;
     }
 
+    /* EXPLAINER */
+    .explainer {
+      background: rgba(37,99,235,0.07);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      margin: 28px 0 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 700px;
+    }
+    .explainer strong { color: var(--text); }
+
     /* CONTROLS */
     .controls {
       padding: 20px 24px;
@@ -166,13 +176,13 @@
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       align-items: center;
     }
     .search-wrap {
       flex: 1;
-      min-width: 240px;
+      min-width: 220px;
       position: relative;
     }
     .search-wrap svg {
@@ -198,9 +208,7 @@
       width: 100%;
       padding-left: 38px;
     }
-    input[type="search"]:focus, select:focus {
-      border-color: var(--accent);
-    }
+    input[type="search"]:focus, select:focus { border-color: var(--accent); }
     select {
       padding: 9px 32px 9px 12px;
       cursor: pointer;
@@ -209,6 +217,12 @@
       background-repeat: no-repeat;
       background-position: right 10px center;
     }
+    .controls-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
     .results-count {
       font-size: 13px;
       color: var(--text-muted);
@@ -216,6 +230,20 @@
       font-family: var(--mono);
     }
     .results-count span { color: var(--accent-light); font-weight: 600; }
+    .clear-btn {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: color 0.15s, border-color 0.15s;
+      display: none;
+    }
+    .clear-btn:hover { color: var(--text); border-color: var(--text-muted); }
+    .clear-btn.visible { display: inline-block; }
 
     /* TABLE */
     .table-wrap {
@@ -223,6 +251,21 @@
       margin: 0 auto;
       padding: 0 24px 80px;
     }
+
+    /* EXPANDED ROW */
+    .summary-row td {
+      padding: 0 14px;
+      background: var(--surface);
+    }
+    .summary-inner {
+      padding: 12px 0 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .summary-inner strong { color: var(--text); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -242,39 +285,47 @@
       cursor: pointer;
       user-select: none;
     }
-    thead th:hover { color: var(--text); }
+    thead th.no-sort { cursor: default; }
+    thead th:not(.no-sort):hover { color: var(--text); }
     thead th.sorted { color: var(--accent-light); }
     thead th .sort-icon { margin-left: 4px; opacity: 0.5; }
     thead th.sorted .sort-icon { opacity: 1; }
 
-    tbody tr {
+    tbody tr.data-row {
       border-bottom: 1px solid var(--border);
       transition: background 0.1s;
       cursor: pointer;
     }
-    tbody tr:hover { background: var(--surface); }
+    tbody tr.data-row:hover { background: var(--surface); }
+    tbody tr.data-row.expanded { background: var(--surface); }
     tbody td {
       padding: 13px 14px;
       vertical-align: top;
       line-height: 1.4;
     }
+    .expand-icon {
+      display: inline-block;
+      margin-right: 6px;
+      font-size: 10px;
+      color: var(--text-dim);
+      transition: transform 0.15s;
+      vertical-align: middle;
+    }
+    tr.expanded .expand-icon { transform: rotate(90deg); color: var(--accent-light); }
+
     .case-num {
       font-family: var(--mono);
       font-size: 12px;
       color: var(--accent-light);
       white-space: nowrap;
     }
-    .respondent-name {
-      font-weight: 500;
-      color: var(--text);
-    }
+    .respondent-name { font-weight: 500; color: var(--text); }
     .sector-badge, .violation-badge {
       display: inline-block;
       font-size: 11px;
       padding: 2px 7px;
       border-radius: 4px;
-      margin: 1px 2px 1px 0;
-      white-space: nowrap;
+      margin: 2px 2px 2px 0;
     }
     .sector-badge {
       background: rgba(139,92,246,0.12);
@@ -282,9 +333,9 @@
       border: 1px solid rgba(139,92,246,0.25);
     }
     .violation-badge {
-      background: rgba(245,158,11,0.1);
-      color: #fbbf24;
-      border: 1px solid rgba(245,158,11,0.2);
+      background: rgba(245,158,11,0.08);
+      color: #d4a017;
+      border: 1px solid rgba(245,158,11,0.18);
     }
     .outcome-badge {
       display: inline-flex;
@@ -294,6 +345,7 @@
       font-weight: 500;
       padding: 3px 9px;
       border-radius: 20px;
+      white-space: nowrap;
     }
     .outcome-upheld {
       background: rgba(16,185,129,0.1);
@@ -317,10 +369,7 @@
       color: var(--green);
       white-space: nowrap;
     }
-    .compensation.none {
-      color: var(--text-dim);
-      font-weight: 400;
-    }
+    .compensation.none { color: var(--text-dim); font-weight: 400; }
     .pdf-link {
       display: inline-flex;
       align-items: center;
@@ -340,7 +389,7 @@
       font-size: 10px;
       padding: 1px 6px;
       border-radius: 3px;
-      margin-left: 4px;
+      margin: 2px 0 0 0;
       background: rgba(239,68,68,0.1);
       color: var(--red);
       border: 1px solid rgba(239,68,68,0.2);
@@ -351,17 +400,14 @@
       font-size: 10px;
       padding: 1px 6px;
       border-radius: 3px;
-      margin-left: 4px;
+      margin: 2px 0 0 0;
       background: rgba(239,68,68,0.2);
       color: #fca5a5;
       border: 1px solid rgba(239,68,68,0.3);
       font-weight: 700;
     }
-    .verify-flag {
-      font-size: 11px;
-      color: var(--yellow);
-      font-family: var(--mono);
-    }
+    .respondent-tags { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
+
     .empty-state {
       text-align: center;
       padding: 60px 20px;
@@ -414,22 +460,22 @@
       flex-wrap: wrap;
       gap: 12px;
     }
-    .footer-inner p {
-      font-size: 12px;
-      color: var(--text-dim);
-    }
+    .footer-inner p { font-size: 12px; color: var(--text-dim); }
     .footer-inner a { color: var(--text-muted); text-decoration: none; }
     .footer-inner a:hover { color: var(--text); }
 
+    /* MOBILE */
     @media (max-width: 768px) {
       h1 { font-size: 22px; }
       .stats-row { gap: 20px; }
-      table { font-size: 12px; }
-      .controls-inner { flex-direction: column; }
-      .search-wrap { width: 100%; }
+      .controls-inner { flex-direction: column; align-items: stretch; }
+      .controls-right { margin-left: 0; }
       .cta-banner { flex-direction: column; }
-      thead th:nth-child(3), tbody td:nth-child(3),
-      thead th:nth-child(5), tbody td:nth-child(5) { display: none; }
+      /* hide case no and violation on mobile, keep respondent/date/outcome/compensation */
+      thead th:nth-child(1), tbody td:nth-child(1),
+      thead th:nth-child(5), tbody td:nth-child(5),
+      thead th:nth-child(4), tbody td:nth-child(4) { display: none; }
+      .header-link { display: none; }
     }
   </style>
 </head>
@@ -444,35 +490,38 @@
     <div class="header-right">
       <a href="https://www.lawlab.africa" class="header-link">Home</a>
       <a href="https://www.lawlab.africa/#services" class="header-link">Services</a>
-      <a href="https://www.lawlab.africa/contact" class="btn-cta">Get Compliance Advice</a>
+      <a href="https://www.lawlab.africa/contact" class="btn-cta">Get compliance advice</a>
     </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">Research Tool</div>
+    <div class="hero-tag">Kenya · Data Protection</div>
     <h1>ODPC Determinations Tracker</h1>
     <p class="hero-sub">
-      Every determination issued by Kenya's Office of the Data Protection Commissioner, structured and searchable. Updated as new determinations are published. Original PDF links included for every case.
+      Every enforcement determination issued by Kenya's Office of the Data Protection Commissioner, structured and searchable. Updated as new cases are published. Click any row to read the case summary.
     </p>
     <div class="stats-row" id="stats-row">
       <div class="stat">
         <span class="stat-value" id="stat-total">—</span>
-        <span class="stat-label">Total Determinations</span>
+        <span class="stat-label">Determinations</span>
       </div>
       <div class="stat">
         <span class="stat-value" id="stat-upheld">—</span>
         <span class="stat-label">Complaints Upheld</span>
       </div>
       <div class="stat">
-        <span class="stat-value" id="stat-compensation">—</span>
-        <span class="stat-label">Avg Compensation (KES)</span>
+        <span class="stat-value" id="stat-highest">—</span>
+        <span class="stat-label">Highest Award</span>
       </div>
       <div class="stat">
         <span class="stat-value" id="stat-sectors">—</span>
-        <span class="stat-label">Sectors Represented</span>
+        <span class="stat-label">Sectors</span>
       </div>
+    </div>
+    <div class="explainer">
+      <strong>What is a determination?</strong> When a data subject files a complaint with the ODPC, the Commissioner investigates and issues a formal determination: either upholding or dismissing the complaint, and ordering compensation and/or an enforcement notice where a violation is found.
     </div>
   </div>
 </section>
@@ -483,7 +532,7 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
-      <input type="search" id="search" placeholder="Search by company, violation, or case number…" />
+      <input type="search" id="search" placeholder="Search company, violation type, case number…" autocomplete="off" />
     </div>
     <select id="filter-year">
       <option value="">All years</option>
@@ -500,7 +549,10 @@
       <option value="Upheld">Upheld</option>
       <option value="Dismissed">Dismissed</option>
     </select>
-    <span class="results-count"><span id="count">0</span> results</span>
+    <div class="controls-right">
+      <button class="clear-btn" id="clear-btn" onclick="clearFilters()">✕ Clear filters</button>
+      <span class="results-count"><span id="count">0</span> results</span>
+    </div>
   </div>
 </div>
 
@@ -512,24 +564,24 @@
         <th data-col="date_determined" class="sorted">Date <span class="sort-icon">↓</span></th>
         <th data-col="respondent">Respondent <span class="sort-icon">↕</span></th>
         <th data-col="sector">Sector <span class="sort-icon">↕</span></th>
-        <th>Violation</th>
+        <th class="no-sort">Violation type</th>
         <th data-col="outcome">Outcome <span class="sort-icon">↕</span></th>
         <th data-col="compensation_kes">Compensation <span class="sort-icon">↕</span></th>
-        <th>PDF</th>
+        <th class="no-sort">PDF</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
   <div id="empty" class="empty-state" style="display:none">
     <h3>No results found</h3>
-    <p>Try adjusting your search or filters.</p>
+    <p>Try adjusting your search or clearing the filters.</p>
   </div>
 
   <div class="cta-banner">
     <div class="cta-banner-text">
-      <h3>Facing an ODPC complaint or data protection risk?</h3>
+      <h3>Facing an ODPC complaint or reviewing your data protection risk?</h3>
       <p>Law Lab Africa advises fintechs, DPOs, and compliance teams across Kenya and East Africa.
-        Subscribe to our <a href="https://www.lawlab.africa/newsletter">Data Protection Digest</a> for monthly ODPC enforcement updates.</p>
+        Get the <a href="https://www.lawlab.africa/#newsletter">Data Protection Digest</a> — our bi-weekly roundup of ODPC enforcement and African data protection developments.</p>
     </div>
     <a href="https://www.lawlab.africa/contact" class="btn-cta-lg">Talk to us →</a>
   </div>
@@ -537,8 +589,8 @@
 
 <footer>
   <div class="footer-inner">
-    <p>Data sourced from <a href="https://www.odpc.go.ke" target="_blank" rel="noopener">odpc.go.ke</a>. Compiled by <a href="https://www.lawlab.africa" target="_blank">Law Lab Africa</a>. Not legal advice.</p>
-    <p>Last updated: <span id="last-updated">—</span> · <a href="https://www.lawlab.africa/contact">Suggest a correction</a></p>
+    <p>Data sourced from <a href="https://www.odpc.go.ke" target="_blank" rel="noopener">odpc.go.ke</a>. Compiled and maintained by <a href="https://www.lawlab.africa" target="_blank">Law Lab Africa</a>. For informational purposes only — not legal advice.</p>
+    <p>Last updated: <span id="last-updated">—</span> &nbsp;·&nbsp; <a href="https://www.lawlab.africa/contact">Suggest a correction or missing case</a></p>
   </div>
 </footer>
 
@@ -547,6 +599,19 @@ const DATA_URL = './data/determinations.json';
 let allData = [];
 let sortCol = 'date_determined';
 let sortDir = 'desc';
+let expandedId = null;
+
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function formatDate(s) {
+  if (!s) return '—';
+  const parts = s.split('-');
+  if (parts.length === 2) {
+    const m = parseInt(parts[1], 10);
+    return `${MONTHS[m-1] || ''} ${parts[0]}`;
+  }
+  return s;
+}
 
 function formatKES(n) {
   if (!n) return null;
@@ -561,7 +626,7 @@ function outcomeClass(o) {
 }
 
 function needsVerify(v) {
-  return typeof v === 'string' && v.includes('[VERIFY');
+  return !v || (typeof v === 'string' && (v.includes('[VERIFY') || v.trim() === ''));
 }
 
 function renderRows(data) {
@@ -575,39 +640,84 @@ function renderRows(data) {
   empty.style.display = 'none';
 
   tbody.innerHTML = data.map(d => {
+    const isExpanded = expandedId === d.id;
+
     const violations = Array.isArray(d.violation_type)
       ? d.violation_type.filter(v => !v.includes('[VERIFY')).map(v => `<span class="violation-badge">${v}</span>`).join('')
       : '';
-    const sector = needsVerify(d.sector) ? '<span class="verify-flag">pending</span>' : `<span class="sector-badge">${d.sector}</span>`;
+
+    const sector = needsVerify(d.sector)
+      ? '<span style="color:var(--text-dim);font-size:12px">—</span>'
+      : `<span class="sector-badge">${d.sector}</span>`;
+
     const comp = d.compensation_kes
       ? `<span class="compensation">${formatKES(d.compensation_kes)}</span>`
       : `<span class="compensation none">—</span>`;
+
     const outcome = needsVerify(d.outcome)
-      ? '<span class="verify-flag">pending</span>'
+      ? '<span style="color:var(--text-dim);font-size:12px">—</span>'
       : `<span class="outcome-badge ${outcomeClass(d.outcome)}">${d.outcome}</span>`;
+
     const respondent = needsVerify(d.respondent)
-      ? '<span class="verify-flag">pending</span>'
+      ? '<span style="color:var(--text-dim);font-size:13px">—</span>'
       : `<span class="respondent-name">${d.respondent}</span>`;
-    const enfTag = d.enforcement_notice ? '<span class="tag-enforcement">Enforcement Notice</span>' : '';
-    const prosTag = d.prosecution_recommended ? '<span class="tag-prosecution">Prosecution Rec.</span>' : '';
+
+    const tags = [];
+    if (d.enforcement_notice) tags.push('<span class="tag-enforcement">Enforcement Notice</span>');
+    if (d.prosecution_recommended) tags.push('<span class="tag-prosecution">Prosecution Rec.</span>');
+    const tagsHtml = tags.length ? `<div class="respondent-tags">${tags.join('')}</div>` : '';
+
     const pdfLink = d.pdf_url && !d.pdf_url.includes('[VERIFY')
-      ? `<a class="pdf-link" href="${d.pdf_url}" target="_blank" rel="noopener">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      ? `<a class="pdf-link" href="${d.pdf_url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           PDF
         </a>`
       : '<span style="color:var(--text-dim);font-size:12px">—</span>';
 
-    return `<tr>
-      <td><span class="case-num">${d.case_number.replace('ODPC Complaint No. ', '')}</span></td>
-      <td>${d.date_determined}</td>
-      <td>${respondent}${enfTag}${prosTag}</td>
+    const caseLabel = d.case_number.replace('ODPC Complaint No. ', '').replace('ODPC Complaint No.', '');
+
+    const expandedRow = isExpanded && d.violation_summary && !d.violation_summary.includes('[VERIFY') ? `
+      <tr class="summary-row">
+        <td colspan="8">
+          <div class="summary-inner">
+            <strong>Case summary</strong><br>${d.violation_summary}
+            ${d.prosecution_note ? `<br><br><strong>Prosecution note</strong><br>${d.prosecution_note}` : ''}
+          </div>
+        </td>
+      </tr>` : '';
+
+    return `<tr class="data-row${isExpanded ? ' expanded' : ''}" data-id="${d.id}" onclick="toggleExpand('${d.id}')">
+      <td><span class="case-num"><span class="expand-icon">▶</span>${caseLabel}</span></td>
+      <td>${formatDate(d.date_determined)}</td>
+      <td>${respondent}${tagsHtml}</td>
       <td>${sector}</td>
-      <td>${violations || '<span class="verify-flag">pending</span>'}</td>
+      <td>${violations || '<span style="color:var(--text-dim);font-size:12px">—</span>'}</td>
       <td>${outcome}</td>
       <td>${comp}</td>
       <td>${pdfLink}</td>
-    </tr>`;
+    </tr>${expandedRow}`;
   }).join('');
+}
+
+function toggleExpand(id) {
+  expandedId = expandedId === id ? null : id;
+  applyFilters();
+}
+
+function hasActiveFilters() {
+  return document.getElementById('search').value.trim() ||
+    document.getElementById('filter-year').value ||
+    document.getElementById('filter-sector').value ||
+    document.getElementById('filter-outcome').value;
+}
+
+function clearFilters() {
+  document.getElementById('search').value = '';
+  document.getElementById('filter-year').value = '';
+  document.getElementById('filter-sector').value = '';
+  document.getElementById('filter-outcome').value = '';
+  document.getElementById('clear-btn').classList.remove('visible');
+  applyFilters();
 }
 
 function applyFilters() {
@@ -615,6 +725,8 @@ function applyFilters() {
   const year = document.getElementById('filter-year').value;
   const sector = document.getElementById('filter-sector').value;
   const outcome = document.getElementById('filter-outcome').value;
+
+  document.getElementById('clear-btn').classList.toggle('visible', !!(q || year || sector || outcome));
 
   let filtered = allData.filter(d => {
     if (year && String(d.year) !== year) return false;
@@ -633,7 +745,9 @@ function applyFilters() {
   filtered = [...filtered].sort((a, b) => {
     let av = a[sortCol] ?? '';
     let bv = b[sortCol] ?? '';
-    if (typeof av === 'number' && typeof bv === 'number') {
+    if (sortCol === 'compensation_kes') {
+      av = a.compensation_kes || 0;
+      bv = b.compensation_kes || 0;
       return sortDir === 'asc' ? av - bv : bv - av;
     }
     av = String(av); bv = String(bv);
@@ -658,16 +772,17 @@ function updateStats() {
   const total = allData.length;
   const upheld = allData.filter(d => d.outcome?.toLowerCase().includes('upheld')).length;
   const comps = allData.filter(d => d.compensation_kes).map(d => d.compensation_kes);
-  const avg = comps.length ? Math.round(comps.reduce((a,b)=>a+b,0)/comps.length) : 0;
+  const highest = comps.length ? Math.max(...comps) : 0;
   const sectors = new Set(allData.map(d => d.sector).filter(s => s && !needsVerify(s)));
 
   document.getElementById('stat-total').textContent = total;
   document.getElementById('stat-upheld').textContent = upheld;
-  document.getElementById('stat-compensation').textContent = avg ? 'KES ' + avg.toLocaleString('en-KE') : '—';
+  document.getElementById('stat-highest').textContent = highest
+    ? 'KES ' + highest.toLocaleString('en-KE')
+    : '—';
   document.getElementById('stat-sectors').textContent = sectors.size;
 }
 
-// Init
 fetch(DATA_URL)
   .then(r => r.json())
   .then(json => {
@@ -679,22 +794,16 @@ fetch(DATA_URL)
   })
   .catch(err => console.error('Failed to load data:', err));
 
-// Events
 document.getElementById('search').addEventListener('input', applyFilters);
 document.getElementById('filter-year').addEventListener('change', applyFilters);
 document.getElementById('filter-sector').addEventListener('change', applyFilters);
 document.getElementById('filter-outcome').addEventListener('change', applyFilters);
 
-// Sorting
 document.querySelectorAll('thead th[data-col]').forEach(th => {
   th.addEventListener('click', () => {
     const col = th.dataset.col;
-    if (sortCol === col) {
-      sortDir = sortDir === 'asc' ? 'desc' : 'asc';
-    } else {
-      sortCol = col;
-      sortDir = 'desc';
-    }
+    sortDir = sortCol === col ? (sortDir === 'asc' ? 'desc' : 'asc') : 'desc';
+    sortCol = col;
     document.querySelectorAll('thead th').forEach(h => h.classList.remove('sorted'));
     th.classList.add('sorted');
     th.querySelector('.sort-icon').textContent = sortDir === 'asc' ? '↑' : '↓';
