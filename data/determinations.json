@@ -7069,7 +7069,7 @@
       ]
     },
     {
-      "id": "2023-20230811-brian-wainaina-gathoni-maitai-vs-del",
+      "id": "2023-20230811-brian-wainaina-gathoni-maitai-v",
       "case_number": "See PDF",
       "date_determined": "2023-08-11",
       "year": 2023,
@@ -7078,14 +7078,16 @@
       "complainant_category": "Individual",
       "sector": "Fintech / Mobile Lending",
       "violation_type": [
-        "See PDF"
+        "Unlawful data disclosure",
+        "Failure to respond to erasure/deletion request",
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "Brian Wainaina Gathoni Maitai v Deltech Capital Limited Ta Mykes. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Brian Wainaina Gathoni Maitai v Deltech Capital Limited Ta Mykes. Unlawful data disclosure. Outcome: Upheld.",
+      "outcome": "Upheld",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230811-BRIAN-WAINAINA-GATHONI-MAITAI-vs-DELTECH-CAPITAL-LIMITED-TA-MYKES.pdf",
       "tags": [
         "fintech"
@@ -7138,7 +7140,7 @@
       ]
     },
     {
-      "id": "2023-20230802-arnold-mwaura-alex-karanja-vs-mulla-",
+      "id": "2023-20230802-arnold-mwaura-alex-karanja-vs-m",
       "case_number": "See PDF",
       "date_determined": "2023-08-02",
       "year": 2023,
@@ -7147,21 +7149,24 @@
       "complainant_category": "Individual",
       "sector": "Retail / Commerce",
       "violation_type": [
-        "See PDF"
+        "Unlawful data disclosure",
+        "Unlawful debt collection",
+        "Failure to respond to erasure/deletion request",
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "Arnold Mwaura Alex Karanja v Mulla Pride Limited. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Arnold Mwaura Alex Karanja v Mulla Pride Limited. Unlawful data disclosure. Outcome: Upheld.",
+      "outcome": "Upheld",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230802-ARNOLD-MWAURA-ALEX-KARANJA-vs-MULLA-PRIDE-LIMITED.pdf",
       "tags": [
         "retail"
       ]
     },
     {
-      "id": "2023-20230802-koros-kiprotich-vs-higher-education-",
+      "id": "2023-20230802-koros-kiprotich-vs-higher-educa",
       "case_number": "See PDF",
       "date_determined": "2023-08-02",
       "year": 2023,
@@ -7170,21 +7175,23 @@
       "complainant_category": "Individual",
       "sector": "Fintech / Mobile Lending",
       "violation_type": [
-        "See PDF"
+        "Failure to respond to erasure/deletion request",
+        "Unlawful processing of personal data",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "Koros Kiprotich v Higher Education Loans Board. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Koros Kiprotich v Higher Education Loans Board. Failure to respond to erasure/deletion request. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230802-KOROS-KIPROTICH-vs-HIGHER-EDUCATION-LOANS-BOARD.pdf",
       "tags": [
         "fintech"
       ]
     },
     {
-      "id": "2023-20230802-teresia-karungari-vs-branch-microfin",
+      "id": "2023-20230802-teresia-karungari-vs-branch-mic",
       "case_number": "See PDF",
       "date_determined": "2023-08-02",
       "year": 2023,
@@ -7193,14 +7200,15 @@
       "complainant_category": "Individual",
       "sector": "Banking / Financial Services",
       "violation_type": [
-        "See PDF"
+        "Failure to respond to erasure/deletion request",
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "Teresia Karungari v Branch Microfinance Bank. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Teresia Karungari v Branch Microfinance Bank. Failure to respond to erasure/deletion request. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": false,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230802-TERESIA-KARUNGARI-vs-BRANCH-MICROFINANCE-BANK.pdf",
       "tags": [
         "banking"
@@ -7235,7 +7243,7 @@
       ]
     },
     {
-      "id": "2023-20230731-eric-migwi-scholastica-onon-vs-white",
+      "id": "2023-20230731-eric-migwi-scholastica-onon-vs-",
       "case_number": "See PDF",
       "date_determined": "2023-07-31",
       "year": 2023,
@@ -7244,14 +7252,14 @@
       "complainant_category": "Individual",
       "sector": "Fintech / Mobile Lending",
       "violation_type": [
-        "See PDF"
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "Eric Migwi Scholastica Onon v Whitepath Company Limited. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Eric Migwi Scholastica Onon v Whitepath Company Limited. Unlawful processing of personal data. Outcome: Upheld.",
+      "outcome": "Upheld",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": false,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230731-ERIC-MIGWI-SCHOLASTICA-ONON-vs-WHITEPATH-COMPANY-LIMITED.pdf",
       "tags": [
         "fintech"
