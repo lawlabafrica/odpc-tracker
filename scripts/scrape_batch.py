@@ -187,12 +187,14 @@ def main():
     print(f"Processing cases {offset+1}-{offset+len(batch)} of {len(all_urls)}")
 
     existing_data = load_existing()
-    existing_urls = {d.get("pdf_url") for d in existing_data["determinations"]}
+    # Index existing by URL; skip only if outcome is already verified (not "See PDF")
+    existing_by_url = {d.get("pdf_url"): d for d in existing_data["determinations"]}
 
     new_cases = []
     for i, (url, year) in enumerate(batch):
-        if url in existing_urls:
-            print(f"  [{offset+i+1}] SKIP (already exists): {url.split('/')[-1][:50]}")
+        existing = existing_by_url.get(url)
+        if existing and existing.get("outcome") not in ["See PDF", "Unknown", None]:
+            print(f"  [{offset+i+1}] SKIP (already verified): {url.split('/')[-1][:50]}")
             continue
 
         fname = url.split("/")[-1]
@@ -244,8 +246,19 @@ def main():
         new_cases.append(det)
         print(f"    {respondent[:40]} | {outcome} | KES {comp}")
 
-    # Merge and save
-    existing_data["determinations"].extend(new_cases)
+    # Update existing records or append new ones
+    updated = 0
+    for det in new_cases:
+        if det["pdf_url"] in existing_by_url:
+            # Update the existing record in place
+            for d in existing_data["determinations"]:
+                if d.get("pdf_url") == det["pdf_url"]:
+                    d.update(det)
+                    updated += 1
+                    break
+        else:
+            existing_data["determinations"].append(det)
+    print(f"  Updated {updated} existing records, added {len(new_cases)-updated} new")
     existing_data["determinations"].sort(key=lambda x: x.get("date_determined",""), reverse=True)
     existing_data["metadata"]["total_records"] = len(existing_data["determinations"])
     existing_data["metadata"]["last_updated"] = "2026-03-05"
