@@ -7000,7 +7000,7 @@
       ]
     },
     {
-      "id": "2023-20230908-annsalome-wangari-jaytie-sichiri-vs-",
+      "id": "2023-20230908-annsalome-wangari-jaytie-sichir",
       "case_number": "See PDF",
       "date_determined": "2023-09-08",
       "year": 2023,
@@ -7009,63 +7009,74 @@
       "complainant_category": "Individual",
       "sector": "Technology",
       "violation_type": [
-        "See PDF"
+        "Unlawful debt collection",
+        "Failure to respond to erasure/deletion request",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "Annsalome Wangari Jaytie Sichiri v Zerox Technology Company Limited. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Annsalome Wangari Jaytie Sichiri v Zerox Technology Company Limited. Unlawful debt collection. Outcome: Upheld.",
+      "outcome": "Upheld",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230908-ANNSALOME-WANGARI-JAYTIE-SICHIRI-vs-ZEROX-TECHNOLOGY-COMPANY-LIMITED.pdf",
       "tags": [
         "technology"
       ]
     },
     {
-      "id": "2023-20230906-suo-motu-worldcoin-foundation-tools-",
+      "id": "2023-20230906-suo-motu-worldcoin-foundation-t",
       "case_number": "See PDF",
       "date_determined": "2023-09-06",
       "year": 2023,
-      "respondent": "Suo Motu Worldcoin Foundation Tools For Humanity Tools For Humanity Gmbh",
-      "complainant": "See PDF",
+      "respondent": "Suo-Motu-Worldcoin-Foundation-Tools-For-Humanity-Tools-For-Humanity-Gmbh",
+      "complainant": "Suo Motu Worldcoin Foundation Tools For Humanity Tools For Humanity Gmbh",
       "complainant_category": "Individual",
       "sector": "General",
       "violation_type": [
-        "See PDF"
+        "Unauthorised image use",
+        "Lack of consent",
+        "Failure to respond to erasure/deletion request",
+        "Obstruction of Data Commissioner",
+        "Failure to conduct DPIA",
+        "Unlawful processing of personal data",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "See PDF v Suo Motu Worldcoin Foundation Tools For Humanity Tools For Humanity Gmbh. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Suo Motu Worldcoin Foundation Tools For Humanity Tools For Humanity Gmbh v Suo-Motu-Worldcoin-Foundation-Tools-For-Humanity-Tools-For-Humanity-Gmbh. Unauthorised image use. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": false,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230906-SUO-MOTU-WORLDCOIN-FOUNDATION-TOOLS-FOR-HUMANITY-TOOLS-FOR-HUMANITY-GMBH.pdf",
       "tags": [
         "general"
       ]
     },
     {
-      "id": "2023-20230830-agnes-kimanzi-vs-grass-international",
+      "id": "2023-20230830-agnes-kimanzi-vs-grass-internat",
       "case_number": "See PDF",
       "date_determined": "2023-08-30",
       "year": 2023,
       "respondent": "Grass International Solomon Muthui",
       "complainant": "Agnes Kimanzi",
       "complainant_category": "Individual",
-      "sector": "Agriculture / NGO",
+      "sector": "General",
       "violation_type": [
-        "See PDF"
+        "Unlawful data disclosure",
+        "Failure to respond to erasure/deletion request",
+        "Unlawful processing of personal data",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "Agnes Kimanzi v Grass International Solomon Muthui. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Agnes Kimanzi v Grass International Solomon Muthui. Unlawful data disclosure. Outcome: Unknown.",
+      "outcome": "Unknown",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230830-AGNES-KIMANZI-vs-GRASS-INTERNATIONAL-SOLOMON-MUTHUI.pdf",
       "tags": [
-        "agriculture"
+        "general"
       ]
     },
     {
@@ -7094,7 +7105,7 @@
       ]
     },
     {
-      "id": "2023-20230811-christine-muturi-vs-roma-school-uthi",
+      "id": "2023-20230811-christine-muturi-vs-roma-school",
       "case_number": "See PDF",
       "date_determined": "2023-08-11",
       "year": 2023,
@@ -7103,21 +7114,22 @@
       "complainant_category": "Individual",
       "sector": "Education",
       "violation_type": [
-        "See PDF"
+        "Unauthorised image use",
+        "Failure to register with ODPC"
       ],
-      "violation_summary": "Christine Muturi v Roma School Uthiru. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Christine Muturi v Roma School Uthiru. Unauthorised image use. Outcome: Upheld.",
+      "outcome": "Upheld",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230811-CHRISTINE-MUTURI-vs-ROMA-SCHOOL-UTHIRU.pdf",
       "tags": [
         "education"
       ]
     },
     {
-      "id": "2023-20230811-erastus-mbaka-vs-metropol-credit-ref",
+      "id": "2023-20230811-erastus-mbaka-vs-metropol-credi",
       "case_number": "See PDF",
       "date_determined": "2023-08-11",
       "year": 2023,
@@ -7126,14 +7138,14 @@
       "complainant_category": "Individual",
       "sector": "Banking / Financial Services",
       "violation_type": [
-        "See PDF"
+        "Unlawful processing of personal data"
       ],
-      "violation_summary": "Erastus Mbaka v Metropol Credit Reference Bureau Limited Law Society Of Kenya Sacco Limited. Full details in linked PDF.",
-      "outcome": "See PDF",
+      "violation_summary": "Erastus Mbaka v Metropol Credit Reference Bureau Limited Law Society Of Kenya Sacco Limited. Unlawful processing of personal data. Outcome: Dismissed.",
+      "outcome": "Dismissed",
       "compensation_kes": null,
       "compensation_usd_approx": null,
-      "enforcement_notice": null,
-      "prosecution_recommended": null,
+      "enforcement_notice": false,
+      "prosecution_recommended": false,
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230811-ERASTUS-MBAKA-vs-METROPOL-CREDIT-REFERENCE-BUREAU-LIMITED-LAW-SOCIETY-OF-KENYA-SACCO-LIMITED.pdf",
       "tags": [
         "banking"
