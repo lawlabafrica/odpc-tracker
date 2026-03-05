@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ODPC Determinations Tracker | Law Lab Africa</title>
+  <meta name="description" content="Searchable database of every determination issued by Kenya's Office of the Data Protection Commissioner (ODPC). Updated as new determinations are published." />
+  <meta property="og:title" content="ODPC Determinations Tracker | Law Lab Africa" />
+  <meta property="og:description" content="Every ODPC determination, searchable by company, sector, and violation type." />
+  <meta property="og:url" content="https://research.lawlab.africa/odpc" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #222638;
+      --border: #2a2f45;
+      --accent: #2563eb;
+      --accent-light: #3b82f6;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --text-dim: #4a5568;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --purple: #8b5cf6;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --mono: 'IBM Plex Mono', 'Fira Code', monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.15s;
+    }
+    .header-link:hover { color: var(--text); }
+    .btn-cta {
+      background: var(--accent);
+      color: white;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-cta:hover { background: var(--accent-light); }
+
+    /* HERO */
+    .hero {
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 40px;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-family: var(--mono);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      background: rgba(37,99,235,0.12);
+      border: 1px solid rgba(37,99,235,0.3);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 620px;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .stats-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      font-family: var(--mono);
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* CONTROLS */
+    .controls {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .controls-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .search-wrap {
+      flex: 1;
+      min-width: 240px;
+      position: relative;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+    input[type="search"], select {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      padding: 9px 12px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input[type="search"] {
+      width: 100%;
+      padding-left: 38px;
+    }
+    input[type="search"]:focus, select:focus {
+      border-color: var(--accent);
+    }
+    select {
+      padding: 9px 32px 9px 12px;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238892a4' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
+    .results-count {
+      font-size: 13px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      font-family: var(--mono);
+    }
+    .results-count span { color: var(--accent-light); font-weight: 600; }
+
+    /* TABLE */
+    .table-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 13.5px;
+    }
+    thead th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    thead th:hover { color: var(--text); }
+    thead th.sorted { color: var(--accent-light); }
+    thead th .sort-icon { margin-left: 4px; opacity: 0.5; }
+    thead th.sorted .sort-icon { opacity: 1; }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.1s;
+      cursor: pointer;
+    }
+    tbody tr:hover { background: var(--surface); }
+    tbody td {
+      padding: 13px 14px;
+      vertical-align: top;
+      line-height: 1.4;
+    }
+    .case-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent-light);
+      white-space: nowrap;
+    }
+    .respondent-name {
+      font-weight: 500;
+      color: var(--text);
+    }
+    .sector-badge, .violation-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin: 1px 2px 1px 0;
+      white-space: nowrap;
+    }
+    .sector-badge {
+      background: rgba(139,92,246,0.12);
+      color: #a78bfa;
+      border: 1px solid rgba(139,92,246,0.25);
+    }
+    .violation-badge {
+      background: rgba(245,158,11,0.1);
+      color: #fbbf24;
+      border: 1px solid rgba(245,158,11,0.2);
+    }
+    .outcome-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+    .outcome-upheld {
+      background: rgba(16,185,129,0.1);
+      color: var(--green);
+      border: 1px solid rgba(16,185,129,0.2);
+    }
+    .outcome-dismissed {
+      background: rgba(239,68,68,0.1);
+      color: var(--red);
+      border: 1px solid rgba(239,68,68,0.2);
+    }
+    .outcome-unknown {
+      background: rgba(100,116,139,0.1);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .compensation {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .compensation.none {
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+    .pdf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--accent-light);
+      text-decoration: none;
+      padding: 4px 9px;
+      border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 5px;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .pdf-link:hover { background: rgba(37,99,235,0.12); }
+    .tag-enforcement {
+      display: inline-block;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-left: 4px;
+      background: rgba(239,68,68,0.1);
+      color: var(--red);
+      border: 1px solid rgba(239,68,68,0.2);
+      font-weight: 600;
+    }
+    .tag-prosecution {
+      display: inline-block;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-left: 4px;
+      background: rgba(239,68,68,0.2);
+      color: #fca5a5;
+      border: 1px solid rgba(239,68,68,0.3);
+      font-weight: 700;
+    }
+    .verify-flag {
+      font-size: 11px;
+      color: var(--yellow);
+      font-family: var(--mono);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+    .empty-state h3 { font-size: 16px; margin-bottom: 8px; color: var(--text); }
+    .empty-state p { font-size: 14px; }
+
+    /* CTA BANNER */
+    .cta-banner {
+      margin: 40px 0 0;
+      background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(139,92,246,0.1));
+      border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 10px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .cta-banner-text h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .cta-banner-text p { color: var(--text-muted); font-size: 14px; }
+    .cta-banner-text p a { color: var(--accent-light); text-decoration: none; }
+    .btn-cta-lg {
+      background: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .btn-cta-lg:hover { background: var(--accent-light); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      margin-top: 40px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-inner p {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .footer-inner a { color: var(--text-muted); text-decoration: none; }
+    .footer-inner a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 22px; }
+      .stats-row { gap: 20px; }
+      table { font-size: 12px; }
+      .controls-inner { flex-direction: column; }
+      .search-wrap { width: 100%; }
+      .cta-banner { flex-direction: column; }
+      thead th:nth-child(3), tbody td:nth-child(3),
+      thead th:nth-child(5), tbody td:nth-child(5) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="https://www.lawlab.africa" class="logo">
+      <div class="logo-mark">LL</div>
+      Law Lab Africa
+    </a>
+    <div class="header-right">
+      <a href="https://www.lawlab.africa" class="header-link">Home</a>
+      <a href="https://www.lawlab.africa/#services" class="header-link">Services</a>
+      <a href="https://www.lawlab.africa/contact" class="btn-cta">Get Compliance Advice</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Research Tool</div>
+    <h1>ODPC Determinations Tracker</h1>
+    <p class="hero-sub">
+      Every determination issued by Kenya's Office of the Data Protection Commissioner, structured and searchable. Updated as new determinations are published. Original PDF links included for every case.
+    </p>
+    <div class="stats-row" id="stats-row">
+      <div class="stat">
+        <span class="stat-value" id="stat-total">—</span>
+        <span class="stat-label">Total Determinations</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-upheld">—</span>
+        <span class="stat-label">Complaints Upheld</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-compensation">—</span>
+        <span class="stat-label">Avg Compensation (KES)</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="stat-sectors">—</span>
+        <span class="stat-label">Sectors Represented</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" id="search" placeholder="Search by company, violation, or case number…" />
+    </div>
+    <select id="filter-year">
+      <option value="">All years</option>
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+      <option value="2025">2025</option>
+      <option value="2026">2026</option>
+    </select>
+    <select id="filter-sector">
+      <option value="">All sectors</option>
+    </select>
+    <select id="filter-outcome">
+      <option value="">All outcomes</option>
+      <option value="Upheld">Upheld</option>
+      <option value="Dismissed">Dismissed</option>
+    </select>
+    <span class="results-count"><span id="count">0</span> results</span>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <table id="main-table">
+    <thead>
+      <tr>
+        <th data-col="case_number">Case No <span class="sort-icon">↕</span></th>
+        <th data-col="date_determined" class="sorted">Date <span class="sort-icon">↓</span></th>
+        <th data-col="respondent">Respondent <span class="sort-icon">↕</span></th>
+        <th data-col="sector">Sector <span class="sort-icon">↕</span></th>
+        <th>Violation</th>
+        <th data-col="outcome">Outcome <span class="sort-icon">↕</span></th>
+        <th data-col="compensation_kes">Compensation <span class="sort-icon">↕</span></th>
+        <th>PDF</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  <div id="empty" class="empty-state" style="display:none">
+    <h3>No results found</h3>
+    <p>Try adjusting your search or filters.</p>
+  </div>
+
+  <div class="cta-banner">
+    <div class="cta-banner-text">
+      <h3>Facing an ODPC complaint or data protection risk?</h3>
+      <p>Law Lab Africa advises fintechs, DPOs, and compliance teams across Kenya and East Africa.
+        Subscribe to our <a href="https://www.lawlab.africa/newsletter">Data Protection Digest</a> for monthly ODPC enforcement updates.</p>
+    </div>
+    <a href="https://www.lawlab.africa/contact" class="btn-cta-lg">Talk to us →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>Data sourced from <a href="https://www.odpc.go.ke" target="_blank" rel="noopener">odpc.go.ke</a>. Compiled by <a href="https://www.lawlab.africa" target="_blank">Law Lab Africa</a>. Not legal advice.</p>
+    <p>Last updated: <span id="last-updated">—</span> · <a href="https://www.lawlab.africa/contact">Suggest a correction</a></p>
+  </div>
+</footer>
+
+<script>
+const DATA_URL = './data/determinations.json';
+let allData = [];
+let sortCol = 'date_determined';
+let sortDir = 'desc';
+
+function formatKES(n) {
+  if (!n) return null;
+  return 'KES ' + Number(n).toLocaleString('en-KE');
+}
+
+function outcomeClass(o) {
+  if (!o || o.includes('[')) return 'outcome-unknown';
+  if (o.toLowerCase().includes('upheld')) return 'outcome-upheld';
+  if (o.toLowerCase().includes('dismiss')) return 'outcome-dismissed';
+  return 'outcome-unknown';
+}
+
+function needsVerify(v) {
+  return typeof v === 'string' && v.includes('[VERIFY');
+}
+
+function renderRows(data) {
+  const tbody = document.getElementById('tbody');
+  const empty = document.getElementById('empty');
+  if (!data.length) {
+    tbody.innerHTML = '';
+    empty.style.display = '';
+    return;
+  }
+  empty.style.display = 'none';
+
+  tbody.innerHTML = data.map(d => {
+    const violations = Array.isArray(d.violation_type)
+      ? d.violation_type.filter(v => !v.includes('[VERIFY')).map(v => `<span class="violation-badge">${v}</span>`).join('')
+      : '';
+    const sector = needsVerify(d.sector) ? '<span class="verify-flag">pending</span>' : `<span class="sector-badge">${d.sector}</span>`;
+    const comp = d.compensation_kes
+      ? `<span class="compensation">${formatKES(d.compensation_kes)}</span>`
+      : `<span class="compensation none">—</span>`;
+    const outcome = needsVerify(d.outcome)
+      ? '<span class="verify-flag">pending</span>'
+      : `<span class="outcome-badge ${outcomeClass(d.outcome)}">${d.outcome}</span>`;
+    const respondent = needsVerify(d.respondent)
+      ? '<span class="verify-flag">pending</span>'
+      : `<span class="respondent-name">${d.respondent}</span>`;
+    const enfTag = d.enforcement_notice ? '<span class="tag-enforcement">Enforcement Notice</span>' : '';
+    const prosTag = d.prosecution_recommended ? '<span class="tag-prosecution">Prosecution Rec.</span>' : '';
+    const pdfLink = d.pdf_url && !d.pdf_url.includes('[VERIFY')
+      ? `<a class="pdf-link" href="${d.pdf_url}" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          PDF
+        </a>`
+      : '<span style="color:var(--text-dim);font-size:12px">—</span>';
+
+    return `<tr>
+      <td><span class="case-num">${d.case_number.replace('ODPC Complaint No. ', '')}</span></td>
+      <td>${d.date_determined}</td>
+      <td>${respondent}${enfTag}${prosTag}</td>
+      <td>${sector}</td>
+      <td>${violations || '<span class="verify-flag">pending</span>'}</td>
+      <td>${outcome}</td>
+      <td>${comp}</td>
+      <td>${pdfLink}</td>
+    </tr>`;
+  }).join('');
+}
+
+function applyFilters() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const year = document.getElementById('filter-year').value;
+  const sector = document.getElementById('filter-sector').value;
+  const outcome = document.getElementById('filter-outcome').value;
+
+  let filtered = allData.filter(d => {
+    if (year && String(d.year) !== year) return false;
+    if (sector && d.sector !== sector) return false;
+    if (outcome && !d.outcome?.toLowerCase().includes(outcome.toLowerCase())) return false;
+    if (q) {
+      const haystack = [
+        d.case_number, d.respondent, d.sector,
+        ...(d.violation_type || []), d.outcome, d.violation_summary
+      ].join(' ').toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
+    return true;
+  });
+
+  filtered = [...filtered].sort((a, b) => {
+    let av = a[sortCol] ?? '';
+    let bv = b[sortCol] ?? '';
+    if (typeof av === 'number' && typeof bv === 'number') {
+      return sortDir === 'asc' ? av - bv : bv - av;
+    }
+    av = String(av); bv = String(bv);
+    return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+
+  document.getElementById('count').textContent = filtered.length;
+  renderRows(filtered);
+}
+
+function populateSectorFilter() {
+  const sectors = [...new Set(allData.map(d => d.sector).filter(s => s && !needsVerify(s)))].sort();
+  const sel = document.getElementById('filter-sector');
+  sectors.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s; o.textContent = s;
+    sel.appendChild(o);
+  });
+}
+
+function updateStats() {
+  const total = allData.length;
+  const upheld = allData.filter(d => d.outcome?.toLowerCase().includes('upheld')).length;
+  const comps = allData.filter(d => d.compensation_kes).map(d => d.compensation_kes);
+  const avg = comps.length ? Math.round(comps.reduce((a,b)=>a+b,0)/comps.length) : 0;
+  const sectors = new Set(allData.map(d => d.sector).filter(s => s && !needsVerify(s)));
+
+  document.getElementById('stat-total').textContent = total;
+  document.getElementById('stat-upheld').textContent = upheld;
+  document.getElementById('stat-compensation').textContent = avg ? 'KES ' + avg.toLocaleString('en-KE') : '—';
+  document.getElementById('stat-sectors').textContent = sectors.size;
+}
+
+// Init
+fetch(DATA_URL)
+  .then(r => r.json())
+  .then(json => {
+    allData = json.determinations;
+    document.getElementById('last-updated').textContent = json.metadata.last_updated;
+    populateSectorFilter();
+    updateStats();
+    applyFilters();
+  })
+  .catch(err => console.error('Failed to load data:', err));
+
+// Events
+document.getElementById('search').addEventListener('input', applyFilters);
+document.getElementById('filter-year').addEventListener('change', applyFilters);
+document.getElementById('filter-sector').addEventListener('change', applyFilters);
+document.getElementById('filter-outcome').addEventListener('change', applyFilters);
+
+// Sorting
+document.querySelectorAll('thead th[data-col]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (sortCol === col) {
+      sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+    } else {
+      sortCol = col;
+      sortDir = 'desc';
+    }
+    document.querySelectorAll('thead th').forEach(h => h.classList.remove('sorted'));
+    th.classList.add('sorted');
+    th.querySelector('.sort-icon').textContent = sortDir === 'asc' ? '↑' : '↓';
+    applyFilters();
+  });
+});
+</script>
+</body>
+</html>
