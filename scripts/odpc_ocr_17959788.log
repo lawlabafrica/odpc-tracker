@@ -1,0 +1,749 @@
+Starting ODPC OCR job at Fri Mar  6 02:17:55 PST 2026
+Node: sh02-01n27.int
+Checking dependencies...
+Python 3.9.0
+tesseract 5.1.0
+pdftoppm version 0.47.0
+[02:17:58] ODPC Determinations OCR -- Sherlock run
+[02:17:58] Fetching PDF URL list from odpc.go.ke...
+[02:18:03]   2023: 46 PDFs found
+[02:18:07]   2024: 109 PDFs found
+[02:18:10]   2025: 141 PDFs found
+[02:18:14]   2026: 17 PDFs found
+[02:18:14] Total: 313 PDFs
+
+[02:18:14] Resuming from 0 previously processed cases
+
+[02:18:14] [1/313] 20230612-CHEPKOECH-LORNA-22-OTHERS-vs-FIRCH-INTERNATIONAL-COMPANY
+[02:18:43]   Firch International Company Limited Ta Pesa P | Upheld | KES None
+[02:18:43] [2/313] 20230626-SHILLAH-T.M.K-MICHAEL-KANGETHE-ELIJAH-NJOROGE-vs-PLATINU
+[02:19:07]   Complainant
+
+-Versus-
+
+Platinum Credit Lymite | Upheld | KES None
+[02:19:08] [3/313] 20230705-JEFF-NDUKO-vs-ONE-ACRE-FUND.pdf
+[02:19:31]   One Acre Fund | Unknown | KES None
+[02:19:31] [4/313] 20230707-HARRISON-KISAKA-vs-FAULU-MICROFINANCE-BANK-LIMITED.pdf
+[02:19:54]   Saien At L S Complainant
+-Versus-
+
+Faulu Micr | Upheld | KES None
+[02:19:55] [5/313] 20230707-LUCY-KINYANJUI-EASY-COACH-LIMITED.pdf
+[02:20:24]   Lucy Kinyanjui Easy Coach Limited | Unknown | KES None
+[02:20:24] [6/313] 20230712-VISHAAL-SHAH-KEVAL-SHAH-ROSHNI-SHAH-SHRIKUNJ-SHAH-MADHUP
+[02:20:43]   Cyprian Nyakundi | Unknown | KES None
+[02:20:44] [7/313] 20230714-DOUGLAS-MUIRURI-MBUGUA-vs-STANDARD-CHARTERED-BANK-KENYA-
+[02:21:20]   Standard Chartered Bank Kenya Limited | Unknown | KES None
+[02:21:21] [8/313] 20230717-ISAYA-LEMERKETO-vs-THE-KENYA-SCHOOL-OF-LAW.pdf
+[02:21:48]   The Kenya School Of Law | Upheld | KES None
+[02:21:48] [9/313] 20230717-PERPETUAL-WANJIKU-vs-CASA-VERA-LOUNGE.pdf
+[02:22:28]   Casa Vera Lounge | Upheld | KES 5000000
+[02:22:28] [10/313] 20230731-EDITH-ANDESO-vs-OLERAI-SCHOOLS.pdf
+[02:23:12]   Olerai Schools | Dismissed | KES None
+[02:23:12]   -- Progress saved: 10/313 complete --
+
+[02:23:12] [11/313] 20230731-ERIC-MIGWI-SCHOLASTICA-ONON-vs-WHITEPATH-COMPANY-LIMITED
+[02:24:16]   Whitepath Company Limited | Upheld | KES None
+[02:24:17] [12/313] 20230802-ARNOLD-MWAURA-ALEX-KARANJA-vs-MULLA-PRIDE-LIMITED.pdf
+[02:24:51]   Mulla Pride Limited | Upheld | KES None
+[02:24:51] [13/313] 20230802-KOROS-KIPROTICH-vs-HIGHER-EDUCATION-LOANS-BOARD.pdf
+[02:25:32]   Higher Education Loans Board | Upheld | KES None
+[02:25:32] [14/313] 20230802-TERESIA-KARUNGARI-vs-BRANCH-MICROFINANCE-BANK.pdf
+[02:25:56]   Complainant
+
+Branch Microfinance Bani( | Unknown | KES None
+[02:25:56] [15/313] 20230811-BRIAN-WAINAINA-GATHONI-MAITAI-vs-DELTECH-CAPITAL-LIMITED
+[02:26:27]   Deltech Capital Limited Ta Mykes | Unknown | KES None
+[02:26:28] [16/313] 20230811-CHRISTINE-MUTURI-vs-ROMA-SCHOOL-UTHIRU.pdf
+[02:26:59]   Roma School Uthiru | Upheld | KES None
+[02:26:59] [17/313] 20230811-ERASTUS-MBAKA-vs-METROPOL-CREDIT-REFERENCE-BUREAU-LIMITE
+[02:27:26]   Metropol Credit Reference Bureau Limited Law  | Dismissed | KES None
+[02:27:27] [18/313] 20230830-AGNES-KIMANZI-vs-GRASS-INTERNATIONAL-SOLOMON-MUTHUI.pdf
+[02:28:04]   Grass International Solomon Muthui | Upheld | KES None
+[02:28:05] [19/313] 20230906-SUO-MOTU-WORLDCOIN-FOUNDATION-TOOLS-FOR-HUMANITY-TOOLS-F
+[02:29:55]   Suo Motu Worldcoin Foundation Tools For Human | Unknown | KES None
+[02:29:56] [20/313] 20230908-ANNSALOME-WANGARI-JAYTIE-SICHIRI-vs-ZEROX-TECHNOLOGY-COM
+[02:30:19]   Zerox Technology Company Limited | Upheld | KES None
+[02:30:19]   -- Progress saved: 20/313 complete --
+
+[02:30:19] [21/313] 20230918-CHANTAL-MARISSA-PANDE-JOEL-STEPHEN-KUNGA-CREDIT-BANK-PLC
+[02:30:47]   Chantal Marissa Pande Joel Stephen Kunga Cred | Dismissed | KES None
+[02:30:47] [22/313] 20230918-KENNEDY-OWUOR-vs-AVENTUS-GROUP.pdf
+[02:31:22]   Aventus Group | Upheld | KES None
+[02:31:22] [23/313] 20230921-GRACE-GATAMBU-vs-AAR-HEALTHCARE-LIMITED.pdf
+[02:32:11]   Aar Healthcare Limited | Upheld | KES None
+[02:32:11] [24/313] 20231003-PAULINE-MUHANDA-T.A-MUDESHI-MUHANDA-AND-CO.-ADVOCATES-vs
+[02:32:48]   Safaricom Plc | Unknown | KES None
+[02:32:48] [25/313] 20231006-MERCY-MWANGI-VS-ZAIDI-PATO-LIMITED.pdf
+[02:33:10]   Zaidi Pato Limited | Upheld | KES None
+[02:33:11] [26/313] 20231024-PHYLLIS-NYABOKE-vs-GROLA-TECH-LTD-T.A-LION-CASH.pdf
+[02:33:42]   Grola Tech Ltd T.A Lion Cash | Upheld | KES None
+[02:33:42] [27/313] 20231116-ADEMA-SANGALE-vs-ZOSCALES-PARTNERS.pdf
+[02:34:13]   Sr | Dismissed | KES None
+[02:34:14] [28/313] 20231117-EUNICE-MUENI-vs-AVENTUS-TECHNOLOGY-LTD.pdf
+[02:34:39]   Aventus Technology Ltd | Upheld | KES None
+[02:34:39] [29/313] 20231124-VICTOR-AKIDIVA-vs-CO-OPERATIVE-BANK-OF-KENYA-LIMITED.pdf
+[02:35:12]   Co Operative Bank Of Kenya Limited | Upheld | KES None
+[02:35:12] [30/313] 20231127-BENEDICT-NYAGA-vs-CERES-TECH-LIMITED-TA-CHAPAA-LOAN.pdf
+[02:35:38]   Ceres Tech Limited Ta Chapaa Loan | Upheld | KES None
+[02:35:38]   -- Progress saved: 30/313 complete --
+
+[02:35:38] [31/313] 20231127-JOANNA-BLOCK-GABRIEL-OSER-vs-KARIM-ANJARWALLA.pdf
+[02:36:44]   Karim Anjarwalla | Upheld | KES None
+[02:36:44] [32/313] 20231201-PETER-MBUGUA-TIMOTHY-NGOME-AGGREY-TIMOTHY-vs-CREDIT-WATC
+[02:37:15]   Credit Watch Investment Limited | Upheld | KES None
+[02:37:16] [33/313] 20231201-SAMMY-MUCHANE-vs-AIRTEL-NETWORKS-KENYA-LIMITED.pdf
+[02:37:48]   Airtel Networks Kenya Limited | Dismissed | KES None
+[02:37:48] [34/313] 20231211-HARON-KORIR-AND-ABDULKADIR-AZIZ-vs-SURE-CRED-CAPITAL-LIM
+[02:38:15]   Sure Cred Capital Limited Ta Yescash | Upheld | KES None
+[02:38:16] [35/313] 20231211-ROBERT-AKA-AUTHENTIC-BALES-vs-ZEROX-TECHNOLOGY-COMANY-LI
+[02:38:39]   Zerox Technology Comany Limited | Upheld | KES None
+[02:38:39] [36/313] 20231211-SIMON-OKWOMI-vs-NATIONAL-HEALTH-INSURANCE-FUND.pdf
+[02:39:10]   National Health Insurance Fund | Upheld | KES None
+[02:39:11] [37/313] 20231215-BARRACK-MANONO-vs-EQUITY-BANK-KENYA-LTD.pdf
+[02:39:50]   Equity Bank Kenya Ltd | Upheld | KES None
+[02:39:51] [38/313] 20231215-BEATRICE-AYONJO-vs-QUEST-HOLDINGS-LIMITED.pdf
+[02:40:20]   Quest Holdings Limited | Upheld | KES None
+[02:40:20] [39/313] 20231215-FAITH-KOYO-vs-ZAMARADI-CAPITAL-AND-CREDIT-GROUP-LIMITED-
+[02:40:50]   Zamaradi Capital And Credit Group Limited Ta  | Upheld | KES None
+[02:40:51] [40/313] 20231215-HUMPHREY-MAKHANU-LYDIA-NYANDIA-STEPHEN-OBIRA-ALLAN-OMORO
+[02:41:27]   Mulla Pride Ltd | Dismissed | KES None
+[02:41:27]   -- Progress saved: 40/313 complete --
+
+[02:41:27] [41/313] 20231215-JAMES-KABIRU-vs-SAFARICOM-PLC-GUARANTY-TRUST-BANK-KENYA-
+[02:41:57]   Safaricom Plc Guaranty Trust Bank Kenya Limit | Unknown | KES None
+[02:41:57] [42/313] 20231215-JEREMY-OBANO-vs-KENYA-AIRWAYS-PLC.pdf
+[02:42:40]   Kenya Airways Plc | Upheld | KES None
+[02:42:40] [43/313] 20231215-JOHN-ONKANGI-vs-NATIONAL-BANK-OF-KENYA-LIMITED-KEYSIAN-A
+[02:43:25]   National Bank Of Kenya Limited Keysian Auctio | Dismissed | KES None
+[02:43:25] [44/313] 20231215-JOY-MATHEKA-vs-AMREF-STAFF-SAVINGS-AND-CREDIT-SOCIETY-LI
+[02:44:17]   Amref Staff Savings And Credit Society Limite | Upheld | KES None
+[02:44:18] [45/313] 20231215-MAINA-KIMARU-vs-PREMIER-CREDIT-LIMITED.pdf
+[02:45:17]   Premier Credit Limited | Upheld | KES None
+[02:45:17] [46/313] 20231229-MUTHEU-MUTUKU-vs-CLUB-LEGEND-RONGAI.pdf
+[02:45:45]   Club Legend Rongai | Upheld | KES None
+[02:45:45] [47/313] 20240102-ELIJAH-MOKUA-vs-ASA-INTERNATIONAL-KENYA-LIMITED-BIDII-CR
+[02:46:22]   Asa International Kenya Limited Bidii Credit  | Upheld | KES None
+[02:46:22] [48/313] 20240102-GLADYS-JEPKOECH-KEMBOI-vs-DIAMOND-TRUST-BANK-JUBILLEE-IN
+[02:46:56]   Diamond Trust Bank Jubillee Insurance Company | Dismissed | KES None
+[02:46:56] [49/313] 20240103-BRANDON-OMONDI-TA-BRANDON-ASSOCIATES-ADVOCATES-vs-TRUEHO
+[02:47:46]   Truehost Cloud | Upheld | KES None
+[02:47:47] [50/313] 20240105-DAVID-OWUOR-DENNIS-MWENDA-RICHARD-ABONGO-vs-CERES-TECH-L
+[02:48:27]   Ceres Tech Limited Ta Rocketpesa | Upheld | KES None
+[02:48:27]   -- Progress saved: 50/313 complete --
+
+[02:48:27] [51/313] 20240106-BENSON-ADIE-vs-SEQUOIA-HEIGHTS-INTERNATIONAL-SCHOOL.pdf
+[02:48:55]   Sequoia Heights International School | Upheld | KES None
+[02:48:55] [52/313] 20240106-HELLEN-MUTHONI-vs-SOLPIA-KENYA-LIMITED-TA-SISTAR-KENYA.p
+[02:49:53]   Solpia Kenya Limited Ta Sistar Kenya | Upheld | KES None
+[02:49:53] [53/313] 20240106-MERCY-WAMBUA-NR-KW-vs-BOLD-DECISIVE-DIGITAL-LAB-EQUITY-A
+[02:50:35]   Bold Decisive Digital Lab Equity Afia | Dismissed | KES None
+[02:50:35] [54/313] 20240106-NANCY-MUGO-vs-MIGUEL-VENTURES.pdf
+[02:50:54]   Miguel Ventures | Upheld | KES None
+[02:50:55] [55/313] 20240109-GEORGE-MAINA-MWANGI-vs-CUSTOMS-MANAGER-ICMS-LICENSING-KR
+[02:51:22]   Customs Manager Icms Licensing Kra | Dismissed | KES None
+[02:51:22] [56/313] 20240114-ALLAN-TIROP-vs-PORT-FLORENCE-COMMUNITY-HOSPITAL.pdf
+[02:52:01]   Port Florence Community Hospital | Upheld | KES None
+[02:52:02] [57/313] 20240115-BRIAN-VOLISI-vs-FIN-KENYA-FORMERLY-TRUSTGRO-SCA-LIMITED.
+[02:52:28]   Complainant
+-Versus-
+Fin Kenya (Formerly Trus | Upheld | KES None
+[02:52:28] [58/313] 20240115-SHEILA-LULU-vs-MOTOWN-GROUP-LTD.pdf
+[02:52:47]   Motown Group Ltd | Dismissed | KES None
+[02:52:47] [59/313] 20240116-EMILY-SILA-vs-ZEROX-TECHNOLOGY-COMPANY-LIMITED.pdf
+[02:53:13]   Zerox Technology Company Limited | Upheld | KES None
+[02:53:13] [60/313] 20240122-NICKSON-MUDII-vs-ARROW-FACILITIES-LTD.pdf
+[02:53:36]   Arrow Facilities Ltd | Dismissed | KES None
+[02:53:36]   -- Progress saved: 60/313 complete --
+
+[02:53:37] [61/313] 20240124-ABUBAKAR-HUSSEIN-vs-CERES-TECH-LTD-TA-CHAPAA-LOAN.pdf
+[02:54:02]   Ceres Tech Ltd Ta Chapaa Loan | Upheld | KES None
+[02:54:02] [62/313] 20240124-MARK-ROSS-vs-GRAEME-THOMPSON.pdf
+[02:54:38]   Graeme Thompson | Dismissed | KES None
+[02:54:38] [63/313] 20240202-GRACE-CHAMBI-vs-CECILIA-MUNYORO-TA-GLAM-BT-CESS-JOHN-IRU
+[02:55:17]   Cecilia Munyoro Ta Glam Bt Cess John Irungu T | Upheld | KES None
+[02:55:17] [64/313] 20240213-DIANA-AMBANI-vs-ACAKORO-FOOTBALL-CLUB.pdf
+[02:56:16]   Acakoro Football Club | Dismissed | KES None
+[02:56:16] [65/313] 20240214-MILLIE-NAMASAKA-vs-PLATINUM-CREDIT-PREMIER-CREDIT.pdf
+[02:57:12]   Platinum Credit Premier Credit | Dismissed | KES None
+[02:57:12] [66/313] 20240214-MIRUKA-DANIEL-vs-TRIDENT-INSURANCE-COMPANY-LTD.pdf
+[02:57:59]   Trident Insurance Company Ltd | Upheld | KES None
+[02:58:00] [67/313] 20240216-MARY-GATHONI-MWAURA-vs-KENYA-BANKERS-SAVINGS-CREDIT-COOP
+[02:58:33]   Kenya Bankers Savings Credit Cooperative Soci | Dismissed | KES None
+[02:58:33] [68/313] 20240216-ROBINAH-NYAMBUSI-vs-PLATINUM-CREDIT-LIMITED.pdf
+[02:58:59]   Platinum Credit Limited | Dismissed | KES None
+[02:59:00] [69/313] 20240220-RHONE-OTIENO-vs-1824-WHISKEY-BAR-LOUNGE.pdf
+[02:59:26]   1824 Whiskey Bar Lounge | Dismissed | KES None
+[02:59:26] [70/313] 20240304-DANIEL-NDAMBUKI-vs-AVENTUS-TECHNOLOGY-LTD.pdf
+[03:00:25]   Aventus Technology Ltd | Upheld | KES None
+[03:00:25]   -- Progress saved: 70/313 complete --
+
+[03:00:25] [71/313] 20240305-TERRENCE-ADRIANO-vs-SWARA-ACACIA-LODGE-LTD.pdf
+[03:01:13]   Swara Acacia Lodge Ltd | Upheld | KES None
+[03:01:13] [72/313] 20240315-CHRISTINA-BULIBA-vs-DHAHABU-KENYA.pdf
+[03:01:58]   Dhahabu Kenya | Upheld | KES None
+[03:01:58] [73/313] 20240320-FAITH-WAVINYA-vs-NATION-MEDIA-GROUP.pdf
+[03:03:27]   Nation Media Group | Dismissed | KES None
+[03:03:27] [74/313] 20240328-ANN-WANJIRU-IRUNGU-vs-LINTONS-ACADEMY.pdf
+[03:04:33]   Lintons Academy | Upheld | KES None
+[03:04:33] [75/313] 20240401-JEREMIAH-OKELLO-vs-ZEROX-TECHNOLOGY-LIMITED.pdf
+[03:05:03]   Zerox Technology Limited | Upheld | KES None
+[03:05:04] [76/313] 20240402-ANN-NDUNGU-vs-ZAMARADI-CAPITAL-CREDIT-GROUP-TA-HAKI-MONE
+[03:05:36]   Zamaradi Capital Credit Group Ta Haki Money | Unknown | KES None
+[03:05:36] [77/313] 20240404-JANE-NJAMBI-vs-CREDITWATCH-INVESTMENT-LIMITED.pdf
+[03:06:28]   Creditwatch Investment Limited | Upheld | KES None
+[03:06:28] [78/313] 20240409-KIPLIMO-KIPTUI-vs-MULLA-PRIDE-LIMITED-T.A-KE-CREDIT.pdf
+[03:07:25]   Complainant
+-Versus- | Upheld | KES None
+[03:07:26] [79/313] 20240414-ESTHER-MATHEKA-ON-BEHALF-OF-M.NMINOR-VS-HENNER-GMC.pdf
+[03:08:52]   Henner Gmc | Upheld | KES None
+[03:08:52] [80/313] 20240416-TABITHA-MWANIKI-vs-ROSE-GATABAI-TA-TIARA-NAIL-SPA.pdf
+[03:09:14]   Rose Gatabai Ta Tiara Nail Spa | Dismissed | KES None
+[03:09:14]   -- Progress saved: 80/313 complete --
+
+[03:09:14] [81/313] 20240417-JOE-KIRANYA-VS-BLACK-AND-GOLD-EXECUTIVE-BARBERSHOP.pdf
+[03:09:28]   Black And Gold Executive Barbershop | Upheld | KES None
+[03:09:29] [82/313] 20240417-PAUL-OGOLA-vs-SHALINA-HEALTHCARE-KENYA-LIMITED-VIVID-FEA
+[03:10:05]   Shalina Healthcare Kenya Limited Vivid Featur | Upheld | KES None
+[03:10:06] [83/313] 20240419-AUSTINE-OPALLA-vs-MULLA-PRIDE-LIMITED-TA-KE-CREDIT.pdf
+[03:10:31]   Mulla Pride Limited Ta Ke Credit | Upheld | KES None
+[03:10:31] [84/313] 20240420-LAWRENCE-MAKHULI-VIVIAN-ASHLEIGH-vs-CERES-TECH-LIMITED-T
+[03:10:54]   Ocketpesa.. | Dismissed | KES None
+[03:10:54] [85/313] 20240422-WENDY-MWATHA-WINNIE-WANJA-ANNAH-MBURU-vs-ACCESSORIZE-WIT
+[03:11:24]   Accessorize With Style | Upheld | KES 6300000
+[03:11:24] [86/313] 20240424-DR.-BERNARD-SHIAUNDA-AETE-vs-NCBA-BANK-KENYA-PLC.pdf
+[03:12:06]   Ncba Bank Kenya Plc | Upheld | KES None
+[03:12:06] [87/313] 20240425-VICTORY-LOCH-OWINO-VS-ICPAK-PHILIP-KAKAI-OLIVE-GITAU-AND
+[03:12:51]   Icpak Philip Kakai Olive Gitau Andrew Bulemi  | Upheld | KES None
+[03:12:52] [88/313] 20240427-ROSE-EMMA-MUTHONI-vs-SAMASOURCE-KENYA-EPZ-LIMITED.pdf
+[03:13:29]   Samasource Kenya Epz Limited | Dismissed | KES None
+[03:13:29] [89/313] 20240511-N-O-vs-MALIBU-PHARMACY.pdf
+[03:14:01]   Malibu Pharmacy | Upheld | KES None
+[03:14:02] [90/313] 20240513-DENNIS-GITONGA-NDURURI-vs-TWIGA-FOODS.pdf
+[03:15:03]   Twiga Foods | Dismissed | KES None
+[03:15:03]   -- Progress saved: 90/313 complete --
+
+[03:15:03] [91/313] 20240515-CYRUS-MWANIKI-NDUNGU-vs-MOJA-EXPRESSWAY-COMPANY.pdf
+[03:15:40]   Moja Expressway Company | Upheld | KES None
+[03:15:40] [92/313] 20240516-BARBRA-NJIRIRI-vs-KEPTIS-SYSTEMS.pdf
+[03:16:01]   Keptis Systems | Upheld | KES None
+[03:16:01] [93/313] 20240517-LIZ-MUTHIKE-vs-VIDEO-ONE-LIMITED.pdf
+[03:16:40]   Video One Limited | Upheld | KES None
+[03:16:41] [94/313] 20240521-ERICK-KARIUKI-vs-CERES-TECH-LIMITED-TA-LEMON-CASH.pdf
+[03:17:25]   Ceres Tech Limited Ta Lemon Cash | Dismissed | KES None
+[03:17:25] [95/313] 20240527-E.K.M-vs-BVB-LOUNGE-MERU.pdf
+[03:19:17]     OCR error: Command '['tesseract', '/tmp/odpc_p6_20240527-E.K.M-vs-BVB-LOUNGE-MERU-8.ppm', 'stdout', 'quiet']' timed out after 60 seconds
+[03:19:17]   Bvb Lounge Meru | Unknown | KES None
+[03:19:17] [96/313] 20240527-LEROY-KABOY-ROSALINDA-KABOI-LEGAL-GUARDIANS-OF-BK-MINOR-
+[03:21:15]   Wadi Degla Club Kenya | Upheld | KES None
+[03:21:15] [97/313] 20240530-DENIS-MWANGI-vs-MULLA-PRIDE-LIMITED.pdf
+[03:22:46]   Mulla Pride Limited | Dismissed | KES None
+[03:22:46] [98/313] 20240531-KELVIN-RONO-vs-SBM-KENYA.pdf
+[03:24:50]   Sbm Kenya | Upheld | KES None
+[03:24:50] [99/313] 20240531-VICTORY-OWINO-vs-MHASIBU-HOUSING-COMPANY-LIMITED-MHASIBU
+[03:26:55]   Mhasibu Housing Company Limited Mhasibu Nwdt  | Dismissed | KES None
+[03:26:56] [100/313] 20240603-ESTHER-MBUVU-vs-GRAIN-INDUSTRIES-LIMITED.pdf
+[03:29:32]     OCR error: Command '['tesseract', '/tmp/odpc_p6_20240603-ESTHER-MBUVU-vs-GRAIN-INDUSTRIES-LIMITED-07.ppm', 'stdout', 'quiet']' timed out after 60 seconds
+[03:31:35]   Grain Industries Limited | Upheld | KES None
+[03:31:35]   -- Progress saved: 100/313 complete --
+
+[03:31:35] [101/313] 20240603-SANDRA-ONGAKI-vs-ZEROX-TECHNOLOGY-LIMITED.pdf
+[03:32:39]   Zerox Technology Limited | Upheld | KES None
+[03:32:40] [102/313] 20240603-SIGEI-CALEB-vs-MULLA-PRIDE-LIMITED.pdf
+[03:33:15]   Mulla Pride Limited | Upheld | KES None
+[03:33:15] [103/313] 20240614-HILDA-MWANGI-vs-EDGAR-OBARE.pdf
+[03:33:59]   Edgar Obare | Dismissed | KES None
+[03:33:59] [104/313] 20240617-KENNEDY-WAINAINA-vs-BOLT-OPERATIONS-OU-AND-BOLT-SUPPORT-
+[03:36:04]   Bolt Operations Ou And Bolt Support Kenya Lim | Upheld | KES None
+[03:36:04] [105/313] 20240618-VICTOR-KIBET-vs-HOTEL-WATER-LIMITED.pdf
+[03:36:43]   Hotel Water Limited | Upheld | KES None
+[03:36:43] [106/313] 20240619-JAMES-NGOCHI-vs-GROLA-TECH-LIMITED-TA-LION-CASH.pdf
+[03:37:16]   Grola Tech Limited Ta Lion Cash | Unknown | KES None
+[03:37:16] [107/313] 20240619-LAWRENCE-KIRUTHI-vs-MULLA-PRIDE-LIMITED.pdf
+[03:37:40]   Mulla Pride Limited | Upheld | KES None
+[03:37:40] [108/313] 20240621-FATUMA-HADI-vs-NOVA-PIONEER-KENYA-LIMITED.pdf
+[03:38:36]   Nova Pioneer Kenya Limited | Upheld | KES None
+[03:38:36] [109/313] 20240628-NANCY-MUGO-vs-MIGUEL-VENTURES-LIMITED.pdf
+[03:39:49]   Miguel Ventures Limited | Dismissed | KES None
+[03:39:49] [110/313] 20240630-TOIVO-KIAI-vs-TALANTA-INSTITUTE.pdf
+[03:40:37]   Talanta Institute | Dismissed | KES None
+[03:40:37]   -- Progress saved: 110/313 complete --
+
+[03:40:37] [111/313] 20240713-MOSES-OTIENDE-vs-DMI-EDUCATION-SERVICES.pdf
+[03:41:57]   Dmi Education Services | Upheld | KES None
+[03:41:57] [112/313] 20240714-INGA-KIMARU-vs-AMREF-PENSION-TRUSTEES.pdf
+[03:42:47]   Amref Pension Trustees | Dismissed | KES None
+[03:42:48] [113/313] 20240723-MAINA-JACKSON-vs-FAMILY-BANK-LIMITED.pdf
+[03:43:31]   Family Bank Limited | Upheld | KES None
+[03:43:31] [114/313] 20240724-VICTOR-MANGA-vs-LIQUID-INTELLIGENT-TECHNOLOGIES.pdf
+[03:44:37]   Liquid Intelligent Technologies | Upheld | KES None
+[03:44:37] [115/313] 20240812-ELIJAH-KARIUKI-vs-ST.-JOSEPH-HEALTH-CENTRE.pdf
+[03:45:44]   St. Joseph Health Centre | Upheld | KES None
+[03:45:44] [116/313] 20240814-KELVIN-NYAMBANE-vs-ELITE-POWER-CRAFT-LIMITED.pdf
+[03:46:56]   Elite Power Craft Limited | Upheld | KES None
+[03:46:56] [117/313] 20240826-ALUO-JANE-vs-SPOTON-VACATIONS-LIMITED.pdf
+[03:48:16]   Spoton Vacations Limited | Upheld | KES None
+[03:48:16] [118/313] 20240828-DENNIS-GATHARA-vs-GOODTIMES-AFRICA.pdf
+[03:49:17]   Goodtimes Africa | Upheld | KES None
+[03:49:18] [119/313] 20240904-CATHERINE-WAIRIMU-vs-UMBA-MICROFINANCE.pdf
+[03:50:28]   Umba Microfinance | Upheld | KES None
+[03:50:28] [120/313] 20240906-CHRISTINE-OCHOLLA-vs-NATIONAL-SOCIAL-SECURITY-FUND-OFF-G
+[03:53:20]   National Social Security Fund Off Grid Concep | Dismissed | KES None
+[03:53:20]   -- Progress saved: 120/313 complete --
+
+[03:53:21] [121/313] 20240906-ROBERT-KIOKO-FERDINAND-WANGA-vs-METROPOLIS-STAR-LAB-KENY
+[03:54:30]   Metropolis Star Lab Kenya Ltd | Upheld | KES None
+[03:54:31] [122/313] 20240910-S.M.M-vs-AAR-INSURANCE-KENYA-LIMITED.pdf
+[03:55:30]   Complainant
+
+Aar Insurance Kenya Limited...
+
+ | Upheld | KES None
+[03:55:30] [123/313] 20240911-DERRICK-KIAMBA-vs-CERES-TECH-LIMITED-TA-ROCKETPESA.pdf
+[03:56:04]   Complainant
+
+Ceres Tech Limited T/A Rocketpes | Dismissed | KES None
+[03:56:04] [124/313] 20240915-DR.-MAXWEL-OKOTH-vs-AZURA-CREDIT-LIMITED.pdf
+[03:56:46]   Azura Credit Limited | Upheld | KES None
+[03:56:46] [125/313] 20240930-NJERI-JOMO-vs-AZURA-CREDIT-LIMITED.pdf
+[03:57:41]   Complainant | Dismissed | KES None
+[03:57:41] [126/313] 20241009-ALFRED-NTHALE-NDUTA-AKA-ITSYABA-vs-SAVANNAH-BRANDS-COMPA
+[03:58:21]   Savannah Brands Company Ltd Ta African Origin | Upheld | KES None
+[03:58:21] [127/313] 20241011-NICK-ONGERI-MAIRURA-vs-KABRAS-SUGAR-RUGBY-FOOTBALL-CLUB-
+[03:59:35]   Kabras Sugar Rugby Football Club Kabras Rugby | Upheld | KES None
+[03:59:36] [128/313] 20241012-ADELINE-MUNEE-MUNGUTI-LARRY-OBINDI-SISEI-vs-MINT-VILLAS-
+[04:00:14]   Mint Villas Ta Mint Villa Housing | Upheld | KES None
+[04:00:14] [129/313] 20241014-ALLAN-vs-THE-COUNTY-ASSEMBLY-OF-MIGORI.pdf
+[04:00:57]   The County Assembly Of Migori | Upheld | KES None
+[04:00:57] [130/313] 20241014-MUSA-WESUTSA-vs-AZURA-CREDIT-LIMITED-TA-TRUEPESA.pdf
+[04:01:26]   Azura Credit Limited Ta Truepesa | Upheld | KES None
+[04:01:26]   -- Progress saved: 130/313 complete --
+
+[04:01:27] [131/313] 20241016-DONALD-MKALA-NGOLO-vs-PLATINUM-CREDIT-LIMITED.pdf
+[04:02:28]   Platinum Credit Limited | Upheld | KES None
+[04:02:28] [132/313] 20241019-JOHN-THUO-vs-THE-BOARD-OF-KENYA-SPORTS-FEDERATION-LTD-MA
+[04:03:00]   The Board Of Kenya Sports Federation Ltd Main | Upheld | KES None
+[04:03:00] [133/313] 20241023-JOAN-KAKUVI-MUNUVE-vs-EVANSON-WAHOME-RUGARA-TA-HOUSE-OF-
+[04:03:42]   Evanson Wahome Rugara Ta House Of Ram | Upheld | KES None
+[04:03:42] [134/313] 20241025-BHARAT-THAKRAR-vs-WPP-SCANGROUP-PLC-WPP-PLC-CONTROL-RISK
+[04:07:14]   Wpp Scangroup Plc Wpp Plc Control Risks Group | Upheld | KES None
+[04:07:14] [135/313] 20241028-PATRICK-PAMBA-vs-MULLA-PRIDE-LTD.pdf
+[04:07:47]   Mulla Pride Ltd | Upheld | KES None
+[04:07:47] [136/313] 20241030-FERDINAND-OMANYALA-OMURWA-vs-MULTICHOICE-KENYA-LTD-NATIO
+[04:08:33]   Multichoice Kenya Ltd National Olympics Commi | Upheld | KES None
+[04:08:34] [137/313] 20241030-ROSE-WAMBUI-MUIGAI-vs-NCBA-BANK-PLC.pdf
+[04:09:49]   Ncba Bank Plc | Upheld | KES None
+[04:09:50] [138/313] 20241114-ALFRED-KANDE-TALLAM-vs-UKRISTO-NA-UFANISI-SACCO-LTD-Copy
+[04:10:43]   Ukristo Na Ufanisi Sacco Ltd Copy | Upheld | KES None
+[04:10:44] [139/313] 20241118-CAROLINE-MAKAU-vs-GROLA-TECH-LTD-TA-LIONCASH.pdf
+[04:11:52]   Grola Tech Ltd Ta Lioncash | Upheld | KES None
+[04:11:52] [140/313] 20241119-DAVIES-KIARIE-vs-WHITEPATH-COMPANY-LIMITED.pdf
+[04:12:34]   Whitepath Company Limited | Upheld | KES None
+[04:12:34]   -- Progress saved: 140/313 complete --
+
+[04:12:34] [141/313] 20241119-PHIDALE-CASTRO-MAJIWA-OUMA-vs-WHITEPATH-COMPANY-LIMITED.
+[04:12:58]   Whitepath Company Limited | Upheld | KES None
+[04:12:59] [142/313] 20241122-ERIC-MBOGO-vs-PLATINUM-CREDIT-LTD.pdf
+[04:13:55]   Platinum Credit Ltd | Upheld | KES None
+[04:13:55] [143/313] 20241122-PETER-KHAEMBA-vs-AVENTUS-TECHNOLOGY-LTD.pdf
+[04:14:41]   Aventus Technology Ltd | Upheld | KES None
+[04:14:41] [144/313] 20241209-HILDA-MUSIMBI-ANYAMA-ON-BEHALF-OF-MINOR-LK-vs-FRIENDS-SC
+[04:15:44]   Friends School Keveye Girls High School | Upheld | KES None
+[04:15:45] [145/313] 20241211-JOSEPHINE-EKATI-ANINDO-vs-NCBA-BANK-PLC.pdf
+[04:16:55]   Ncba Bank Plc | Upheld | KES None
+[04:16:55] [146/313] 20241213-DANIEL-ODHIAMBO-OPIYO-JEREMIAH-BARASA-vs-TULIA-AMBOSELI-
+[04:17:34]   Tulia Amboseli Safari Camp Limited | Upheld | KES None
+[04:17:34] [147/313] 20241213-SALAUDDIN-YOUSUF-KHAN-vs-AZURA-CREDIT-LIMITED-MULLA-PRID
+[04:18:58]   Azura Credit Limited Mulla Pride Limited | Unknown | KES None
+[04:18:58] [148/313] 20241216-SHERLEEN-WAWIRA-KIURA-vs-WANANCHI-GROUP-K-LTD.pdf
+[04:19:43]   Wananchi Group K Ltd | Upheld | KES None
+[04:19:44] [149/313] 20241217-CAROLINE-WANJIRU-KANGETHE-vs-CIRCUS-254-CO-SARAKASI-TRUS
+[04:20:44]   Circus 254 Co Sarakasi Trust | Upheld | KES None
+[04:20:44] [150/313] 20241218-GRIFFINS-WEKESA-vs-MY-BODA-LIMITED.pdf
+[04:21:13]   My Boda Limited | Upheld | KES None
+[04:21:13]   -- Progress saved: 150/313 complete --
+
+[04:21:14] [151/313] 20241218-SUO-MOTU-NALA-MATERNITY-NURSING-HOME-LIMITED.pdf
+[04:21:58]   Suo Motu Nala Maternity Nursing Home Limited | Upheld | KES None
+[04:21:58] [152/313] 20241219-ALICE-KAMANDE-vs-BONFACE-MWANGI-WAHOME-TA-SIR-BONNIE-BRA
+[04:23:23]   Bonface Mwangi Wahome Ta Sir Bonnie Brands | Upheld | KES None
+[04:23:24] [153/313] 20241219-CHARLES-CHARAGU-KINYUA-vs-CALLTRONIX-KENYA-LIMITED.pdf
+[04:25:11]   Calltronix Kenya Limited | Upheld | KES None
+[04:25:12] [154/313] 20241219-JEREMIAH-MASENGELI-vs-AZURA-CREDIT-LIMITED.pdf
+[04:25:33]   Azura Credit Limited | Upheld | KES None
+[04:25:33] [155/313] 20241219-PHYLLIS-OSORO-KEMUNTO-vs-ABSA-BANK-KENYA-PLC.pdf
+[04:27:19]   Absa Bank Kenya Plc | Upheld | KES None
+[04:27:19] [156/313] LAWRENCE-MIMPWI-KIRIMA-vs-SOLAR-PANDA-COMPANY-KENYA-LIMITED.pdf
+[04:28:11]   Solar Panda Company Kenya Limited | Upheld | KES None
+[04:28:11] [157/313] YASIN-ABUKAR-vs-WANANCHI-GROUP-KENYA-LIMITED-TA-ZUKU-FIBRE-KENYA.
+[04:29:20]   Wananchi Group Kenya Limited Ta Zuku Fibre Ke | Upheld | KES None
+[04:29:20] [158/313] BENSON-ODIWUOR-OTIENO-vs-DIGITAL-REGENESYS-LIMITED.pdf
+[04:30:02]   Digital Regenesys Limited | Upheld | KES None
+[04:30:02] [159/313] SAMUEL-KAMAU-WAWERU-vs-PLATINUM-CREDIT-LIMITED.pdf
+[04:32:28]   Platinum Credit Limited | Upheld | KES None
+[04:32:28] [160/313] KENNEDY-OMONDI-OCHIENG-vs-FINGROW-CAPITAL-LIMITED.pdf
+[04:33:14]   Fingrow Capital Limited | Upheld | KES None
+[04:33:14]   -- Progress saved: 160/313 complete --
+
+[04:33:14] [161/313] PHILIP-BOLO-vs-PLATINUM-CREDIT-LIMITED.pdf
+[04:34:45]   Platinum Credit Limited | Upheld | KES None
+[04:34:45] [162/313] MARLENE-NGIRA-MATUNGA-vs-WHITEPATH-COMPANY-LIMTED.pdf
+[04:35:49]   Whitepath Company Limted | Upheld | KES None
+[04:35:49] [163/313] AYUB-ODANYA-NABURI-vs-GEOSKY-SERVICE-LIMITED.pdf
+[04:37:21]   Geosky Service Limited | Upheld | KES None
+[04:37:22] [164/313] VINCENT-MUEMA-NDUKU-vs-SINOMA-ROOFING-SYSTEM.pdf
+[04:38:03]   Sinoma Roofing System | Upheld | KES None
+[04:38:04] [165/313] BENJAMIN-OUMA-vs-DMI-EDUCATION-SERVICES-LTD-.pdf
+[04:38:42]   Dmi Education Services Ltd | Upheld | KES None
+[04:38:42] [166/313] RICHARD-WAFULA-vs-HOTEL-TOBRIANA.pdf
+[04:39:40]   Hotel Tobriana | Upheld | KES None
+[04:39:40] [167/313] RISPER-ONYANGO-vs-SUNKING-LIMITED.pdf
+[04:40:05]   Sunking Limited | Upheld | KES None
+[04:40:05] [168/313] CATHERINE-KAINYU-MURITHI-vs-BECTON-DICKINSON-AND-COMPANY-TA-BD-EA
+[04:44:29]   Becton Dickinson And Company Ta Bd East Afric | Upheld | KES None
+[04:44:30] [169/313] BRIAN-GITHAIGA-vs-NCBA-BANK-KENYA-LTD.pdf
+[04:45:14]   Ncba Bank Kenya Ltd | Upheld | KES None
+[04:45:14] [170/313] DENNIS-CALEB-OWUOR-vs-WHITEPATH-COMPANY.pdf
+[04:45:47]   Whitepath Company | Upheld | KES None
+[04:45:47]   -- Progress saved: 170/313 complete --
+
+[04:45:47] [171/313] ANTONY-MWENDA-vs-CERES-TECH-LIMITED-TA-ROCKETPESA.pdf
+[04:46:30]   Ceres Tech Limited Ta Rocketpesa | Upheld | KES None
+[04:46:30] [172/313] BOSCO-OTIENO-vs-TAIFA-DT-SACCO-SOCIETY-LIMITED.pdf
+[04:47:53]     OCR error: Command '['tesseract', '/tmp/odpc_p1_BOSCO-OTIENO-vs-TAIFA-DT-SACCO-SOCIETY-LIMITED-04.ppm', 'stdout', 'quiet']' timed out after 60 seconds
+[04:48:12]   Taifa Dt Sacco Society Limited | Upheld | KES None
+[04:48:13] [173/313] CINDERELLA-OYUKE-vs-CAPSTUDIO-KE.pdf
+[04:49:19]   Capstudio Ke | Upheld | KES None
+[04:49:19] [174/313] FERDINAND-OMANYALA-OMURWA-vs-OXYGENE-MARKETING-COMMUNICATION-LIMI
+[04:51:07]   Oxygene Marketing Communication Limited | Upheld | KES 10000000
+[04:51:07] [175/313] FRIDAH-KEMUNTO-OBUBA-vs-WHITEPATH-COMPANY-LIMITED.pdf
+[04:52:27]     OCR error: Command '['tesseract', '/tmp/odpc_p6_FRIDAH-KEMUNTO-OBUBA-vs-WHITEPATH-COMPANY-LIMITED-6.ppm', 'stdout', 'quiet']' timed out after 60 seconds
+[04:52:27]   Whitepath Company Limited | Unknown | KES None
+[04:52:27] [176/313] HILDA-MUSIMBI-ANYAMA-vs-FRENDS-SCHOOL-KEVEYE-GIRLS-HIGH-SCHOOL.pd
+[04:54:20]     OCR error: Command '['tesseract', '/tmp/odpc_p1_HILDA-MUSIMBI-ANYAMA-vs-FRENDS-SCHOOL-KEVEYE-GIRLS-HIGH-SCHOOL-05.ppm', 'stdout', 'quiet']' timed out after 60 seconds
+[04:54:52]   Frends School Keveye Girls High School | Upheld | KES None
+[04:54:52] [177/313] LEE-MUTUNGA-vs-MILESTONE-GAMES-LIMITED-TA-SPORTPESA.pdf
+[04:56:33]     OCR error: Command '['tesseract', '/tmp/odpc_p1_LEE-MUTUNGA-vs-MILESTONE-GAMES-LIMITED-TA-SPORTPESA-04.ppm', 'stdout', 'quiet']' timed out after 60 seconds
+[04:58:12]   Milestone Games Limited Ta Sportpesa | Upheld | KES None
+[04:58:12] [178/313] EVERLYN-LAVUHA-MUGITA-vs-NOVA-PIONEER-KENYA-LIMITED.pdf
+[04:58:45]   Nova Pioneer Kenya Limited | Upheld | KES None
+[04:58:46] [179/313] SKIP (done): LAWRENCE-MIMPWI-KIRIMA-vs-SOLAR-PANDA-COMPANY-KENYA-LIM
+[04:58:46] [180/313] EVELYN-NASHIPAE-SAKAJA-vs-PREMIER-CERDIT-LIMITED.pdf
+[04:59:24]   Premier Cerdit Limited | Upheld | KES None
+[04:59:24]   -- Progress saved: 179/313 complete --
+
+[04:59:24] [181/313] SILVIA-WAIRIMU-KIAMA-vs-KOUNKUEY-DESIGN-INITIATIVE-.pdf
+[05:00:25]   Kounkuey Design Initiative | Upheld | KES None
+[05:00:25] [182/313] ANTHONY-MWENDA-KINOTI-vs-AVENTUS-TECHNOLOGY-LIMITED-TA-LENDPLUS-2
+[05:01:17]   Complainant
+-Versus-
+Aventus Technology Limit | Upheld | KES None
+[05:01:17] [183/313] CHIZZY-TAABU-ORWA-SHELMITH-NYAWIRA-GITONGA-STANLEY-KINYUA-WACHIRA
+[05:02:20]   Mast Jagermeister Se | Upheld | KES None
+[05:02:21] [184/313] EVELYN-OMBWEGEH-vs-COOPERATIVE-BANK-OF-KENYA-LIMITED.pdf
+[05:02:55]   Cooperative Bank Of Kenya Limited | Upheld | KES None
+[05:02:56] [185/313] IBRAHIM-LIMO-vs-SENECA-EAST-AFRICA-LIMITED.pdf
+[05:03:59]   Seneca East Africa Limited | Upheld | KES None
+[05:03:59] [186/313] MWIKALI-NZYOKA-vs-KENYA-WOMEN-MICROFINANCE-BANK-FAMILY-BANK-CO-OP
+[05:06:19]   Kenya Women Microfinance Bank Family Bank Co  | Upheld | KES None
+[05:06:19] [187/313] PATRICK-MATASI-KENETH-MUGUNA-AUSTINE-ODHIAMBO-vs-BETNARE.pdf
+[05:07:18]   Betnare | Upheld | KES None
+[05:07:18] [188/313] CINDERELLA-OYUKE-vs-CAPSTUDIO-KE.pdf
+[05:07:42]   Capstudio Ke | Upheld | KES None
+[05:07:42] [189/313] DENNIS-CALEB-OWUOR-vs-WHITEPATH-COMPANY.pdf
+[05:08:44]   Whitepath Company | Upheld | KES None
+[05:08:45] [190/313] EVELYN-NASHIPAE-SAKAJA-vs-PREMIER-CERDIT-LIMITED.pdf
+[05:09:37]   Premier Cerdit Limited | Upheld | KES None
+[05:09:37]   -- Progress saved: 189/313 complete --
+
+[05:09:37] [191/313] AYUB-ODANYA-NABURI-vs-GEOSKY-SERVICE-LIMITED.pdf
+[05:11:00]   Geosky Service Limited | Upheld | KES None
+[05:11:01] [192/313] BENJAMIN-OUMA-vs-DMI-EDUCATION-SERVICES-LTD-.pdf
+[05:12:05]   Dmi Education Services Ltd | Upheld | KES None
+[05:12:05] [193/313] BENSON-ODIWUOR-OTIENO-vs-DIGITAL-REGENESYS-LIMITED.pdf
+[05:12:34]   Digital Regenesys Limited | Upheld | KES None
+[05:12:35] [194/313] BOSCO-OTIENO-vs-TAIFA-DT-SACCO-SOCIETY-LIMITED.pdf
+[05:13:18]   Taifa Dt Sacco Society Limited | Upheld | KES None
+[05:13:18] [195/313] BRIAN-GITHAIGA-vs-NCBA-BANK-KENYA-LTD.pdf
+[05:14:12]   Ncba Bank Kenya Ltd | Upheld | KES None
+[05:14:13] [196/313] DENNIS-CALEB-OWUOR-vs-WHITEPATH-COMPANY-1.pdf
+[05:15:10]   Whitepath Company 1 | Upheld | KES None
+[05:15:10] [197/313] ANTONY-MWENDA-vs-CERES-TECH-LIMITED-TA-ROCKETPESA-3.pdf
+[05:17:14]   Ceres Tech Limited Ta Rocketpesa 3 | Upheld | KES None
+[05:17:14] [198/313] BRIAN-GITHAIGA-vs-NCBA-BANK-KENYA-LTD-3.pdf
+[05:18:31]   Ncba Bank Kenya Ltd 3 | Upheld | KES None
+[05:18:31] [199/313] CATHERINE-KAINYU-MURITHI-vs-BECTON-DICKINSON-AND-COMPANY-TA-BD-EA
+[05:20:46]   Becton Dickinson And Company Ta Bd East Afric | Upheld | KES None
+[05:20:47] [200/313] DENNIS-CALEB-OWUOR-vs-WHITEPATH-COMPANY-3.pdf
+[05:21:13]   Whitepath Company 3 | Upheld | KES None
+[05:21:13]   -- Progress saved: 199/313 complete --
+
+[05:21:13] [201/313] EVERLYN-LAVUHA-MUGITA-vs-NOVA-PIONEER-KENYA-LIMITED-1.pdf
+[05:21:40]   Nova Pioneer Kenya Limited 1 | Upheld | KES None
+[05:21:41] [202/313] FERDINAND-OMANYALA-OMURWA-vs-OXYGENE-MARKETING-COMMUNICATION-LIMI
+[05:22:11]   Oxygene Marketing Communication Limited 1 | Upheld | KES 10000000
+[05:22:11] [203/313] FRIDAH-KEMUNTO-OBUBA-vs-WHITEPATH-COMPANY-LIMITED-1.pdf
+[05:22:34]   Whitepath Company Limited 1 | Upheld | KES None
+[05:22:35] [204/313] HILDA-MUSIMBI-ANYAMA-vs-FRENDS-SCHOOL-KEVEYE-GIRLS-HIGH-SCHOOL-1.
+[05:23:08]   Frends School Keveye Girls High School 1 | Upheld | KES None
+[05:23:08] [205/313] ABRAHAM-OWEN-VS-360-DEGREES.pdf
+[05:23:31]   360 Degrees | Upheld | KES None
+[05:23:32] [206/313] ABUDULKARIM-OSICHE-VS-FIN-AFRICA-TRUSTGRO.pdf
+[05:23:56]   Fin Africa Trustgro | Upheld | KES None
+[05:23:56] [207/313] ANN-WAMBUIVS-ZILLIONS-CREDIT-.pdf
+[05:24:31]   Ann Wambuivs Zillions Credit | Upheld | KES None
+[05:24:31] [208/313] ANTHONY-MWAZUMBI-VS-THE-LEGEND-HOTEL.pdf
+[05:24:58]   The Legend Hotel | Upheld | KES None
+[05:24:58] [209/313] CHERRY-FIONA-VS-ACCELER-GLOBAL-LOGISTICS.pdf
+[05:25:24]   Acceler Global Logistics | Upheld | KES None
+[05:25:25] [210/313] COMFROT-MUTHONI-VS-THE-STORAGE-LTD.pdf
+[05:25:50]   The Storage Ltd | Upheld | KES None
+[05:25:50]   -- Progress saved: 209/313 complete --
+
+[05:25:50] [211/313] ERIC-MUNENE-NJUGUNA-VS-CHAPEO.pdf
+[05:26:45]   Chapeo | Upheld | KES None
+[05:26:46] [212/313] ERIC-MUTUNE-VS-ROSKY-CREDIT-LTD.pdf
+[05:27:05]   Rosky Credit Ltd | Upheld | KES None
+[05:27:06] [213/313] JACQUELINE-NJOKI-VS-MY-DAWA-1.pdf
+[05:27:21]   My Dawa 1 | Upheld | KES None
+[05:27:21] [214/313] JIMMY-OWITI-VS-NATAL-TECH.pdf
+[05:27:51]   Natal Tech | Upheld | KES None
+[05:27:51] [215/313] LYNDA-MATURU-VS-KENYA-BANKERS.pdf
+[05:28:35]   Kenya Bankers | Upheld | KES None
+[05:28:35] [216/313] margaret-nzula.pdf
+[05:29:07]   Margaret Nzula | Upheld | KES None
+[05:29:07] [217/313] MARTIN-GIKONYO-VS-KINGDOM-BANK.pdf
+[05:29:32]   Kingdom Bank | Dismissed | KES None
+[05:29:32] [218/313] MILLICENT-ACHIENG-VS-MURANGA-UNIVERSITY.pdf
+[05:30:04]   Muranga University | Upheld | KES None
+[05:30:05] [219/313] QUINCY-JESSE-VS-MAGIC-SLOTS.pdf
+[05:30:38]   Magic Slots | Upheld | KES None
+[05:30:38] [220/313] QUINCY-JESSE-VS-PEPINO-PIZZA.pdf
+[05:31:17]   Pepino Pizza | Upheld | KES 550000
+[05:31:17]   -- Progress saved: 219/313 complete --
+
+[05:31:18] [221/313] REBECCA-ATIENO-VS-JACKLINE-WANJIRU.pdf
+[05:32:05]   Jackline Wanjiru | Dismissed | KES None
+[05:32:05] [222/313] SAIRA-M-IQBAL-VS-OLIVIA-HAIR.pdf
+[05:32:29]   Olivia Hair | Upheld | KES None
+[05:32:30] [223/313] SAMUEL-KADZUGA-VS-FIN-AFRICA-TRUSTGRO.pdf
+[05:32:53]   Fin Africa Trustgro | Upheld | KES None
+[05:32:53] [224/313] STEPHEN-KIPTINESS-VS-NEQTAR-MEDICAL.pdf
+[05:33:17]   Neqtar Medical | Upheld | KES None
+[05:33:18] [225/313] STEPHEN-NGATIA-VS-WHITEPATH.pdf
+[05:33:36]   Whitepath | Upheld | KES None
+[05:33:36] [226/313] WINFRED.pdf
+[05:34:01]   Comblainant
+-Versus-
+Hair Manufacturing Limit | Upheld | KES None
+[05:34:01] [227/313] ZURI-CASH-1.pdf
+[05:34:21]   Zuri Cash 1 | Upheld | KES None
+[05:34:21] [228/313] SKIP (done): ZURI-CASH-1.pdf
+[05:34:21] [229/313] ZAHIRA-VS-JOSHUA-1.pdf
+[05:34:47]   Joshua 1 | Upheld | KES None
+[05:34:48] [230/313] WIGOT-GARDENS-.pdf
+[05:35:15]   Wigot Gardens | Upheld | KES None
+[05:35:15]   -- Progress saved: 228/313 complete --
+
+[05:35:16] [231/313] TIMOTHY-MURIITHI-VS-MYCREDIT.pdf
+[05:35:46]   Mycredit | Upheld | KES None
+[05:35:46] [232/313] THINK-TWICE.pdf
+[05:36:19]   Complainant
+-Versus-
+
+Think Twice Kenya | Upheld | KES None
+[05:36:19] [233/313] STEVE-SANDE-VS-NYATI-SAVINGS-DETERMINATION.pdf
+[05:36:39]   Nyati Savings Determination | Upheld | KES None
+[05:36:40] [234/313] STANDARD-INVESTMENT-BANK.pdf
+[05:37:19]   Standard Investment Bank | Upheld | KES None
+[05:37:19] [235/313] SHARAMO-WARIO-VS-PLATINUM-CREDIT.pdf
+[05:37:50]   Platinum Credit | Upheld | KES 500000
+[05:37:50] [236/313] RUTH-NYAGA-VS-MEGATANK.pdf
+[05:38:16]   Megatank | Dismissed | KES None
+[05:38:17] [237/313] QUEST-HOLDINGS-LTD.pdf
+[05:38:39]   Quest Holdings Ltd | Upheld | KES None
+[05:38:39] [238/313] ODPC-COMP-0986-2025-BOSCO-OTIENO-VS-BETIKA-1.pdf
+[05:39:07]   Betika 1 | Upheld | KES None
+[05:39:07] [239/313] ODPC-COMP-0662-2025-CAROLINE-WANGARI-VS-OUTLOOK-INDEX-LTD.pdf
+[05:39:28]   Outlook Index Ltd | Upheld | KES None
+[05:39:28] [240/313] ODPC-COMP-0626-2025-AK-VS-STANBIC-BANK-DETERMINATION.pdf
+[05:39:51]   Stanbic Bank Determination | Upheld | KES None
+[05:39:51]   -- Progress saved: 238/313 complete --
+
+[05:39:51] [241/313] ODPC-COMP-0556-2025-CHERRY-FIONA-VS-ACCELER-GLOBAL-LOGISITCS.pdf
+[05:40:17]   Acceler Global Logisitcs | Upheld | KES None
+[05:40:17] [242/313] ODPC-Complaint-No.-0838-of-2025-Brian-Onyango-Anor-vs-Vanessa-Bwi
+[05:40:45]   Vanessa Bwibo Bwibo Restaurant Determination | Upheld | KES None
+[05:40:45] [243/313] ODPC-Complaint-NO.-0750-OF-2025-Aori-Chris-Kipkorir-vs-Platinum-C
+[05:41:09]   Platinum Credit Limited Determination | Upheld | KES None
+[05:41:10] [244/313] Miriam-Okwara-Mombo-vs-Carlcare-Services-Ltd-Determination.pdf
+[05:41:41]   Carlcare Services Ltd Determination | Upheld | KES None
+[05:41:41] [245/313] MINAGE-LUCY-VS-CHAPEO.pdf
+[05:42:08]   Chapeo | Upheld | KES None
+[05:42:08] [246/313] KENYA-WOMEN-MICROFINANCE.pdf
+[05:42:58]   Kenya Women Microfinance | Upheld | KES None
+[05:42:58] [247/313] JUSTINE-NYACHIO-MAKANA-VS-MYCREDIT.pdf
+[05:43:25]   Mycredit | Upheld | KES None
+[05:43:25] [248/313] JOSEPH-GITHINJI-VS-PLATINUM-CREDIT.pdf
+[05:43:51]   Platinum Credit | Dismissed | KES None
+[05:43:52] [249/313] JOHN-MKOMBA-VS-KUZA-SACCO-LIMITED.pdf
+[05:44:21]   Kuza Sacco Limited | Upheld | KES None
+[05:44:21] [250/313] IMAGE-REGISTARS.pdf
+[05:44:53]   Image Registars | Dismissed | KES None
+[05:44:54]   -- Progress saved: 248/313 complete --
+
+[05:44:54] [251/313] Glenda-Ochieng-vs-STAWIKA.pdf
+[05:45:14]   Stawika | Upheld | KES None
+[05:45:15] [252/313] Faith-Wanjiku-vs-FARMERS-CHOICE.pdf
+[05:45:36]   Farmers Choice | Dismissed | KES None
+[05:45:37] [253/313] EVERLYNE-WANGUI-KAMAU-VS-MICHAELS-BOUQUET.pdf
+[05:46:04]   Michaels Bouquet | Upheld | KES None
+[05:46:04] [254/313] ERICKSON-LANGAT-VS-AGC-TENWEK.pdf
+[05:46:30]   Agc Tenwek | Upheld | KES None
+[05:46:30] [255/313] ERIC-KABUYEFU-AND-12-OTHERS-VS-BOHEMIAN-FLOWERS.pdf
+[05:46:53]   Bohemian Flowers | Upheld | KES None
+[05:46:53] [256/313] ELIAS-KORIR-VS-THIKA-WATER-CO.pdf
+[05:47:26]   Thika Water Co | Upheld | KES None
+[05:47:26] [257/313] Determination_-_Aman_Kassam_vs_Nadiano_Wonder_World_Fitness_Cente
+[05:48:00]   Determination_ _Aman_Kassam_Vs_Nadiano_Wonder | Upheld | KES None
+[05:48:01] [258/313] Determination-ODPC-COMP-568-2025-Anonymous-vs-RCMRD.pdf
+[05:48:31]   Rcmrd | Dismissed | KES None
+[05:48:32] [259/313] DETERMINATION-COMPLAINT-NO.-ODPC-0958-OF-2025-SAMUEL-MURIMI-NYAGA
+[05:48:57]   Complainant
+
+Incredo Finance | Upheld | KES None
+[05:48:57] [260/313] DETERMINATION-COMPLAINT-NO.-ODPC-0867-OF-2025-SAMUEL-WARUI-KANGEN
+[05:49:15]   Trevor Mutsiambo Analo | Upheld | KES None
+[05:49:15]   -- Progress saved: 258/313 complete --
+
+[05:49:15] [261/313] DENNIS-MBOGORO-DETERMINATION.pdf
+[05:49:53]   Dennis Mbogoro Determination | Upheld | KES None
+[05:49:53] [262/313] Chrispus-Namuye-vs-bliss-park-hotel.pdf
+[05:50:15]   Bliss Park Hotel | Upheld | KES None
+[05:50:15] [263/313] CHINA-SQUARE.pdf
+[05:50:52]   China Square | Upheld | KES None
+[05:50:52] [264/313] SKIP (done): Determination_-_Aman_Kassam_vs_Nadiano_Wonder_World_Fit
+[05:50:52] [265/313] airflo.pdf
+[05:51:19]   Airflo | Upheld | KES None
+[05:51:19] [266/313] Richard-Malelu-vs-Fairdeal.pdf
+[05:51:48]   Fairdeal | Upheld | KES None
+[05:51:48] [267/313] Lillian-Nyawira-and-another-vs-Josephat-Karungo-and-Another.pdf
+[05:52:19]   Josephat Karungo And Another | Upheld | KES None
+[05:52:20] [268/313] Determination.pdf
+[05:53:08]   Determination | Upheld | KES None
+[05:53:08] [269/313] DTB-DETERMINATION.pdf
+[05:54:03]   Dtb Determination | Upheld | KES None
+[05:54:03] [270/313] EVEREST-PARK.pdf
+[05:54:28]   Everest Park | Dismissed | KES None
+[05:54:28]   -- Progress saved: 267/313 complete --
+
+[05:54:29] [271/313] CAPITAL-SACCO.pdf
+[05:54:54]   On
+
+Capital Sacco Limited | Upheld | KES None
+[05:54:55] [272/313] 1324-Alleyways-Beer-Garden.pdf
+[05:55:16]   1324 Alleyways Beer Garden | Upheld | KES None
+[05:55:16] [273/313] ALEXANDER-MWENDIA-VS-HELLO-TRACTOR-K-LIMITED-DETERMINATION.pdf
+[05:55:46]   Hello Tractor K Limited Determination | Upheld | KES None
+[05:55:47] [274/313] Alexandria-Amondi-VS-Alicia-Cynthia-Ochieng-Urbanswim.ke_.pdf
+[05:56:09]   Alicia Cynthia Ochieng Urbanswim.Ke_ | Upheld | KES None
+[05:56:09] [275/313] BRIAN-VS-MATCH-VENTURES.pdf
+[05:56:39]   Match Ventures | Upheld | KES None
+[05:56:40] [276/313] ALPHAX.pdf
+[05:57:11]   Alphax | Unknown | KES None
+[05:57:11] [277/313] CAROLINE-WANJIKU-KIONI-VS-NAIROBI-HOSPITAL-DETERMINATION.pdf
+[05:57:36]   Nairobi Hospital Determination | Upheld | KES None
+[05:57:36] [278/313] Daniel-Ochieng-Ngoche-Vs-Buscar-East-Africa-Limited-Determination
+[05:57:57]   Buscar East Africa Limited Determination | Upheld | KES None
+[05:57:57] [279/313] DETERMINATION-INSTITUTE-OF-ECONOMIC-AFFAIRS.pdf
+[05:58:24]   Determination Institute Of Economic Affairs | Upheld | KES None
+[05:58:24] [280/313] ELDORET-HOSPITAL-2.pdf
+[05:58:53]   Eldoret Hospital 2 | Upheld | KES None
+[05:58:53]   -- Progress saved: 277/313 complete --
+
+[05:58:54] [281/313] ESAU-BARUA-CERES-TECH.pdf
+[05:59:18]   Esau Barua Ceres Tech | Upheld | KES None
+[05:59:18] [282/313] IMARABET-DETERMINATION.pdf
+[05:59:45]   Imarabet Determination | Upheld | KES None
+[05:59:45] [283/313] ISAAC-MUHIA-NJENGA-VS-EMMANUEL-BARASA-DETERMINATION.pdf
+[06:00:02]   Emmanuel Barasa Determination | Upheld | KES None
+[06:00:02] [284/313] JOAN-NJOKI-KAMAU-VS-NATIONAL-BANK-OF-KENYA-DETERMINATION.pdf
+[06:00:25]   National Bank Of Kenya Determination | Upheld | KES None
+[06:00:25] [285/313] KENTEX-CARGO.pdf
+[06:00:53]   Kentex Cargo | Upheld | KES None
+[06:00:53] [286/313] LAJOVI-DETERMINATION.pdf
+[06:01:10]   Lajovi Determination | Upheld | KES None
+[06:01:11] [287/313] LEVI-VS-ZIZI-AFRIQUE.pdf
+[06:01:27]   Zizi Afrique | Upheld | KES None
+[06:01:28] [288/313] M-TETU-DETERMINATION.pdf
+[06:01:48]   M Tetu Determination | Upheld | KES None
+[06:01:48] [289/313] MARY-OGWENA-IMMACULATE-VS-MOMENTUM.pdf
+[06:02:20]   Momentum | Upheld | KES None
+[06:02:20] [290/313] PHERICK-RODA-VS-ZAGREUS.pdf
+[06:02:42]   Zagreus | Upheld | KES None
+[06:02:42]   -- Progress saved: 287/313 complete --
+
+[06:02:42] [291/313] PLATINUM-GEORGE-WILLIS.pdf
+[06:03:04]   Platinum George Willis | Upheld | KES None
+[06:03:04] [292/313] PREMIER-GEORGE-WILLIS.pdf
+[06:03:38]   Premier George Willis | Upheld | KES None
+[06:03:38] [293/313] Steve-Onwonga-Omwenga-Vs-EGM-Securities-FX-Pesa-Determination.pdf
+[06:04:01]   Egm Securities Fx Pesa Determination | Upheld | KES None
+[06:04:01] [294/313] TOWER-SACCO.pdf
+[06:04:34]   Tower Sacco | Upheld | KES None
+[06:04:34] [295/313] WEMA-BUKEMBE-DETERMINATION.pdf
+[06:05:02]   Wema Bukembe Determination | Unknown | KES None
+[06:05:02] [296/313] ZAD-MUSLIM-SCHOOL-DETERMINATION.pdf
+[06:05:25]   Zad Muslim School Determination | Upheld | KES None
+[06:05:26] [297/313] BRITES-MGMT-DETERMINATION.pdf
+[06:05:47]   Brites Mgmt Determination | Upheld | KES None
+[06:05:48] [298/313] ARTHUR-JOHN-MAURICE-VS-BRAINSTORM-DETERMINATION.pdf
+[06:06:14]   Brainstorm Determination | Upheld | KES None
+[06:06:14] [299/313] CAPITAL-.pdf
+[06:06:41]   On
+
+Capital Sacco Limited | Upheld | KES None
+[06:06:41] [300/313] Catherine-vs-Penda-Determination.pdf
+[06:07:19]   Penda Determination | Upheld | KES None
+[06:07:19]   -- Progress saved: 297/313 complete --
+
+[06:07:19] [301/313] CHIKOLO-MMBETSA-VS-BORA-CREDIT.pdf
+[06:07:39]   Bora Credit | Upheld | KES None
+[06:07:39] [302/313] Determination-ODPC-COMP-1714-2025-John-Mwangombe-vs-Mwachere-Shum
+[06:07:57]   Mwachere Shuma | Upheld | KES None
+[06:07:57] [303/313] Esther-Gitau-vs-Shree-Shaminarayan-Hospital-Determination.pdf
+[06:08:18]   Shree Shaminarayan Hospital Determination | Upheld | KES None
+[06:08:18] [304/313] GACHIRI-NDUNGO-VS-NCWSC.pdf
+[06:08:36]   Ncwsc | Upheld | KES None
+[06:08:37] [305/313] IAN-MUTOLONDO-VS-WAITHERA-IMANI.pdf
+[06:09:12]   Waithera Imani | Upheld | KES None
+[06:09:13] [306/313] Jason-Vs-Nurmay-determination.pdf
+[06:09:29]   Nurmay Determination | Upheld | KES None
+[06:09:29] [307/313] KINGS.pdf
+[06:09:47]   Kings | Upheld | KES None
+[06:09:47] [308/313] MARY-OGWENA-IMMACULATE-VS-MOMENTUM.pdf
+[06:10:15]   Momentum | Upheld | KES None
+[06:10:15] [309/313] MEGAHEALTH-INS.pdf
+[06:10:45]   Megahealth Ins | Upheld | KES None
+[06:10:45] [310/313] NAIROBI-ACADEMY.pdf
+[06:11:12]   Nairobi Academy | Upheld | KES None
+[06:11:12]   -- Progress saved: 307/313 complete --
+
+[06:11:13] [311/313] Pherick-VS-Tinycost-determination.pdf
+[06:11:35]   Tinycost Determination | Upheld | KES None
+[06:11:35] [312/313] STEVE-ONWONGA-VS-CJS-LIMITED.pdf
+[06:11:55]   Cjs Limited | Upheld | KES None
+[06:11:55] [313/313] WHITEPATH-1.pdf
+[06:12:21]   Whitepath 1 | Upheld | KES None
+[06:12:21] 
+=== COMPLETE ===
+[06:12:21] Total processed: 310
+[06:12:21] Upheld: 253 | Dismissed: 41 | Unknown: 16
+[06:12:21] With compensation: 6
+[06:12:21] Average compensation: KES 5,391,667
+[06:12:21] Highest compensation: KES 10,000,000
+[06:12:21] Output saved to: /home/users/wkaranja/odpc_ocr/odpc-tracker/scripts/odpc_ocr_results.json
+[06:12:21] Upload odpc_ocr_progress.json to GitHub lawlabafrica/odpc-tracker
+Job complete at Fri Mar  6 06:12:21 PST 2026
+Output file: odpc_ocr_progress.json
