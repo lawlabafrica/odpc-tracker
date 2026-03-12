@@ -176,46 +176,32 @@
 <section class="hero">
   <!-- Kenya map watermark -->
   <div class="kenya-watermark" aria-hidden="true">
-    <svg viewBox="0 0 300 360" xmlns="http://www.w3.org/2000/svg">
+    <!-- Accurate Kenya outline based on geographic coordinates -->
+    <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
       <path fill="white" stroke="none" d="
-        M 42,8
-        L 90,2
-        L 135,0
-        L 162,10
-        L 185,5
-        L 210,20
-        L 238,35
-        L 255,58
-        L 260,88
-        L 265,118
-        L 272,148
-        L 282,178
-        L 288,208
-        L 282,238
-        L 268,260
-        L 250,278
-        L 228,288
-        L 200,285
-        L 170,275
-        L 148,260
-        L 125,255
-        L 102,265
-        L 80,278
-        L 60,278
-        L 38,265
-        L 20,248
-        L 8,228
-        L 5,205
-        L 12,182
-        L 20,158
-        L 12,135
+        M 3,36
+        L 20,21
+        L 41,13
+        L 73,5
+        L 104,0
+        L 152,12
+        L 190,37
+        L 200,50
+        L 192,88
+        L 182,141
+        L 172,172
+        L 144,209
+        L 148,240
+        L 120,232
+        L 101,208
+        L 76,211
+        L 41,173
+        L 5,149
+        L 0,134
         L 5,112
-        L 2,88
-        L 8,65
-        L 16,44
-        L 28,24
+        L 0,87
+        L 5,62
         Z
-        M 8,205 L 5,228 L 12,245 L 32,235 L 35,215 L 22,200 Z
       "/>
     </svg>
   </div>
@@ -270,6 +256,7 @@
       <option value="Dismissed">Dismissed</option>
       <option value="Partially Upheld">Partially Upheld</option>
     </select>
+    <select id="filter-violation"><option value="">All violation types</option></select>
     <div class="controls-right">
       <button class="clear-btn" id="clear-btn" onclick="clearFilters()">✕ Clear filters</button>
       <span class="results-count"><span id="count">0</span> results</span>
@@ -435,11 +422,13 @@ function applyFilters() {
   const year = document.getElementById('filter-year').value;
   const sector = document.getElementById('filter-sector').value;
   const outcome = document.getElementById('filter-outcome').value;
-  document.getElementById('clear-btn').classList.toggle('visible',!!(q||year||sector||outcome));
+  const violation = document.getElementById('filter-violation').value;
+  document.getElementById('clear-btn').classList.toggle('visible',!!(q||year||sector||outcome||violation));
   filteredData = allData.filter(d => {
     if (year && String(d.year)!==year) return false;
     if (sector && d.sector!==sector) return false;
     if (outcome && !d.outcome?.toLowerCase().includes(outcome.toLowerCase())) return false;
+    if (violation && !(d.violation_type||[]).some(v=>v===violation)) return false;
     if (q) {
       const hay = [d.case_number,d.respondent,d.sector,...(d.violation_type||[]),d.outcome,d.violation_summary].join(' ').toLowerCase();
       if (!hay.includes(q)) return false;
@@ -456,7 +445,7 @@ function applyFilters() {
 }
 
 function clearFilters() {
-  ['search','filter-year','filter-sector','filter-outcome'].forEach(id => {
+  ['search','filter-year','filter-sector','filter-outcome','filter-violation'].forEach(id => {
     const el = document.getElementById(id);
     if (el.tagName==='INPUT') el.value=''; else el.value='';
   });
@@ -468,6 +457,12 @@ function populateSectorFilter() {
   const sectors = [...new Set(allData.map(d=>d.sector).filter(s=>s&&!needsVerify(s)))].sort();
   const sel = document.getElementById('filter-sector');
   sectors.forEach(s => { const o=document.createElement('option'); o.value=s; o.textContent=s; sel.appendChild(o); });
+}
+
+function populateViolationFilter() {
+  const violations = [...new Set(allData.flatMap(d=>(d.violation_type||[]).filter(v=>v&&!v.includes('[VERIFY')&&v!=='See PDF')))].sort();
+  const sel = document.getElementById('filter-violation');
+  violations.forEach(v => { const o=document.createElement('option'); o.value=v; o.textContent=v; sel.appendChild(o); });
 }
 
 function updateStats() {
@@ -486,7 +481,7 @@ fetch(DATA_URL).then(r=>r.json()).then(json => {
 }).catch(err=>console.error('Failed to load data:',err));
 
 document.getElementById('search').addEventListener('input', applyFilters);
-['filter-year','filter-sector','filter-outcome'].forEach(id => document.getElementById(id).addEventListener('change',applyFilters));
+['filter-year','filter-sector','filter-outcome','filter-violation'].forEach(id => document.getElementById(id).addEventListener('change',applyFilters));
 
 document.querySelectorAll('thead th[data-col]').forEach(th => {
   th.addEventListener('click', () => {
