@@ -28,8 +28,9 @@
     /* HEADER */
     header { border-bottom:1px solid var(--border); padding:0 24px; position:relative; z-index:10; }
     .header-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:60px; }
-    .logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:600; font-size:14px; }
-    .logo-mark { width:28px; height:28px; background:var(--accent); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:white; }
+    .logo { display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--text); font-family:var(--mono); font-weight:500; font-size:15px; letter-spacing:0.05em; }
+    .logo-cursor { color:var(--accent); font-weight:700; animation:blink 1s infinite; }
+    @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
     .header-right { display:flex; align-items:center; gap:16px; }
     .header-link { color:var(--text-muted); text-decoration:none; font-size:13px; transition:color .15s; }
     .header-link:hover { color:var(--text); }
@@ -162,8 +163,7 @@
 <header>
   <div class="header-inner">
     <a href="https://www.lawlab.africa" class="logo">
-      <div class="logo-mark">LL</div>
-      Law Lab Africa
+      LAW LAB AFRICA<span class="logo-cursor">█</span>
     </a>
     <div class="header-right">
       <a href="https://www.lawlab.africa" class="header-link">Home</a>
