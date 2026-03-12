@@ -4,11 +4,12 @@
     "source_url": "https://www.odpc.go.ke/determinations/",
     "compiled_by": "Law Lab Africa",
     "last_updated": "2026-03-12",
-    "total_records": 318,
+    "total_records": 319,
     "ocr_processed": 310,
     "note": "Dataset compiled from all published ODPC determinations. OCR-processed with structured extraction and plain-English summaries by Capybara/Law Lab Africa.",
     "violation_summary_rewritten": "2026-03-12T20:40:23.846490",
-    "total_determinations": 319
+    "total_determinations": 319,
+    "audit_completed": "2026-03-12T21:08:40.354593+00:00"
   },
   "determinations": [
     {
@@ -257,7 +258,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2026/02/Determination-ODPC-COMP-1714-2025-John-Mwangombe-vs-Mwachere-Shuma.pdf",
-      "violation_summary": "Determination Odpc Comp 1714 2025 John Mwangombe filed a complaint against Mwachere Shuma alleging unlawful data disclosure, unlawful processing. The complaint concerns the allegation that the Respondent unlawfully processed and disclosed the Complainant’s personal data. yenya ~7omr The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
+      "violation_summary": "Determination Odpc 2025 John Mwangombe filed a complaint against Mwachere Shuma alleging unlawful data disclosure, unlawful processing. The complaint concerns the allegation that the Respondent unlawfully processed and disclosed the Complainant’s personal data. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
     },
     {
       "id": "2026-02-shree-shaminarayan-hospital",
@@ -652,7 +653,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2026/02/NAIROBI-ACADEMY.pdf",
-      "violation_summary": "Julian Rowa filed a complaint against Nairobi Academy alleging lack of consent, commercial use of personal data, unlawful data disclosure, unlawful processing. The Complainant alleges that the Respondent unlawfully disclosed and caused the publication of his child’s personal data specifically the child’s name and examination results in-a newspaper segment appearing under the Advertising Feature section of the Daily Nation, without the Complainant’s consent and in the absence of any other lawful basis thereof. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
+      "violation_summary": "[Name redacted -- OCR illegible] filed a complaint against Nairobi Academy alleging lack of consent, commercial use of personal data, unlawful data disclosure, unlawful processing. The Complainant alleges that the Respondent unlawfully disclosed and caused the publication of his child’s personal data specifically the child’s name and examination results in-a newspaper segment appearing under the Advertising Feature section of the Daily Nation, without the Complainant’s consent and in the absence of any other lawful basis thereof. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
     },
     {
       "id": "2026-02-tinycost",
@@ -1380,8 +1381,8 @@
         "Section 65"
       ],
       "outcome": "Upheld",
-      "compensation_kes": 30,
-      "compensation_usd_approx": 0.23,
+      "compensation_kes": null,
+      "compensation_usd_approx": null,
       "enforcement_notice": true,
       "prosecution_recommended": false,
       "respondent_participated": true,
@@ -1395,7 +1396,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2026/01/IMARABET-DETERMINATION.pdf",
-      "violation_summary": "ERIC Mutune Mwamwee filed a complaint against Imarabet alleging lack of consent, commercial use of personal data, failure to respond to erasure request, unlawful processing. 12,It is the Complainant’s assertion that he has been receiving unsolicited promotional messages and calls from the Respondent despite multiple attempts to opt out of the same. ODPC/ CIE/CON/2/3 (185) = The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, issuing an enforcement notice, and ordering compensation of KES 30."
+      "violation_summary": "ERIC Mutune Mwamwee filed a complaint against Imarabet alleging lack of consent, commercial use of personal data, failure to respond to erasure request, unlawful processing. 12,It is the Complainant’s assertion that he has been receiving unsolicited promotional messages and calls from the Respondent despite multiple attempts to opt out of the same. ODPC/ CIE/CON/2/3 (185) = The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, issuing an enforcement notice, and ordering compensation of"
     },
     {
       "id": "2026-01-emmanuel-barasa",
@@ -1670,7 +1671,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2026/01/M-TETU-DETERMINATION.pdf",
-      "violation_summary": "Kabeberi Hassan Abdalla filed a complaint against Martin Tetu Kamaku alleging lack of consent, unlawful data disclosure, failure to prevent data breach, unlawful processing. The Complainant alleged that the Respondent the Respondent unlawfully collected, processed and published the Complainant’s personal data including his KENYA //-2”6“3/ 0 V.74 curriculum vitae and recommendation letter on Facebook and TikTok without his consent, and further accompanied the publications with defamatory remarks. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Kabeberi Hassan Abdalla filed a complaint against Martin Tetu Kamaku alleging lack of consent, unlawful data disclosure, failure to prevent data breach, unlawful processing. V.74 curriculum vitae and recommendation letter on Facebook and TikTok without his consent, and further accompanied the publications with defamatory remarks. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2026-01-momentum",
@@ -2243,7 +2244,7 @@
         "unlawful-processing"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/12/EVEREST-PARK.pdf",
-      "violation_summary": "ISLIM Shikunyi IMRAN filed a complaint against Everest Park alleging failure to prevent data breach, failure to respond to erasure request, failure to conduct dpia, unlawful processing, failure to register with odpc. The Complaint stems from allegations by the Complainants that the Respondents the Respondents' CCTV were installed in a manner that cameras ODPC/ CIE/CON/2/3(164) at the gate were installed to enhance security, but failed to register as a data controller or processor, and did not notify residents or provide information regarding the data retention policies. The ODPC dismissed the complaint."
+      "violation_summary": "ISLIM Shikunyi IMRAN filed a complaint against Everest Park alleging failure to prevent data breach, failure to respond to erasure request, failure to conduct dpia, unlawful processing, failure to register with odpc. The Complaint stems from allegations by the Complainants that the Respondents the Respondents' CCTV were installed in a manner that cameras Page 30f 9 ODPC/ CIE/CON/2/3(164) at the gate were installed to enhance security, but failed to register as a data controller or processor, and did not notify residents or provide information regarding the data retention policies. The ODPC dismissed the complaint."
     },
     {
       "id": "2024-1951",
@@ -2670,7 +2671,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/10/STANDARD-INVESTMENT-BANK.pdf",
-      "violation_summary": "Andrew Endovo filed a complaint against Standard Investment Bank alleging failure to respond to erasure request, obstruction of data commissioner, unlawful processing. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
+      "violation_summary": "T T filed a complaint against Standard Investment Bank alleging failure to respond to erasure request, obstruction of data commissioner, unlawful processing. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
     },
     {
       "id": "2025-10-platinum-credit",
@@ -2839,7 +2840,7 @@
       "processing_days": null,
       "year": 2025,
       "respondent": "Betika 1",
-      "complainant": "Odpc Comp 0986 2025 Bosco Otieno",
+      "complainant": "Bosco Otieno",
       "complainant_count": 1,
       "complainant_category": "Individual",
       "sector": "General",
@@ -2884,7 +2885,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/10/ODPC-COMP-0986-2025-BOSCO-OTIENO-VS-BETIKA-1.pdf",
-      "violation_summary": "Odpc Comp 0986 2025 Bosco Otieno filed a complaint against Betika 1 alleging failure to respond to erasure request, obstruction of data commissioner, unlawful processing. The Complainant alleges that the Respondent engaged in unfair and unlawful processing of his personal data contrary to the Act. Specifically, the Complainant avers that upon exercising his right to deletion under Section 26(d) of the Act, the Respondent made compliance conditional upon the provision of three months’ M-Pesa statements and a copy of his national identity card. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Bosco Otieno filed a complaint against Betika 1 alleging failure to respond to erasure request, obstruction of data commissioner, unlawful processing. The Complainant alleges that the Respondent engaged in unfair and unlawful processing of his personal data contrary to the Act. Specifically, the Complainant avers that upon exercising his right to deletion under Section 26(d) of the Act, the Respondent made compliance conditional upon the provision of three months’ M-Pesa statements and a copy of his national identity card. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2025-10-outlook-index-ltd",
@@ -2929,7 +2930,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/10/ODPC-COMP-0662-2025-CAROLINE-WANGARI-VS-OUTLOOK-INDEX-LTD.pdf",
-      "violation_summary": "Odpc Comp 0662 2025 Caroline Wangari filed a complaint against Outlook Index Ltd alleging unlawful processing. The Complainant alleges that the Respondent herein, denied her the right to access her personal data in its custody specifically, the P9 form for the period 2020-2021, which is used for filing annual tax returns for employees in Kenya despite several requests. She reiterates that the Respondent’s failure to provide this data has hindered her ability to address a tax compliance issue raised by the ... The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
+      "violation_summary": "Caroline Wangari filed a complaint against Outlook Index Ltd alleging unlawful processing. The Complainant alleges that the Respondent herein, denied her the right to access her personal data in its custody specifically, the P9 form for the period 2020-2021, which is used for filing annual tax returns for employees in Kenya despite several requests. She reiterates that the Respondent’s failure to provide this data has hindered her ability to address a tax compliance issue raised by the ... The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
     },
     {
       "id": "2025-10-stanbic-bank",
@@ -2939,7 +2940,7 @@
       "processing_days": null,
       "year": 2025,
       "respondent": "Stanbic Bank",
-      "complainant": "Odpc Comp 0626 2025 Ak",
+      "complainant": "Ak",
       "complainant_count": null,
       "complainant_category": "Individual",
       "sector": "Banking / Financial Services",
@@ -2973,7 +2974,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/10/ODPC-COMP-0626-2025-AK-VS-STANBIC-BANK-DETERMINATION.pdf",
-      "violation_summary": "Odpc Comp 0626 2025 Ak filed a complaint against Stanbic Bank alleging failure to respond to erasure request, unlawful processing. The Complainant concerns the complainants' allegations that the Respondent ignored and or refused to erase the complainant’s personal data despite the complainant exercising his right to erasure, by lodging a request for erasure of personal data with the Respondent. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Ak filed a complaint against Stanbic Bank alleging failure to respond to erasure request, unlawful processing. The Complainant concerns the complainants' allegations that the Respondent ignored and or refused to erase the complainant’s personal data despite the complainant exercising his right to erasure, by lodging a request for erasure of personal data with the Respondent. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2025-10-acceler-global-logisitcs",
@@ -2983,7 +2984,7 @@
       "processing_days": null,
       "year": 2025,
       "respondent": "Acceler Global Logisitcs",
-      "complainant": "Odpc Comp 0556 2025 Cherry Fiona",
+      "complainant": "Cherry Fiona",
       "complainant_count": 1,
       "complainant_category": "Individual",
       "sector": "General",
@@ -3027,7 +3028,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/10/ODPC-COMP-0556-2025-CHERRY-FIONA-VS-ACCELER-GLOBAL-LOGISITCS.pdf",
-      "violation_summary": "Odpc Comp 0556 2025 Cherry Fiona filed a complaint against Acceler Global Logisitcs alleging unauthorised image/photo use, lack of consent, commercial use of personal data, failure to respond to erasure request, unlawful processing. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
+      "violation_summary": "Cherry Fiona filed a complaint against Acceler Global Logisitcs alleging unauthorised image/photo use, lack of consent, commercial use of personal data, failure to respond to erasure request, unlawful processing. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
     },
     {
       "id": "2025-10-vanessa-bwibo-bwibo-restaurant",
@@ -4148,7 +4149,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/10/airflo.pdf",
-      "violation_summary": "SARAH Gichira Gathoni filed a complaint against Airflo alleging unlawful processing. The Complainant avers that the Respondent unlawfully retained and exercised control over her personal Safaricom line. She asserts that the line had originally - ODPC/ CIE/CON/2/3(107) been registered in her name prior to her employment but was subsequently taken over and utilized by the Respondent during the course of her employment. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "SARAH Gichira Gathoni filed a complaint against Airflo alleging unlawful processing. The Complainant avers that the Respondent unlawfully retained and exercised control over her personal Safaricom line. - ODPC/ CIE/CON/2/3(107) been registered in her name prior to her employment but was subsequently taken over and utilized by the Respondent during the course of her employment. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2025-10-fairdeal",
@@ -4853,7 +4854,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/07/margaret-nzula.pdf",
-      "violation_summary": "Margaret NZULA filed a complaint against Margaret Nzula alleging lack of consent, unlawful processing. The complaint primarily concerns the alleged denial of access to prejudicial information conveyed by the 1%t Respondent to the 2n Respondent without the Complainant’s consent, which allegedly resulted in the loss of a job opportunity. I'b[ The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Margaret NZULA filed a complaint against Margaret Nzula alleging lack of consent, unlawful processing. The complaint primarily concerns the alleged denial of access to prejudicial information conveyed by the 1%t Respondent to the 2n Respondent without the Complainant’s consent, which allegedly resulted in the loss of a job opportunity. (034) I'b[ The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2025-07-kingdom-bank",
@@ -5556,7 +5557,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/05/MWIKALI-NZYOKA-vs-KENYA-WOMEN-MICROFINANCE-BANK-FAMILY-BANK-CO-OPERATIVE-BANK-OF-KENYA-.pdf",
-      "violation_summary": "Mwikali Nzyoka filed a complaint against Kenya Women Microfinance Bank Family Bank Co Operative Bank Of Kenya alleging failure to prevent data breach, failure to respond to erasure request, unlawful processing. The nature of the complaint involves allegations that the 1st Respondent disclosed the Complainant's personal information to the 2% and g1 L Respondents without obtaining her consent or having a lawful basis for doing s0. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Mwikali Nzyoka filed a complaint against Kenya Women Microfinance Bank Family Bank Co Operative Bank Of Kenya alleging failure to prevent data breach, failure to respond to erasure request, unlawful processing. L (041) Respondents without obtaining her consent or having a lawful basis for doing s0. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2025-05-betnare",
@@ -6011,6 +6012,59 @@
       "violation_summary": "Brian Githaiga filed a complaint against Ncba Bank Kenya Ltd alleging failure to respond to erasure request, unlawful processing. The Complainant lodged his complaint against the Respondent alleging that the ‘ Respondent failed to r‘le_,ctify and update his eg_)rrect personal data (i.e email - address which is pf‘*******.*g@gmail.com and continued to share his business transactiqﬁs details to b¥**xkixx@gmail.com which doesn't belong to him. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
     },
     {
+      "id": "2025-05-whitepath-company-1",
+      "case_number": "ODPC Complaint No. 1931 of 2024",
+      "date_determined": "2025-05",
+      "date_complaint_filed": null,
+      "processing_days": null,
+      "year": 2025,
+      "respondent": "Whitepath Company 1",
+      "complainant": "Dennis Caleb Owuor",
+      "complainant_count": null,
+      "complainant_category": "Individual",
+      "sector": "Fintech / Mobile Lending",
+      "violation_type": [
+        "Unlawful data disclosure",
+        "Failure to respond to erasure request",
+        "Unlawful processing"
+      ],
+      "data_types_involved": [
+        "Contact data",
+        "Location data"
+      ],
+      "legal_provisions_cited": [
+        "Section 25",
+        "Section 26",
+        "Section 26(A)",
+        "Section 29",
+        "Section 30",
+        "Section 32",
+        "Section 56",
+        "Section 56(1)",
+        "Section 58",
+        "Section 65",
+        "Section 65(4)"
+      ],
+      "outcome": "Upheld",
+      "compensation_kes": null,
+      "compensation_usd_approx": null,
+      "enforcement_notice": true,
+      "prosecution_recommended": false,
+      "respondent_participated": false,
+      "site_visit_conducted": false,
+      "summary": "Dennis Caleb Owuor and others complained against Whitepath Company 1 in the Fintech / Mobile Lending sector, alleging unlawful data disclosure, failure to respond to erasure request, unlawful processing. The ODPC upheld the complaint, citing violations of Section 25, Section 26, Section 26(A), Section 29 of the Data Protection Act 2019. An enforcement notice was issued.",
+      "tags": [
+        "disclosure",
+        "fintech",
+        "mobile-lending",
+        "right-to-erasure",
+        "unlawful-processing",
+        "upheld"
+      ],
+      "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/05/DENNIS-CALEB-OWUOR-vs-WHITEPATH-COMPANY-1.pdf",
+      "violation_summary": "Dennis Caleb Owuor filed a complaint against Whitepath Company 1 alleging unlawful data disclosure, failure to respond to erasure request, unlawful processing. The Complaint relates to, alleged unwarranted calls by the Respondent regarding a loan he had been listed as a guarantor without his consent. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+    },
+    {
       "id": "2025-05-ceres-tech-limited-ta-rocketpesa-3",
       "case_number": "ODPC Complaint No. 1655 of 2024",
       "date_determined": "2025-05",
@@ -6180,7 +6234,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/05/CATHERINE-KAINYU-MURITHI-vs-BECTON-DICKINSON-AND-COMPANY-TA-BD-EAST-AFRICA-SAFARICOM-PLC-3.pdf",
-      "violation_summary": "Catherine Kainyu Murithi filed a complaint against Becton Dickinson And Company Ta Bd East Africa Safaricom Plc 3 alleging unauthorised image/photo use, lack of consent, unlawful data disclosure, failure to prevent data breach, failure to notify data breach, unlawful processing, failure to register with odpc. The complaint filed on 27\" November 2024, concerns the unauthorized disclosure of the Complainant's copy of national identity card by the 1st Respondent to the 2™ Respondent, as well as the Respondents' handling and processing of the Complainant's personal data for an alleged unauthorized mobile number account/sim card ownership transfer without consent. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Catherine Kainyu Murithi filed a complaint against Becton Dickinson And Company Ta Bd East Africa Safaricom Plc 3 alleging unauthorised image/photo use, lack of consent, unlawful data disclosure, failure to prevent data breach, failure to notify data breach, unlawful processing, failure to register with odpc. The complaint filed November 2024, concerns the unauthorized disclosure of the Complainant's copy of national identity card by the 1st Respondent to the 2™ Respondent, as well as the Respondents' handling and processing of the Complainant's personal data for an alleged unauthorized mobile number account/sim card ownership transfer without consent. ) The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2025-05-whitepath-company-3",
@@ -7118,7 +7172,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/03/CATHERINE-KAINYU-MURITHI-vs-BECTON-DICKINSON-AND-COMPANY-TA-BD-EAST-AFRICA-SAFARICOM-PLC.pdf",
-      "violation_summary": "Catherine Kainyu Murithi filed a complaint against Becton Dickinson And Company Ta Bd East Africa Safaricom Plc alleging unauthorised image/photo use, lack of consent, unlawful data disclosure, failure to prevent data breach, failure to notify data breach, unlawful processing, failure to register with odpc. The complaint filed on 27\" November 2024, concerns the unauthorized disclosure of the Complainant's copy of national identity card by the 1st Respondent to the 2™ Respondent, as well as the Respondents' handling and processing of the Complainant's personal data for an alleged unauthorized mobile number account/sim card ownership transfer without consent. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Catherine Kainyu Murithi filed a complaint against Becton Dickinson And Company Ta Bd East Africa Safaricom Plc alleging unauthorised image/photo use, lack of consent, unlawful data disclosure, failure to prevent data breach, failure to notify data breach, unlawful processing, failure to register with odpc. The complaint filed November 2024, concerns the unauthorized disclosure of the Complainant's copy of national identity card by the 1st Respondent to the 2™ Respondent, as well as the Respondents' handling and processing of the Complainant's personal data for an alleged unauthorized mobile number account/sim card ownership transfer without consent. ) The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2025-03-ncba-bank-kenya-ltd",
@@ -7975,7 +8029,7 @@
       "processing_days": null,
       "year": 2024,
       "respondent": "Suo Motu Nala Maternity Nursing Home Limited",
-      "complainant": "[Name redacted -- OCR illegible]",
+      "complainant": "ODPC (suo motu investigation)",
       "complainant_count": 1,
       "complainant_category": "Individual",
       "sector": "General",
@@ -8019,7 +8073,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20241218-SUO-MOTU-NALA-MATERNITY-NURSING-HOME-LIMITED.pdf",
-      "violation_summary": "[Name redacted -- OCR illegible] filed a complaint against Suo Motu Nala Maternity Nursing Home Limited alleging unlawful data disclosure, failure to prevent data breach, failure to conduct dpia, unlawful processing, failure to register with odpc, failure to implement security measures. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "The ODPC initiated a suo motu investigation into Suo Motu Nala Maternity Nursing Home Limited alleging unlawful data disclosure, failure to prevent data breach, failure to conduct dpia, unlawful processing, failure to register with odpc, failure to implement security measures. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2024-12-circus-254-co-sarakasi-trust",
@@ -8651,7 +8705,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20241030-FERDINAND-OMANYALA-OMURWA-vs-MULTICHOICE-KENYA-LTD-NATIONAL-OLYMPICS-COMMITTEE-OF-KENYA.pdf",
-      "violation_summary": "Ferdinand Omanyala Omurwa filed a complaint against Multichoice Kenya Ltd National Olympics Committee Of Kenya alleging unauthorised image/photo use, lack of consent, commercial use of personal data, unlawful processing. The Complainant alleged that the 1%t Respondent, without his consent and/ or justifiable cause, used his images for advertisement on its social media platforms and several billboards within Nairobi county. ODPC/CONF/1/7/4/VOL 1(160)gnya \"/('5—“/ ‘03 0 The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Ferdinand Omanyala Omurwa filed a complaint against Multichoice Kenya Ltd National Olympics Committee Of Kenya alleging unauthorised image/photo use, lack of consent, commercial use of personal data, unlawful processing. The Complainant alleged that the 1%t Respondent, without his consent and/ or justifiable cause, used his images for advertisement on its social media platforms and several billboards within Nairobi county. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2024-10-ncba-bank-plc",
@@ -10500,7 +10554,7 @@
         "unlawful-processing"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20240614-HILDA-MWANGI-vs-EDGAR-OBARE.pdf",
-      "violation_summary": "Hilda Mwangi filed a complaint against Edgar Obare alleging unauthorised image/photo use, lack of consent, commercial use of personal data, failure to respond to erasure request, unlawful processing. The Complainant contended that the Respondent is a social media influencer who currently operates a telegram community channel, known as BNN, that he has monetized for his gain. The Complainant pleaded that the channel currently boasts a substantial subscriber base of 95,000 people with a monthly subscription fee of Kenya ODPC/CONF/1/7/4 VOL 1(131)gnya \"‘/\"‘\"\",a.;./ Shillings Two H... The ODPC dismissed the complaint, ordering compensation of KES 200."
+      "violation_summary": "Hilda Mwangi filed a complaint against Edgar Obare alleging unauthorised image/photo use, lack of consent, commercial use of personal data, failure to respond to erasure request, unlawful processing. The Complainant contended that the Respondent is a social media influencer who currently operates a telegram community channel, known as BNN, that he has monetized for his gain. The Complainant pleaded that the channel currently boasts a substantial subscriber base people with a monthly subscription fee of Kenya a.;. Shillings Two H... The ODPC dismissed the complaint, ordering compensation of"
     },
     {
       "id": "2024-06-grain-industries-limited",
@@ -11703,7 +11757,7 @@
         "unlawful-processing"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20240416-TABITHA-MWANIKI-vs-ROSE-GATABAI-TA-TIARA-NAIL-SPA.pdf",
-      "violation_summary": "Tabitha Mwaniki filed a complaint against Rose Gatabai Ta Tiara Nail Spa alleging unauthorised image/photo use, unlawful processing. It was the complainant’s case that after the Respondent fired her she went ahead and posted on the Instagram and facebook business pages of Tiara Nail Spa Nakuru, a public notice with the Complainant’s photo that she does not represent the company any more. ¥ ODPC/CONF/1/7/4/VOL 1(104)gnya \"f;»z--a‘“’ “‘030 10.It was the complainant’s case that this public notice elicited many phone ca... The ODPC dismissed the complaint."
+      "violation_summary": "Tabitha Mwaniki filed a complaint against Rose Gatabai Ta Tiara Nail Spa alleging unauthorised image/photo use, unlawful processing. It was the complainant’s case that after the Respondent fired her she went ahead and posted on the Instagram and facebook business pages of Tiara Nail Spa Nakuru, a public notice with the Complainant’s photo that she does not represent the company any more. 10.It was the complainant’s case that this public notice elicited many phone ca... The ODPC dismissed the complaint."
     },
     {
       "id": "2024-04-henner-gmc",
@@ -12770,7 +12824,7 @@
         "unlawful-processing"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20240122-NICKSON-MUDII-vs-ARROW-FACILITIES-LTD.pdf",
-      "violation_summary": "Nickson Mudii filed a complaint against Arrow Facilities Ltd alleging unauthorised image/photo use, lack of consent, commercial use of personal data, failure to respond to erasure request, unlawful processing. COMPLAINANT’S CASE 10.The Complainant stated that he worked with Arrow Facilities Management as team supervisor from the 15\" day of May 2019 upto around 28 day of May 2020 after which he left the Company on his own volition. ODPC/CONF/1/7/4/VOL 1(84) yenva f,riw/ \"6 30 11.He stated that whilst conducting his duties sometime in 2020, he was photographed without his express consent and w... The ODPC dismissed the complaint."
+      "violation_summary": "Nickson Mudii filed a complaint against Arrow Facilities Ltd alleging unauthorised image/photo use, lack of consent, commercial use of personal data, failure to respond to erasure request, unlawful processing. COMPLAINANT’S The Complainant stated that he worked with Arrow Facilities Management as team supervisor from day of upto around 28 day of after which he left the Company on his own volition. 11.He stated that whilst conducting his duties sometime he was photographed without his express consent and w... The ODPC dismissed the complaint."
     },
     {
       "id": "2024-01-zerox-technology-company-limited",
@@ -13102,7 +13156,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20240106-HELLEN-MUTHONI-vs-SOLPIA-KENYA-LIMITED-TA-SISTAR-KENYA.pdf",
-      "violation_summary": "Hellen Muthoni filed a complaint against Solpia Kenya Limited Ta Sistar Kenya alleging unauthorised image/photo use, lack of consent, commercial use of personal data, unlawful processing. It is the Complainant’s case that the Complainant data subject is among other things, an established and renowned television host, Gospel artist, Youth Mentor, public figure, entrepreneur, and media personality who works at Inooro TV, a Kikuyu dialect television broadcast station of Royal Media Service. The ODPC/CONF/1/7/4 VOL 1(51) kenva /,»iwo—/ “3 0 Complainant has worked for Royal... The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
+      "violation_summary": "Hellen Muthoni filed a complaint against Solpia Kenya Limited Ta Sistar Kenya alleging unauthorised image/photo use, lack of consent, commercial use of personal data, unlawful processing. It is the Complainant’s case that the Complainant data subject is among other things, an established and renowned television host, Gospel artist, Youth Mentor, public figure, entrepreneur, and media personality who works at Inooro TV, a Kikuyu dialect television broadcast station of Royal Media Service. Complainant has worked for Royal... The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
     },
     {
       "id": "2024-01-bold-decisive-digital-lab-equity-afia",
@@ -14075,7 +14129,7 @@
       "processing_days": null,
       "year": 2023,
       "respondent": "Airtel Networks Kenya Limited",
-      "complainant": "Republic Of Kenya I\n\nOffice Of The Data Protection Commissioner",
+      "complainant": "Sammy Muchane",
       "complainant_count": null,
       "complainant_category": "Individual",
       "sector": "Telecom",
@@ -14097,8 +14151,8 @@
         "Section 56"
       ],
       "outcome": "Dismissed",
-      "compensation_kes": 1612,
-      "compensation_usd_approx": 12.4,
+      "compensation_kes": null,
+      "compensation_usd_approx": null,
       "enforcement_notice": false,
       "prosecution_recommended": false,
       "respondent_participated": true,
@@ -14554,7 +14608,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230921-GRACE-GATAMBU-vs-AAR-HEALTHCARE-LIMITED.pdf",
-      "violation_summary": "Grace Gatambu filed a complaint against Aar Healthcare Limited alleging unlawful data disclosure, failure to prevent data breach, failure to respond to erasure request, failure to notify data breach, unlawful processing, failure to implement security measures. The complaint relates to the alleged release of the Complainant’s confidential medical information contained in a medical form to a third party without her consent. The medical information pertained to the treatment of the Complainant when she visited the Respondent’s clinic located at Roysambu on 21 December, 2021. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Grace Gatambu filed a complaint against Aar Healthcare Limited alleging unlawful data disclosure, failure to prevent data breach, failure to respond to erasure request, failure to notify data breach, unlawful processing, failure to implement security measures. The complaint relates to the alleged release of the Complainant’s confidential medical information contained in a medical form to a third party without her consent. The medical information pertained to the treatment of the Complainant when she visited the Respondent’s clinic located at Roysambu on 24 December, 2021. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2023-09-chantal-marissa-pande-joel-stephen-kunga",
@@ -14691,7 +14745,7 @@
       "processing_days": null,
       "year": 2023,
       "respondent": "Suo Motu Worldcoin Foundation Tools For Humanity Tools For Humanity Gmbh",
-      "complainant": "[Name redacted -- OCR illegible]",
+      "complainant": "ODPC (suo motu investigation)",
       "complainant_count": 1,
       "complainant_category": "Individual",
       "sector": "General",
@@ -14744,7 +14798,7 @@
         "unlawful-processing"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230906-SUO-MOTU-WORLDCOIN-FOUNDATION-TOOLS-FOR-HUMANITY-TOOLS-FOR-HUMANITY-GMBH.pdf",
-      "violation_summary": "[Name redacted -- OCR illegible] filed a complaint against Suo Motu Worldcoin Foundation Tools For Humanity Tools For Humanity Gmbh alleging unauthorised image/photo use, lack of consent, unlawful data disclosure, failure to respond to erasure request, obstruction of data commissioner, failure to conduct dpia, unlawful processing, failure to register with odpc, failure to implement security measures. The ODPC issued a determination (Unknown), issuing an enforcement notice."
+      "violation_summary": "The ODPC initiated a suo motu investigation into Suo Motu Worldcoin Foundation Tools For Humanity Tools For Humanity Gmbh alleging unauthorised image/photo use, lack of consent, unlawful data disclosure, failure to respond to erasure request, obstruction of data commissioner, failure to conduct dpia, unlawful processing, failure to register with odpc, failure to implement security measures. The ODPC issued a determination (Unknown), issuing an enforcement notice."
     },
     {
       "id": "2023-08-grass-international-solomon-muthui",
@@ -14791,7 +14845,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230830-AGNES-KIMANZI-vs-GRASS-INTERNATIONAL-SOLOMON-MUTHUI.pdf",
-      "violation_summary": "Agnes Kimanzi filed a complaint against Grass International Solomon Muthui alleging commercial use of personal data, unlawful data disclosure, failure to respond to erasure request, unlawful processing. The: complaint relates to direct marketing messages. The complainant ¢lleges that the Respondent has been flooding her phane with promotional messages cespite IDPC/CONF/1/7/4/VOL 1(:27) kenva %‘%;53 0 Page 3 of 10 her several warnings and objections ove- the saine. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
+      "violation_summary": "Agnes Kimanzi filed a complaint against Grass International Solomon Muthui alleging commercial use of personal data, unlawful data disclosure, failure to respond to erasure request, unlawful processing. The: complaint relates to direct marketing messages. her several warnings and objections ove- the saine. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019."
     },
     {
       "id": "2023-08-deltech-capital-limited-ta-mykes",
@@ -14972,7 +15026,7 @@
         "upheld"
       ],
       "pdf_url": "https://www.odpc.go.ke/wp-content/uploads/2025/01/20230802-ARNOLD-MWAURA-ALEX-KARANJA-vs-MULLA-PRIDE-LIMITED.pdf",
-      "violation_summary": "Arnold Mwaura Alex Karanja filed a complaint against Mulla Pride Limited alleging unlawful debt collection, failure to respond to erasure request, unlawful processing. The 15t Complainant alleged that he hag been receiving threatening calls and messages from the Respondent about a loan he has no knowledge ahou:. He oo, IDPC/CONF/1/7/4 VOL 1(22) KENYA “‘/‘f’ein-rv/ \"'630 Page 3 of 10 s:ates that he was enlisted as a referee despite not knowing the loanze or giving his consent tc be a enlisted as a referee. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
+      "violation_summary": "Arnold Mwaura Alex Karanja filed a complaint against Mulla Pride Limited alleging unlawful debt collection, failure to respond to erasure request, unlawful processing. The 15t Complainant alleged that he hag been receiving threatening calls and messages from the Respondent about a loan he has no knowledge ahou:. s:ates that he was enlisted as a referee despite not knowing the loanze or giving his consent tc be a enlisted as a referee. The ODPC upheld the complaint, finding violations of the Data Protection Act, 2019, and issuing an enforcement notice."
     },
     {
       "id": "2023-08-higher-education-loans-board",
