@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uganda PDPO Enforcement Records | African Data Protection Dashboard</title>
+  <meta name="description" content="Uganda Personal Data Protection Office enforcement decisions under the Data Protection and Privacy Act 2019. Law Lab Africa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #07080d; --surface: #0c0e1a; --surface2: #111428;
+      --border: #1c2040; --teal: #0e7490; --teal-light: #22d3ee; --teal-dim: #0c4a58;
+      --text: #e2e8f0; --text-muted: #8892a4; --text-dim: #4a5568;
+      --green: #10b981; --yellow: #f59e0b; --red: #ef4444; --purple: #8b5cf6; --blue: #3b82f6;
+      --font: 'IBM Plex Mono', monospace;
+    }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 14px; line-height: 1.6; }
+    header { border-bottom: 1px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; background: rgba(7,8,13,.97); backdrop-filter: blur(12px); }
+    .header-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 58px; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    .logo-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(.8)} }
+    .header-sub { font-size: 10px; color: var(--text-dim); font-weight: 400; letter-spacing: .05em; }
+    .logo-stack { display: flex; flex-direction: column; gap: 1px; }
+    nav { display: flex; gap: 4px; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; padding: 6px 12px; border-radius: 5px; transition: color .15s, background .15s; border: 1px solid transparent; }
+    .nav-link:hover { color: var(--teal-light); background: rgba(14,116,144,.08); border-color: rgba(14,116,144,.2); }
+    .nav-link.active { color: var(--teal-light); border-color: rgba(14,116,144,.3); background: rgba(14,116,144,.1); }
+    .back-bar { padding: 14px 24px; border-bottom: 1px solid var(--border); background: var(--surface); }
+    .back-link { color: var(--text-muted); text-decoration: none; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; transition: color .15s; }
+    .back-link:hover { color: var(--teal-light); }
+    .hero { padding: 36px 24px 28px; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(14,116,144,.03) 0%, transparent 100%); }
+    .hero-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 32px; align-items: flex-start; }
+    .hero-text { flex: 1; }
+    .country-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(14,116,144,.1); border: 1px solid rgba(14,116,144,.25); border-radius: 5px; padding: 5px 12px; font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 14px; }
+    h1 { font-size: clamp(20px, 3vw, 30px); font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
+    .hero-regulator { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+    .arch-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .arch-badge { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 4px; border: 1px solid; }
+    .arch-yes { background: rgba(16,185,129,.1); color: var(--green); border-color: rgba(16,185,129,.25); }
+    .arch-no { background: rgba(239,68,68,.08); color: #fca5a5; border-color: rgba(239,68,68,.2); }
+    .arch-limited { background: rgba(245,158,11,.1); color: var(--yellow); border-color: rgba(245,158,11,.25); }
+    .country-svg { flex-shrink: 0; opacity: .8; }
+    svg.country-map { width: 100px; height: 100px; }
+    .stats-row { max-width: 1280px; margin: 0 auto; padding: 20px 24px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; border-bottom: 1px solid var(--border); }
+    @media (max-width: 900px) { .stats-row { grid-template-columns: repeat(3, 1fr); } }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 14px 16px; }
+    .stat-value { font-size: 18px; font-weight: 700; color: var(--teal-light); line-height: 1; margin-bottom: 5px; letter-spacing: -.01em; }
+    .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
+    .stat-note { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+    /* Architecture note */
+    .arch-note { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .note-box { background: rgba(139,92,246,.06); border: 1px solid rgba(139,92,246,.22); border-radius: 8px; padding: 16px 20px; margin: 20px 0; display: flex; gap: 12px; align-items: flex-start; font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+    .note-icon { flex-shrink: 0; color: #a78bfa; font-size: 15px; margin-top: 2px; }
+    .note-box strong { color: var(--text); }
+    .content-area { max-width: 1280px; margin: 0 auto; padding: 24px; }
+    .top-section { display: grid; grid-template-columns: 1fr 320px; gap: 20px; margin-bottom: 24px; }
+    @media (max-width: 900px) { .top-section { grid-template-columns: 1fr; } }
+    .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .chart-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-bottom: 4px; }
+    .chart-subtitle { font-size: 10px; color: var(--text-dim); margin-bottom: 16px; }
+    .chart-wrap { position: relative; height: 200px; }
+    .table-wrap { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .table-hint { padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--border); font-size: 11px; color: var(--text-dim); }
+    table { width: 100%; border-collapse: collapse; }
+    thead { background: var(--surface2); }
+    th { padding: 10px 13px; text-align: left; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); white-space: nowrap; border-bottom: 1px solid var(--border); }
+    tbody tr { border-bottom: 1px solid rgba(28,32,64,.7); cursor: pointer; transition: background .12s; }
+    tbody tr:hover { background: rgba(14,116,144,.05); }
+    tbody tr.expanded { background: rgba(14,116,144,.04); }
+    td { padding: 12px 13px; font-size: 12px; vertical-align: top; }
+    .date-cell { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+    .respondent-name { font-weight: 500; color: var(--text); font-size: 12px; }
+    .ref-text { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+    .sector-badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 4px; background: rgba(139,92,246,.1); color: #a78bfa; border: 1px solid rgba(139,92,246,.2); white-space: nowrap; }
+    .outcome-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
+    .outcome-order { background: rgba(59,130,246,.1); color: #93c5fd; border: 1px solid rgba(59,130,246,.25); }
+    .outcome-criminal { background: rgba(139,92,246,.12); color: #c4b5fd; border: 1px solid rgba(139,92,246,.3); }
+    .penalty-cell { font-family: var(--font); font-size: 11px; font-weight: 600; color: var(--red); white-space: nowrap; }
+    .penalty-cell.none { color: var(--text-dim); font-weight: 400; }
+    .summary-row { display: none; }
+    .summary-row.visible { display: table-row; }
+    .summary-row td { padding: 0 13px; background: var(--surface); }
+    .summary-inner { padding: 10px 0 14px; border-bottom: 1px solid var(--border); font-size: 12px; color: var(--text-muted); line-height: 1.65; }
+    .summary-label { font-size: 10px; text-transform: uppercase; letter-spacing: .07em; color: var(--text-dim); margin-bottom: 4px; margin-top: 10px; }
+    .summary-label:first-child { margin-top: 0; }
+    .summary-src { display: inline-flex; align-items: center; gap: 5px; color: var(--teal-light); text-decoration: none; font-size: 11px; margin-top: 8px; }
+    .summary-src:hover { text-decoration: underline; }
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; margin-top: 48px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; font-size: 11px; color: var(--text-dim); line-height: 1.8; }
+    .footer-inner a { color: var(--text-muted); text-decoration: none; }
+    .footer-inner a:hover { color: var(--teal-light); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-dot"></div>
+      <div class="logo-stack">
+        <span>African Data Protection Enforcement Dashboard</span>
+        <span class="header-sub">Law Lab Africa · research.lawlab.africa</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-link">Overview</a>
+      <a href="kenya.html" class="nav-link">Kenya</a>
+      <a href="south-africa.html" class="nav-link">South Africa</a>
+      <a href="nigeria.html" class="nav-link">Nigeria</a>
+      <a href="uganda.html" class="nav-link active">Uganda</a>
+    </nav>
+  </div>
+</header>
+
+<div class="back-bar">
+  <a href="index.html" class="back-link">← African Enforcement Dashboard</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="country-badge">🇺🇬 Uganda</div>
+      <h1>Personal Data Protection Office</h1>
+      <div class="hero-regulator">Data Protection and Privacy Act 2019 (DPPA) &amp; Data Protection and Privacy Regulations 2021 &nbsp;·&nbsp; PDPO &nbsp;·&nbsp; Kampala, Uganda</div>
+      <div class="arch-badges">
+        <span class="arch-badge arch-no">Administrative fines ✗</span>
+        <span class="arch-badge arch-yes">Declaratory orders ✓</span>
+        <span class="arch-badge arch-yes">Criminal prosecution ✓</span>
+        <span class="arch-badge arch-limited">Binding fine power — limited</span>
+      </div>
+    </div>
+    <div class="country-svg">
+      <svg class="country-map" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 15,15 L 105,12 L 112,55 L 108,98 L 75,108 L 35,105 L 10,72 L 12,35 Z"
+          fill="rgba(14,116,144,0.12)" stroke="#0e7490" stroke-width="2.5" stroke-linejoin="round" />
+        <text x="60" y="65" text-anchor="middle" fill="rgba(34,211,238,0.4)" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" letter-spacing="2">UGANDA</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-value">2</div>
+    <div class="stat-label">Enforcement Actions</div>
+    <div class="stat-note">July 2025</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">Declaratory</div>
+    <div class="stat-label">Primary Remedy</div>
+    <div class="stat-note">Orders only</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">Tech / Fintech</div>
+    <div class="stat-label">Sectors</div>
+    <div class="stat-note">1 case each</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">Non-registration</div>
+    <div class="stat-label">Top Violation</div>
+    <div class="stat-note">Both cases</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">July 2025</div>
+    <div class="stat-label">Date Range</div>
+    <div class="stat-note">First decisions</div>
+  </div>
+</div>
+
+<div class="arch-note">
+  <div class="note-box">
+    <span class="note-icon">⚠</span>
+    <div>
+      <strong>Enforcement Architecture Note:</strong> Uganda's PDPO issues <strong>declaratory orders</strong> only and lacks statutory authority to impose binding administrative fines. Monetary relief for data subjects requires court action. Criminal prosecution under the DPPA 2019 is the secondary enforcement mechanism, as demonstrated by the Nano Loans conviction. This dataset reflects publicly available decisions; enforcement records are limited. The PDPO website does not maintain a public searchable database of enforcement decisions. These 2025 cases represent Uganda's first significant DPPA enforcement actions and signal a shift from compliance guidance to active enforcement.
+    </div>
+  </div>
+</div>
+
+<div class="content-area">
+  <div class="top-section">
+    <div class="chart-card">
+      <div class="chart-title">Enforcement Actions by Sector</div>
+      <div class="chart-subtitle">Uganda PDPO sector breakdown</div>
+      <div class="chart-wrap"><canvas id="ug-chart-sector"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Outcome Types</div>
+      <div class="chart-subtitle">Declaratory orders vs criminal prosecution</div>
+      <div class="chart-wrap"><canvas id="ug-chart-outcome"></canvas></div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <div class="table-hint">Click any row to expand the full case summary. Both decisions were issued in July 2025, marking Uganda's first significant DPPA enforcement actions.</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Respondent</th>
+          <th>Sector</th>
+          <th>Violation</th>
+          <th>Outcome</th>
+          <th>Penalty</th>
+        </tr>
+      </thead>
+      <tbody id="ug-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>African Data Protection Enforcement Dashboard | <a href="https://www.lawlab.africa">Law Lab Africa</a> | <a href="https://research.lawlab.africa">research.lawlab.africa</a></div>
+    <div>Data updated March 2026 &nbsp;·&nbsp; Not legal advice &nbsp;·&nbsp; Uganda data sourced from PDPO decisions and legal analytics</div>
+  </div>
+</footer>
+
+<script>
+Chart.defaults.color = '#8892a4';
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 11;
+Chart.defaults.borderColor = '#1c2040';
+
+const UG_DATA = [
+  { id:"ug-001", date:"2025-07-18",
+    respondent:"Google LLC",
+    ref:"Complaint No. 08/11/24/6683",
+    sector:"Technology / Internet services",
+    violation:"Non-registration with PDPO; unlawful cross-border data transfer without safeguard compliance",
+    outcome:"Declaratory order", outcome_type:"order",
+    penalty_str:"—",
+    summary:"PDPO found Google in breach for collecting and processing Ugandan users' personal data without PDPO registration and transferring data across borders without demonstrating equivalent data protection safeguards. Decision affirmed extraterritorial application of the DPPA to foreign entities. Google was ordered to register with PDPO within 30 days, provide DPO contact details, and submit documentary evidence of its cross-border transfer compliance framework. Complainants were directed to pursue court compensation claims as the PDPO lacks binding fine authority.",
+    source:"https://cipesa.org/2025/07/ugandan-regulator-finds-google-in-breach-of-countrys-data-protection-law-orders-local-registration/" },
+  { id:"ug-002", date:"2025-07-10",
+    respondent:"Ronald Mugulusi / Nano Loans Microfinance Ltd",
+    ref:"Makindye Standards, Wildlife & Utilities Court",
+    sector:"Financial services / Digital lending",
+    violation:"Non-registration with PDPO; unlawful processing and data misuse for debt recovery intimidation via TikTok",
+    outcome:"Criminal conviction", outcome_type:"criminal",
+    penalty_str:"UGX 300,000 (director fine)",
+    summary:"First-ever criminal conviction under Uganda's DPPA. The director of a fintech lender was convicted for operating an unregistered business and misusing borrower personal data — specifically recording and disseminating a video threatening public shaming via TikTok to enforce loan repayment. A plea bargain was entered on the non-registration count; a court-sanctioned reconciliation with compensation was ordered on the data misuse count. PDPO had made multiple prior engagement attempts to provide compliance guidance, which the director ignored. Criminal record entered against the director.",
+    source:"https://lexafrica.com/2025/09/uganda-data-protection-conviction-digital-privacy-enforcement-africa/" }
+];
+
+function escH(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// Charts
+new Chart(document.getElementById('ug-chart-sector'), {
+  type: 'bar',
+  data: {
+    labels: ['Technology / Internet', 'Financial Services / Fintech'],
+    datasets: [{ label:'Actions', data:[1,1], backgroundColor:'rgba(14,116,144,.6)', borderColor:'#0e7490', borderWidth:1.5, borderRadius:4 }]
+  },
+  options: { responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{backgroundColor:'#0c0e1a',borderColor:'#1c2040',borderWidth:1}},
+    scales:{x:{grid:{color:'#1c2040'},ticks:{color:'#8892a4'}},y:{grid:{color:'#1c2040'},ticks:{color:'#8892a4',stepSize:1},min:0,max:2}} }
+});
+
+new Chart(document.getElementById('ug-chart-outcome'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Declaratory Order', 'Criminal Conviction'],
+    datasets: [{ data:[1,1],
+      backgroundColor:['rgba(59,130,246,.65)','rgba(139,92,246,.65)'],
+      borderColor:['#3b82f6','#8b5cf6'], borderWidth:1.5 }]
+  },
+  options: { responsive:true, maintainAspectRatio:false, cutout:'60%',
+    plugins:{legend:{position:'bottom',labels:{padding:12,boxWidth:10,font:{size:10}}},
+      tooltip:{backgroundColor:'#0c0e1a',borderColor:'#1c2040',borderWidth:1}} }
+});
+
+// Table
+const tbody = document.getElementById('ug-tbody');
+UG_DATA.forEach(d => {
+  const badgeClass = d.outcome_type === 'criminal' ? 'outcome-criminal' : 'outcome-order';
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td class="date-cell">${escH(d.date)}</td>
+    <td><div class="respondent-name">${escH(d.respondent)}</div><div class="ref-text">${escH(d.ref)}</div></td>
+    <td><span class="sector-badge">${escH(d.sector)}</span></td>
+    <td><div style="font-size:11px;color:var(--text-muted)">${escH(d.violation)}</div></td>
+    <td><span class="outcome-badge ${badgeClass}">${escH(d.outcome)}</span></td>
+    <td><span class="penalty-cell ${d.penalty_str==='—'?'none':''}">${escH(d.penalty_str)}</span></td>
+  `;
+  tr.addEventListener('click', () => {
+    const sr = tr.nextElementSibling;
+    const wasVis = sr && sr.classList.contains('visible');
+    document.querySelectorAll('.summary-row.visible').forEach(r=>r.classList.remove('visible'));
+    document.querySelectorAll('tr.expanded').forEach(r=>r.classList.remove('expanded'));
+    if (!wasVis && sr) { sr.classList.add('visible'); tr.classList.add('expanded'); }
+  });
+  tbody.appendChild(tr);
+
+  const summaryTr = document.createElement('tr');
+  summaryTr.className = 'summary-row';
+  summaryTr.innerHTML = `<td colspan="6"><div class="summary-inner">
+    <div class="summary-label">Summary</div>
+    <div>${escH(d.summary)}</div>
+    <div class="summary-label">Violation</div>
+    <div style="font-size:11px">${escH(d.violation)}</div>
+    <div class="summary-label">Case Reference</div>
+    <div style="font-size:11px">${escH(d.ref)}</div>
+    <a class="summary-src" href="${escH(d.source)}" target="_blank" rel="noopener">↗ Source</a>
+  </div></td>`;
+  tbody.appendChild(summaryTr);
+});
+</script>
+</body>
+</html>

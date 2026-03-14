@@ -4,1265 +4,955 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>African Data Protection Enforcement Dashboard | Law Lab Africa</title>
-  <meta name="description" content="Searchable multi-jurisdiction tracker of data protection enforcement actions across Kenya, South Africa, Nigeria, and Uganda. Compiled by Law Lab Africa." />
-  <meta property="og:title" content="African Data Protection Enforcement Dashboard | Law Lab Africa" />
-  <meta property="og:description" content="Cross-jurisdiction tracker of African data protection enforcement actions: fines, investigations, enforcement notices, and criminal prosecutions." />
-  <meta property="og:url" content="https://research.lawlab.africa" />
+  <meta name="description" content="Multi-jurisdiction tracker of data protection enforcement actions across Africa. Compiled by Law Lab Africa." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #07080d; --surface: #0c0e1a; --surface2: #11142a;
-      --border: #1c2040; --accent: #2563eb; --accent-light: #3b82f6;
-      --text: #e2e8f0; --text-muted: #8892a4; --text-dim: #4a5568;
-      --green: #10b981; --yellow: #f59e0b; --red: #ef4444; --purple: #8b5cf6;
-      --blue: #3b82f6; --orange: #f97316;
-      --font: 'Inter', system-ui, -apple-system, sans-serif;
-      --mono: 'IBM Plex Mono', 'Fira Code', monospace;
+      --bg: #07080d;
+      --surface: #0c0e1a;
+      --surface2: #111428;
+      --border: #1c2040;
+      --teal: #0e7490;
+      --teal-light: #22d3ee;
+      --teal-dim: #0c4a58;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --text-dim: #4a5568;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --purple: #8b5cf6;
+      --blue: #3b82f6;
+      --font: 'IBM Plex Mono', monospace;
     }
-    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 15px; line-height: 1.6; min-height: 100vh; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
 
     /* HEADER */
-    header { border-bottom: 1px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; background: rgba(7,8,13,.96); backdrop-filter: blur(8px); }
-    .header-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 58px; }
-    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); font-family: var(--mono); font-weight: 500; font-size: 14px; letter-spacing: .06em; }
-    .logo-cursor { color: var(--accent); font-weight: 700; animation: blink 1s infinite; }
-    @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
-    .header-right { display: flex; align-items: center; gap: 16px; }
-    .header-link { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color .15s; }
-    .header-link:hover { color: var(--text); }
-    .btn-cta { background: var(--accent); color: white; padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; text-decoration: none; transition: background .15s; }
-    .btn-cta:hover { background: var(--accent-light); }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,8,13,.97);
+      backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .logo-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(.8)} }
+    .header-sub { font-size: 10px; color: var(--text-dim); font-weight: 400; letter-spacing: .05em; }
+    .logo-stack { display: flex; flex-direction: column; gap: 1px; }
+    nav { display: flex; gap: 4px; }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 5px;
+      transition: color .15s, background .15s;
+      border: 1px solid transparent;
+    }
+    .nav-link:hover { color: var(--teal-light); background: rgba(14,116,144,.08); border-color: rgba(14,116,144,.2); }
+    .nav-link.active { color: var(--teal-light); border-color: rgba(14,116,144,.3); background: rgba(14,116,144,.1); }
 
     /* HERO */
-    .hero { border-bottom: 1px solid var(--border); padding: 44px 24px 36px; }
+    .hero {
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 36px;
+      background: linear-gradient(180deg, rgba(14,116,144,.03) 0%, transparent 100%);
+    }
     .hero-inner { max-width: 1280px; margin: 0 auto; }
-    .hero-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-family: var(--mono); font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-light); background: rgba(37,99,235,.1); border: 1px solid rgba(37,99,235,.3); padding: 3px 10px; border-radius: 4px; margin-bottom: 16px; }
-    .hero-dot { width: 6px; height: 6px; background: var(--accent-light); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
-    h1 { font-size: clamp(20px,3.5vw,30px); font-weight: 700; line-height: 1.2; margin-bottom: 10px; letter-spacing: -.02em; font-family: var(--mono); }
-    .hero-sub { color: var(--text-muted); font-size: 14px; max-width: 680px; line-height: 1.7; margin-bottom: 32px; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      background: rgba(14,116,144,.1);
+      border: 1px solid rgba(14,116,144,.25);
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+    }
+    .live-dot { width: 6px; height: 6px; background: var(--teal-light); border-radius: 50%; animation: pulse 1.5s infinite; }
+    h1 {
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      letter-spacing: -.01em;
+    }
+    h1 span { color: var(--teal-light); }
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 13px;
+      max-width: 600px;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
 
-    /* GLOBAL STATS BAR */
-    .global-stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-    .gstat { background: var(--surface); padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; transition: background .15s; }
-    .gstat:hover { background: var(--surface2); }
-    .gstat-value { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--text); line-height: 1; }
-    .gstat-value.accent { color: var(--accent-light); }
-    .gstat-label { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--text-muted); font-family: var(--mono); }
-    .gstat-note { font-size: 10px; color: var(--text-dim); margin-top: 1px; }
+    /* STATS BAR */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    @media (max-width: 900px) { .stats-bar { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 560px) { .stats-bar { grid-template-columns: repeat(2, 1fr); } }
+    .stat-card {
+      background: var(--surface);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: background .15s;
+    }
+    .stat-card:hover { background: var(--surface2); }
+    .stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--teal-light);
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .stat-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-muted);
+    }
+    .stat-note { font-size: 10px; color: var(--text-dim); }
+
+    /* MAIN CONTENT */
+    .main { max-width: 1280px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* SECTION TITLES */
+    .section-header { margin-bottom: 24px; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--teal-light);
+      margin-bottom: 6px;
+    }
+    .section-desc { font-size: 12px; color: var(--text-muted); }
+
+    /* MAP SECTION */
+    .map-section { margin-bottom: 60px; }
+    .map-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-container::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(14,116,144,.4), transparent);
+    }
+    .map-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+    }
+    @media (max-width: 768px) { .map-inner { flex-direction: column; } }
+    .map-svg-wrap {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    svg#africa-map {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      display: block;
+    }
+    /* Country styles */
+    .country {
+      fill: #0d1117;
+      stroke: #1e293b;
+      stroke-width: 1.5;
+      transition: fill .25s, filter .25s;
+      cursor: default;
+    }
+    .country-active {
+      fill: rgba(14,116,144,.25);
+      stroke: #0e7490;
+      stroke-width: 2;
+      cursor: pointer;
+    }
+    .country-active:hover {
+      fill: rgba(14,116,144,.5);
+      filter: drop-shadow(0 0 12px rgba(14,116,144,.7));
+    }
+    .country:hover { fill: #131928; }
+    .country-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      fill: #22d3ee;
+      text-anchor: middle;
+      pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .country-label-sub {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      font-weight: 400;
+      fill: rgba(34,211,238,.6);
+      text-anchor: middle;
+      pointer-events: none;
+      letter-spacing: .06em;
+    }
+
+    /* Tooltip */
+    .map-tooltip {
+      position: fixed;
+      background: var(--surface2);
+      border: 1px solid var(--teal-dim);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 11px;
+      color: var(--text);
+      pointer-events: none;
+      z-index: 9999;
+      display: none;
+      font-family: var(--font);
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,.5);
+    }
+    .map-tooltip.active { display: block; }
+
+    /* Map legend */
+    .map-legend {
+      margin-top: 16px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .legend-item { display: flex; align-items: center; gap: 7px; }
+    .legend-dot-active { width: 10px; height: 10px; background: rgba(14,116,144,.5); border: 1.5px solid #0e7490; border-radius: 50%; }
+    .legend-dot-soon { width: 10px; height: 10px; background: #0d1117; border: 1.5px solid #1e293b; border-radius: 50%; }
+
+    /* Map info panel */
+    .map-info {
+      width: 260px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    @media (max-width: 768px) { .map-info { width: 100%; flex-direction: row; flex-wrap: wrap; } }
+    .map-info-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+    .country-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      transition: border-color .2s, background .2s;
+    }
+    .country-card:hover { border-color: var(--teal); background: rgba(14,116,144,.08); }
+    .country-card-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .country-flag { font-size: 16px; }
+    .country-card-reg {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .country-card-stats {
+      display: flex;
+      gap: 12px;
+    }
+    .cs-stat { display: flex; flex-direction: column; gap: 1px; }
+    .cs-val { font-size: 14px; font-weight: 700; color: var(--teal-light); }
+    .cs-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: .07em; color: var(--text-dim); }
+
+    /* CHARTS SECTION */
+    .charts-section { margin-bottom: 60px; }
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 768px) { .charts-grid { grid-template-columns: 1fr; } }
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .chart-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .chart-subtitle {
+      font-size: 10px;
+      color: var(--text-dim);
+      margin-bottom: 18px;
+    }
+    .chart-wrap { position: relative; height: 260px; }
 
     /* DISCLAIMER */
-    .disclaimer-banner { background: rgba(245,158,11,.05); border-top: 1px solid rgba(245,158,11,.15); border-bottom: 1px solid rgba(245,158,11,.15); padding: 10px 24px; }
-    .disclaimer-banner-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--text-muted); line-height: 1.55; }
-    .disclaimer-icon { flex-shrink: 0; color: var(--yellow); margin-top: 1px; }
-    .disclaimer-banner-inner strong { color: #d4a017; }
-    .disclaimer-banner-inner a { color: var(--text-muted); text-decoration: underline; }
-
-    /* TAB NAVIGATION */
-    .tab-nav-wrap { border-bottom: 1px solid var(--border); background: var(--surface); padding: 0 24px; }
-    .tab-nav { max-width: 1280px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
-    .tab-nav::-webkit-scrollbar { display: none; }
-    .tab-btn { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; padding: 14px 20px; border: none; background: none; color: var(--text-muted); cursor: pointer; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; white-space: nowrap; position: relative; }
-    .tab-btn:hover { color: var(--text); }
-    .tab-btn.active { color: var(--accent-light); border-bottom-color: var(--accent-light); }
-    .tab-badge { display: inline-flex; align-items: center; justify-content: center; margin-left: 7px; font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 10px; background: rgba(139,92,246,.15); color: #a78bfa; border: 1px solid rgba(139,92,246,.25); }
-    .tab-btn.active .tab-badge { background: rgba(37,99,235,.15); color: var(--accent-light); border-color: rgba(37,99,235,.3); }
-
-    /* TAB PANELS */
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-    .panel-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px 48px; }
-
-    /* JURISDICTION HEADER */
-    .juris-header { padding: 24px 0 20px; border-bottom: 1px solid var(--border); margin-bottom: 0; }
-    .juris-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-    .juris-card { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 14px 16px; }
-    .juris-card-label { font-size: 10px; font-family: var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--text-dim); margin-bottom: 4px; }
-    .juris-card-value { font-size: 13px; color: var(--text); line-height: 1.4; }
-    .juris-card-value strong { color: var(--text); font-weight: 600; }
-    .power-yes { color: var(--green); font-weight: 500; }
-    .power-no { color: var(--red); font-weight: 500; }
-    .power-limited { color: var(--yellow); font-weight: 500; }
-
-    /* UGANDA NOTE */
-    .juris-note { background: rgba(139,92,246,.06); border: 1px solid rgba(139,92,246,.2); border-radius: 7px; padding: 14px 18px; margin: 20px 0; display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--text-muted); line-height: 1.65; }
-    .juris-note-icon { flex-shrink: 0; color: #a78bfa; font-size: 15px; margin-top: 1px; }
-
-    /* CONTROLS */
-    .controls { padding: 16px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-    .search-wrap { flex: 1; min-width: 220px; position: relative; }
-    .search-wrap svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text-dim); pointer-events: none; }
-    input[type="search"], select { background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; color: var(--text); font-family: var(--font); font-size: 13px; padding: 8px 11px; outline: none; transition: border-color .15s; }
-    input[type="search"] { width: 100%; padding-left: 34px; }
-    input[type="search"]:focus, select:focus { border-color: var(--accent); }
-    select { padding: 8px 28px 8px 11px; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238892a4' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 9px center; }
-    .controls-right { display: flex; align-items: center; gap: 12px; margin-left: auto; }
-    .results-count { font-size: 12px; color: var(--text-muted); white-space: nowrap; font-family: var(--mono); }
-    .results-count span { color: var(--accent-light); font-weight: 600; }
-    .clear-btn { font-size: 12px; color: var(--text-muted); background: none; border: 1px solid var(--border); border-radius: 5px; padding: 4px 9px; cursor: pointer; font-family: var(--font); transition: color .15s, border-color .15s; display: none; }
-    .clear-btn:hover { color: var(--text); border-color: var(--text-muted); }
-    .clear-btn.visible { display: inline-block; }
-
-    /* TABLE */
-    .table-wrap { margin-top: 8px; }
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    thead th { text-align: left; padding: 9px 13px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); border-bottom: 1px solid var(--border); white-space: nowrap; cursor: pointer; user-select: none; font-family: var(--mono); }
-    thead th.no-sort { cursor: default; }
-    thead th:not(.no-sort):hover { color: var(--text); }
-    thead th.sorted { color: var(--accent-light); }
-    thead th .sort-icon { margin-left: 4px; opacity: .5; }
-    thead th.sorted .sort-icon { opacity: 1; }
-    tbody tr.data-row { border-bottom: 1px solid var(--border); transition: background .1s; cursor: pointer; }
-    tbody tr.data-row:hover { background: var(--surface); }
-    tbody tr.data-row.expanded { background: var(--surface); }
-    tbody td { padding: 11px 13px; vertical-align: top; line-height: 1.4; }
-    .expand-icon { display: inline-block; margin-right: 5px; font-size: 9px; color: var(--text-dim); transition: transform .15s; }
-    tr.expanded .expand-icon { transform: rotate(90deg); color: var(--accent-light); }
-    .respondent-name { font-weight: 500; color: var(--text); font-size: 13px; }
-    .case-num { font-family: var(--mono); font-size: 11px; color: var(--accent-light); white-space: nowrap; }
-    .sector-badge { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 4px; background: rgba(139,92,246,.1); color: #a78bfa; border: 1px solid rgba(139,92,246,.2); }
-    .violation-badge { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 4px; margin: 2px 2px 0 0; background: rgba(245,158,11,.07); color: #d4a017; border: 1px solid rgba(245,158,11,.15); }
-    .regulator-tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-top: 3px; font-family: var(--mono); font-weight: 600; background: rgba(37,99,235,.1); color: var(--accent-light); border: 1px solid rgba(37,99,235,.2); }
-
-    /* OUTCOME BADGES */
-    .outcome-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; white-space: nowrap; font-family: var(--mono); }
-    /* Kenya outcomes */
-    .outcome-upheld { background: rgba(16,185,129,.1); color: var(--green); border: 1px solid rgba(16,185,129,.2); }
-    .outcome-dismissed { background: rgba(239,68,68,.1); color: var(--red); border: 1px solid rgba(239,68,68,.2); }
-    .outcome-partial { background: rgba(245,158,11,.1); color: var(--yellow); border: 1px solid rgba(245,158,11,.2); }
-    .outcome-unknown { background: rgba(100,116,139,.1); color: var(--text-muted); border: 1px solid var(--border); }
-    /* Multi-jurisdiction outcomes */
-    .outcome-fine { background: rgba(239,68,68,.1); color: #fca5a5; border: 1px solid rgba(239,68,68,.25); }
-    .outcome-investigation { background: rgba(245,158,11,.1); color: #fbbf24; border: 1px solid rgba(245,158,11,.25); }
-    .outcome-order { background: rgba(59,130,246,.1); color: #93c5fd; border: 1px solid rgba(59,130,246,.25); }
-    .outcome-criminal { background: rgba(139,92,246,.12); color: #c4b5fd; border: 1px solid rgba(139,92,246,.3); }
-
-    /* PENALTY */
-    .penalty-value { font-family: var(--mono); font-size: 12px; font-weight: 600; white-space: nowrap; }
-    .penalty-value.has-value { color: var(--red); }
-    .penalty-value.no-value { color: var(--text-dim); font-weight: 400; }
-    .penalty-value.pending { color: var(--yellow); }
-
-    /* Kenya-specific */
-    .compensation { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--green); white-space: nowrap; }
-    .compensation.none { color: var(--text-dim); font-weight: 400; }
-    .tag-enforcement { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px; margin: 2px 0 0; background: rgba(239,68,68,.08); color: var(--red); border: 1px solid rgba(239,68,68,.18); font-weight: 600; font-family: var(--mono); }
-    .tag-prosecution { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px; margin: 2px 0 0; background: rgba(239,68,68,.15); color: #fca5a5; border: 1px solid rgba(239,68,68,.25); font-weight: 700; font-family: var(--mono); }
-    .respondent-tags { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
-    .pdf-link { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--accent-light); text-decoration: none; padding: 3px 8px; border: 1px solid rgba(37,99,235,.25); border-radius: 4px; white-space: nowrap; transition: background .15s; }
-    .pdf-link:hover { background: rgba(37,99,235,.1); }
-
-    /* EXPANDED ROW */
-    .summary-row td { padding: 0 13px; background: var(--surface); }
-    .summary-inner { padding: 10px 0 14px; border-bottom: 1px solid var(--border); font-size: 12.5px; color: var(--text-muted); line-height: 1.65; }
-    .summary-label { font-size: 10px; font-family: var(--mono); text-transform: uppercase; letter-spacing: .07em; color: var(--text-dim); margin-bottom: 4px; margin-top: 10px; }
-    .summary-label:first-child { margin-top: 0; }
-    .source-link { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: var(--accent-light); text-decoration: none; margin-top: 8px; border: 1px solid rgba(37,99,235,.2); padding: 3px 8px; border-radius: 4px; }
-    .source-link:hover { background: rgba(37,99,235,.1); }
-
-    /* EMPTY STATE */
-    .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); }
-    .empty-state h3 { font-size: 15px; margin-bottom: 6px; color: var(--text); }
-
-    /* PAGINATION */
-    .pagination-wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
-    .pagination-info { font-size: 12px; color: var(--text-muted); font-family: var(--mono); }
-    .pagination-info strong { color: var(--text); }
-    .pagination-controls { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
-    .page-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--text-muted); font-family: var(--font); font-size: 12px; padding: 5px 11px; border-radius: 5px; cursor: pointer; transition: all .15s; }
-    .page-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--text); }
-    .page-btn:disabled { opacity: .35; cursor: not-allowed; }
-    .page-btn.active { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; }
-    .page-ellipsis { color: var(--text-dim); padding: 0 3px; font-size: 12px; }
-
-    /* PAGE DISCLAIMER */
-    .page-disclaimer { margin-top: 16px; padding: 9px 12px; background: rgba(37,99,235,.04); border: 1px solid var(--border); border-radius: 6px; font-size: 11px; color: var(--text-dim); line-height: 1.55; display: flex; gap: 7px; align-items: flex-start; }
-
-    /* CTA */
-    .cta-banner { margin-top: 40px; background: linear-gradient(135deg, rgba(37,99,235,.12), rgba(139,92,246,.08)); border: 1px solid rgba(37,99,235,.25); border-radius: 10px; padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    .cta-banner h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-    .cta-banner p { color: var(--text-muted); font-size: 13px; }
-    .cta-banner p a { color: var(--accent-light); text-decoration: none; }
-    .btn-cta-lg { background: var(--accent); color: white; padding: 10px 20px; border-radius: 7px; font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background .15s; }
-    .btn-cta-lg:hover { background: var(--accent-light); }
+    .disclaimer {
+      background: rgba(14,116,144,.04);
+      border: 1px solid rgba(14,116,144,.12);
+      border-radius: 7px;
+      padding: 14px 18px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-top: 40px;
+    }
+    .disclaimer strong { color: var(--text-dim); }
 
     /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 28px 24px; margin-top: 48px; }
-    .footer-inner { max-width: 1280px; margin: 0 auto; }
-    .footer-text { font-size: 12px; color: var(--text-dim); line-height: 1.7; font-family: var(--mono); text-align: center; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-    .footer-bottom p { font-size: 11px; color: var(--text-dim); }
-    .footer-bottom a { color: var(--text-muted); text-decoration: none; }
-    .footer-bottom a:hover { color: var(--text); }
-
-    /* LOADING */
-    .loading-state { text-align: center; padding: 50px 20px; color: var(--text-muted); font-family: var(--mono); font-size: 13px; }
-    .loading-dot { animation: blink 1s infinite; }
-
-    /* MOBILE */
-    @media (max-width: 900px) {
-      .global-stats { grid-template-columns: repeat(3, 1fr); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
     }
-    @media (max-width: 640px) {
-      h1 { font-size: 19px; }
-      .global-stats { grid-template-columns: repeat(2, 1fr); }
-      .juris-grid { grid-template-columns: 1fr; }
-      .controls { flex-direction: column; align-items: stretch; }
-      .controls-right { margin-left: 0; }
-      .cta-banner { flex-direction: column; }
-      .header-link { display: none; }
-      thead th:nth-child(1), tbody td:nth-child(1) { display: none; }
-      .pagination-wrap { flex-direction: column; align-items: flex-start; }
-      .tab-btn { padding: 12px 14px; font-size: 11px; }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
     }
+    .footer-inner a { color: var(--text-muted); text-decoration: none; }
+    .footer-inner a:hover { color: var(--teal-light); }
   </style>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
-    <a href="https://www.lawlab.africa" class="logo">
-      LAW LAB AFRICA<span class="logo-cursor">█</span>
+    <a href="index.html" class="logo">
+      <div class="logo-dot"></div>
+      <div class="logo-stack">
+        <span>African Data Protection Enforcement Dashboard</span>
+        <span class="header-sub">Law Lab Africa · research.lawlab.africa</span>
+      </div>
     </a>
-    <div class="header-right">
-      <a href="https://www.lawlab.africa" class="header-link">Home</a>
-      <a href="https://www.lawlab.africa/#services" class="header-link">Services</a>
-      <a href="https://www.lawlab.africa/contact" class="btn-cta">Contact us</a>
-    </div>
+    <nav>
+      <a href="index.html" class="nav-link active">Overview</a>
+      <a href="kenya.html" class="nav-link">Kenya</a>
+      <a href="south-africa.html" class="nav-link">South Africa</a>
+      <a href="nigeria.html" class="nav-link">Nigeria</a>
+      <a href="uganda.html" class="nav-link">Uganda</a>
+    </nav>
   </div>
 </header>
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag"><span class="hero-dot"></span>Live · 4 Jurisdictions</div>
-    <h1>African Data Protection<br>Enforcement Dashboard</h1>
-    <p class="hero-sub">
-      Cross-jurisdiction tracker of data protection enforcement actions across Kenya, South Africa, Nigeria, and Uganda. Fines, investigations, enforcement notices, and criminal prosecutions -- all in one place.
-    </p>
-    <div class="global-stats" id="global-stats">
-      <div class="gstat">
-        <div class="gstat-value" id="stat-total"><span class="loading-dot">…</span></div>
-        <div class="gstat-label">Enforcement Records</div>
-        <div class="gstat-note">Across all 4 jurisdictions</div>
+    <div class="hero-tag">
+      <span class="live-dot"></span>
+      Live Enforcement Database
+    </div>
+    <h1>African Data Protection<br><span>Enforcement</span> Dashboard</h1>
+    <p class="hero-sub">The most comprehensive publicly available database of data protection enforcement actions across Africa. Four jurisdictions. 336 enforcement records. Compiled by Law Lab Africa.</p>
+    <div class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-value">336</div>
+        <div class="stat-label">Total Actions</div>
+        <div class="stat-note">All jurisdictions</div>
       </div>
-      <div class="gstat">
-        <div class="gstat-value accent" id="stat-penalties">&gt;$254M</div>
-        <div class="gstat-label">Combined Identified Fines</div>
-        <div class="gstat-note">USD equiv. · Nigeria dominant</div>
+      <div class="stat-card">
+        <div class="stat-value">&gt;$254M</div>
+        <div class="stat-label">Combined Penalties</div>
+        <div class="stat-note">USD equivalent</div>
       </div>
-      <div class="gstat">
-        <div class="gstat-value">4</div>
-        <div class="gstat-label">Jurisdictions Covered</div>
-        <div class="gstat-note">KE · ZA · NG · UG</div>
+      <div class="stat-card">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Jurisdictions</div>
+        <div class="stat-note">KE · ZA · NG · UG</div>
       </div>
-      <div class="gstat">
-        <div class="gstat-value accent">Nigeria</div>
-        <div class="gstat-label">Most Active Enforcer</div>
-        <div class="gstat-note">NDPC / FCCPC by volume &amp; value</div>
+      <div class="stat-card">
+        <div class="stat-value">Nigeria</div>
+        <div class="stat-label">Most Active Enforcer</div>
+        <div class="stat-note">By penalty value</div>
       </div>
-      <div class="gstat">
-        <div class="gstat-value" style="font-size:13px;line-height:1.3;margin-top:2px;">Unlawful Processing</div>
-        <div class="gstat-label">Most Cited Violation</div>
-        <div class="gstat-note">Across all jurisdictions</div>
+      <div class="stat-card">
+        <div class="stat-value">Unlawful<br>Processing</div>
+        <div class="stat-label">Top Violation</div>
+        <div class="stat-note">All jurisdictions</div>
       </div>
-      <div class="gstat">
-        <div class="gstat-value">2021–2026</div>
-        <div class="gstat-label">Data Range</div>
-        <div class="gstat-note">NITDA era to present</div>
+      <div class="stat-card">
+        <div class="stat-value">2021–26</div>
+        <div class="stat-label">Data Range</div>
+        <div class="stat-note">Updated Mar 2026</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="disclaimer-banner">
-  <div class="disclaimer-banner-inner">
-    <span class="disclaimer-icon">⚠</span>
-    <span>
-      <strong>Disclaimer:</strong> This database is compiled from publicly available enforcement records for informational purposes only. It does not constitute legal advice and no attorney-client relationship is created by use of this resource. Case summaries are research abstracts and may not capture all material facts. Compiled and maintained by <a href="https://www.lawlab.africa">Law Lab Africa</a>.
-    </span>
-  </div>
-</div>
+<main class="main">
 
-<!-- TAB NAVIGATION -->
-<div class="tab-nav-wrap">
-  <nav class="tab-nav" role="tablist">
-    <button class="tab-btn active" onclick="switchTab('kenya')" role="tab" aria-selected="true">
-      Kenya <span class="tab-badge" id="tab-badge-kenya">310</span>
-    </button>
-    <button class="tab-btn" onclick="switchTab('sa')" role="tab" aria-selected="false">
-      South Africa <span class="tab-badge">14</span>
-    </button>
-    <button class="tab-btn" onclick="switchTab('ng')" role="tab" aria-selected="false">
-      Nigeria <span class="tab-badge">10</span>
-    </button>
-    <button class="tab-btn" onclick="switchTab('ug')" role="tab" aria-selected="false">
-      Uganda <span class="tab-badge">2</span>
-    </button>
-  </nav>
-</div>
+  <!-- AFRICA MAP -->
+  <section class="map-section">
+    <div class="section-header">
+      <div class="section-title">Enforcement Jurisdictions</div>
+      <div class="section-desc">Click a highlighted country to explore its enforcement records. More jurisdictions coming soon.</div>
+    </div>
+    <div class="map-container">
+      <div class="map-inner">
+        <div class="map-svg-wrap">
+          <svg id="africa-map" viewBox="0 0 960 1120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Africa showing enforcement jurisdictions">
+            <!-- ==================== NORTH AFRICA ==================== -->
+            <!-- Morocco -->
+            <path class="country" d="M 175,60 L 295,55 L 320,90 L 315,150 L 285,170 L 245,185 L 210,175 L 185,145 L 175,110 Z" />
+            <!-- Western Sahara -->
+            <path class="country" d="M 120,160 L 205,165 L 210,175 L 245,185 L 235,280 L 155,285 L 115,255 L 110,200 Z" />
+            <!-- Algeria -->
+            <path class="country" d="M 285,55 L 430,50 L 460,110 L 455,210 L 430,255 L 380,265 L 320,265 L 295,200 L 295,130 L 310,95 Z" />
+            <!-- Tunisia -->
+            <path class="country" d="M 380,55 L 420,52 L 435,80 L 430,130 L 405,145 L 380,125 L 368,90 Z" />
+            <!-- Libya -->
+            <path class="country" d="M 420,52 L 560,50 L 590,85 L 580,210 L 545,265 L 455,260 L 430,210 L 430,130 L 435,80 Z" />
+            <!-- Egypt -->
+            <path class="country" d="M 555,50 L 660,50 L 680,80 L 680,210 L 660,250 L 590,255 L 570,220 L 580,160 L 570,100 Z" />
+            <!-- Mauritania -->
+            <path class="country" d="M 115,255 L 155,285 L 235,280 L 255,330 L 250,380 L 200,400 L 145,400 L 110,365 L 108,310 Z" />
+            <!-- Mali -->
+            <path class="country" d="M 235,280 L 320,265 L 380,265 L 415,340 L 410,430 L 355,455 L 275,450 L 245,420 L 225,370 L 240,320 Z" />
+            <!-- Niger -->
+            <path class="country" d="M 380,265 L 455,260 L 530,280 L 545,330 L 535,415 L 500,445 L 450,460 L 410,440 L 415,380 L 410,340 Z" />
+            <!-- Chad -->
+            <path class="country" d="M 530,280 L 620,268 L 650,310 L 655,395 L 640,460 L 580,480 L 540,465 L 520,430 L 530,370 L 535,315 Z" />
+            <!-- Sudan -->
+            <path class="country" d="M 620,250 L 700,245 L 740,290 L 750,360 L 740,445 L 700,465 L 660,460 L 640,415 L 640,355 L 620,310 Z" />
+            <!-- Eritrea -->
+            <path class="country" d="M 700,245 L 755,250 L 775,290 L 760,320 L 735,330 L 700,310 L 700,280 Z" />
+            <!-- Djibouti -->
+            <path class="country" d="M 760,310 L 800,315 L 800,345 L 775,355 L 755,335 Z" />
 
-<!-- ======================== KENYA TAB ======================== -->
-<div class="tab-panel active" id="panel-kenya">
-  <div class="panel-inner">
+            <!-- ==================== WEST AFRICA ==================== -->
+            <!-- Senegal -->
+            <path class="country" d="M 108,365 L 145,355 L 175,360 L 185,390 L 165,410 L 128,408 L 105,390 Z" />
+            <!-- Gambia (tiny, inside Senegal) -->
+            <path class="country" d="M 120,388 L 160,384 L 162,396 L 125,400 Z" />
+            <!-- Guinea-Bissau -->
+            <path class="country" d="M 105,400 L 138,395 L 148,415 L 130,428 L 105,420 Z" />
+            <!-- Guinea -->
+            <path class="country" d="M 128,408 L 195,400 L 215,430 L 210,465 L 175,478 L 145,468 L 118,440 Z" />
+            <!-- Sierra Leone -->
+            <path class="country" d="M 130,462 L 185,455 L 195,485 L 178,505 L 148,508 L 128,488 Z" />
+            <!-- Liberia -->
+            <path class="country" d="M 160,495 L 210,480 L 228,510 L 215,535 L 182,542 L 155,520 Z" />
+            <!-- Cote d'Ivoire -->
+            <path class="country" d="M 195,448 L 280,448 L 300,490 L 285,535 L 235,545 L 200,528 L 178,500 L 185,465 Z" />
+            <!-- Ghana -->
+            <path class="country" d="M 280,448 L 330,445 L 350,485 L 345,535 L 305,540 L 268,530 L 262,495 Z" />
+            <!-- Togo -->
+            <path class="country" d="M 330,445 L 355,443 L 363,510 L 350,540 L 332,540 L 325,510 Z" />
+            <!-- Benin -->
+            <path class="country" d="M 355,443 L 385,443 L 398,505 L 388,540 L 360,540 L 350,510 Z" />
+            <!-- Burkina Faso -->
+            <path class="country" d="M 230,380 L 345,380 L 390,440 L 360,450 L 280,450 L 215,440 L 215,415 Z" />
 
-    <div class="juris-header">
-      <div class="juris-grid">
-        <div class="juris-card">
-          <div class="juris-card-label">Regulator</div>
-          <div class="juris-card-value"><strong>Office of the Data Protection Commissioner (ODPC)</strong></div>
-        </div>
-        <div class="juris-card">
-          <div class="juris-card-label">Law Enforced</div>
-          <div class="juris-card-value">Data Protection Act, 2019 (DPA 2019)</div>
-        </div>
-        <div class="juris-card">
-          <div class="juris-card-label">Enforcement Powers</div>
-          <div class="juris-card-value">
-            <span class="power-yes">✓ Complaint determinations</span> ·
-            <span class="power-yes">✓ Compensation orders (KES)</span> ·
-            <span class="power-yes">✓ Enforcement notices</span> ·
-            <span class="power-yes">✓ Prosecution referrals</span>
+            <!-- ==================== NIGERIA (HIGHLIGHTED) ==================== -->
+            <a href="nigeria.html">
+              <path id="nigeria" class="country-active" d="M 388,440 L 488,432 L 520,460 L 528,510 L 522,545 L 490,568 L 448,572 L 398,562 L 372,532 L 368,490 L 378,458 Z" />
+              <text class="country-label" x="450" y="510">NIGERIA</text>
+              <text class="country-label-sub" x="450" y="523">10 actions</text>
+            </a>
+
+            <!-- Cameroon -->
+            <path class="country" d="M 488,432 L 555,418 L 580,448 L 585,500 L 580,555 L 545,578 L 510,568 L 490,540 L 490,490 Z" />
+            <!-- Central African Republic -->
+            <path class="country" d="M 555,418 L 660,418 L 680,455 L 668,520 L 640,545 L 565,548 L 540,530 L 535,480 L 545,450 Z" />
+            <!-- South Sudan -->
+            <path class="country" d="M 620,425 L 720,418 L 745,460 L 738,520 L 705,550 L 655,555 L 620,538 L 600,500 L 610,465 Z" />
+
+            <!-- ==================== EAST AFRICA ==================== -->
+            <!-- Ethiopia -->
+            <path class="country" d="M 700,318 L 800,305 L 840,355 L 840,440 L 810,480 L 770,500 L 720,490 L 690,460 L 680,410 L 695,365 Z" />
+            <!-- Somalia -->
+            <path class="country" d="M 800,305 L 840,310 L 880,360 L 875,445 L 850,510 L 810,560 L 775,555 L 758,512 L 775,455 L 800,400 Z" />
+
+            <!-- ==================== UGANDA (HIGHLIGHTED) ==================== -->
+            <a href="uganda.html">
+              <path id="uganda" class="country-active" d="M 630,512 L 692,508 L 715,545 L 706,580 L 678,592 L 640,585 L 618,558 L 618,530 Z" />
+              <text class="country-label" x="665" y="553">UGANDA</text>
+              <text class="country-label-sub" x="665" y="565">2 actions</text>
+            </a>
+
+            <!-- Rwanda (tiny) -->
+            <path class="country" d="M 662,580 L 688,578 L 695,600 L 672,605 Z" />
+            <!-- Burundi (tiny) -->
+            <path class="country" d="M 662,600 L 688,598 L 690,620 L 665,622 Z" />
+
+            <!-- ==================== KENYA (HIGHLIGHTED) ==================== -->
+            <a href="kenya.html">
+              <path id="kenya" class="country-active" d="M 715,468 L 800,458 L 830,488 L 830,555 L 800,600 L 762,618 L 718,608 L 692,578 L 692,545 L 712,510 Z" />
+              <text class="country-label" x="765" y="542">KENYA</text>
+              <text class="country-label-sub" x="765" y="555">310 actions</text>
+            </a>
+
+            <!-- Tanzania -->
+            <path class="country" d="M 640,588 L 762,578 L 810,610 L 820,690 L 810,748 L 762,770 L 700,775 L 650,755 L 622,720 L 620,660 Z" />
+            <!-- DR Congo -->
+            <path class="country" d="M 490,545 L 570,538 L 620,555 L 660,555 L 692,575 L 700,660 L 700,760 L 665,788 L 588,808 L 502,790 L 462,750 L 450,680 L 450,615 Z" />
+            <!-- Republic of Congo -->
+            <path class="country" d="M 460,560 L 500,550 L 525,580 L 520,640 L 498,660 L 460,655 L 442,618 Z" />
+            <!-- Gabon -->
+            <path class="country" d="M 470,528 L 510,520 L 535,545 L 530,578 L 500,585 L 468,572 Z" />
+            <!-- Eq. Guinea (tiny) -->
+            <path class="country" d="M 470,510 L 502,508 L 506,528 L 470,530 Z" />
+
+            <!-- ==================== SOUTHERN AFRICA ==================== -->
+            <!-- Angola -->
+            <path class="country" d="M 450,755 L 500,742 L 575,740 L 620,768 L 628,852 L 610,920 L 552,940 L 466,938 L 432,905 L 428,840 Z" />
+            <!-- Zambia -->
+            <path class="country" d="M 560,748 L 680,740 L 720,768 L 735,840 L 725,910 L 668,930 L 596,935 L 552,910 L 545,860 L 550,800 Z" />
+            <!-- Zimbabwe -->
+            <path class="country" d="M 620,900 L 700,888 L 740,908 L 738,970 L 700,995 L 645,998 L 605,972 L 592,930 Z" />
+            <!-- Malawi -->
+            <path class="country" d="M 705,770 L 740,762 L 762,812 L 752,880 L 722,910 L 695,898 L 682,862 Z" />
+            <!-- Mozambique -->
+            <path class="country" d="M 740,762 L 800,748 L 825,798 L 820,880 L 798,950 L 758,988 L 718,995 L 700,955 L 724,912 L 752,868 Z" />
+            <!-- Namibia -->
+            <path class="country" d="M 428,855 L 460,845 L 550,845 L 575,898 L 560,990 L 502,1012 L 438,1008 L 405,968 L 402,918 Z" />
+            <!-- Botswana -->
+            <path class="country" d="M 550,848 L 650,842 L 678,888 L 670,968 L 630,1008 L 558,1005 L 528,968 L 530,918 Z" />
+            <!-- eSwatini (tiny) -->
+            <path class="country" d="M 724,960 L 752,952 L 760,975 L 738,980 Z" />
+            <!-- Lesotho (tiny, inside SA) -->
+            <path class="country" d="M 618,1028 L 656,1018 L 665,1048 L 640,1058 L 614,1042 Z" />
+
+            <!-- ==================== SOUTH AFRICA (HIGHLIGHTED) ==================== -->
+            <a href="south-africa.html">
+              <path id="southafrica" class="country-active" d="M 400,990 L 500,972 L 560,968 L 640,970 L 720,965 L 768,988 L 780,1035 L 755,1080 L 680,1098 L 572,1102 L 455,1095 L 390,1062 L 382,1025 Z" />
+              <text class="country-label" x="582" y="1038">SOUTH AFRICA</text>
+              <text class="country-label-sub" x="582" y="1051">14 actions</text>
+            </a>
+
+            <!-- Madagascar -->
+            <path class="country" d="M 840,730 L 878,718 L 898,768 L 895,868 L 870,940 L 842,958 L 818,928 L 808,858 L 812,790 Z" />
+
+            <!-- Ocean tint (subtle) -->
+          </svg>
+
+          <div class="map-legend">
+            <div class="legend-item"><div class="legend-dot-active"></div> Active jurisdiction</div>
+            <div class="legend-item"><div class="legend-dot-soon"></div> Coming soon</div>
           </div>
         </div>
+
+        <!-- Country info cards -->
+        <div class="map-info">
+          <div class="map-info-title">Active Jurisdictions</div>
+          <a href="kenya.html" class="country-card">
+            <div class="country-card-name"><span class="country-flag">🇰🇪</span> Kenya</div>
+            <div class="country-card-reg">ODPC · Data Protection Act 2019</div>
+            <div class="country-card-stats">
+              <div class="cs-stat"><span class="cs-val">310</span><span class="cs-lbl">Actions</span></div>
+              <div class="cs-stat"><span class="cs-val">2023–26</span><span class="cs-lbl">Range</span></div>
+              <div class="cs-stat"><span class="cs-val">KES</span><span class="cs-lbl">Compensation</span></div>
+            </div>
+          </a>
+          <a href="south-africa.html" class="country-card">
+            <div class="country-card-name"><span class="country-flag">🇿🇦</span> South Africa</div>
+            <div class="country-card-reg">Information Regulator · POPIA / PAIA</div>
+            <div class="country-card-stats">
+              <div class="cs-stat"><span class="cs-val">14</span><span class="cs-lbl">Actions</span></div>
+              <div class="cs-stat"><span class="cs-val">2022–25</span><span class="cs-lbl">Range</span></div>
+              <div class="cs-stat"><span class="cs-val">ZAR 10M+</span><span class="cs-lbl">Fines</span></div>
+            </div>
+          </a>
+          <a href="nigeria.html" class="country-card">
+            <div class="country-card-name"><span class="country-flag">🇳🇬</span> Nigeria</div>
+            <div class="country-card-reg">NDPC / FCCPC · NDPA 2023</div>
+            <div class="country-card-stats">
+              <div class="cs-stat"><span class="cs-val">10</span><span class="cs-lbl">Actions</span></div>
+              <div class="cs-stat"><span class="cs-val">2021–26</span><span class="cs-lbl">Range</span></div>
+              <div class="cs-stat"><span class="cs-val">$254M+</span><span class="cs-lbl">Penalties</span></div>
+            </div>
+          </a>
+          <a href="uganda.html" class="country-card">
+            <div class="country-card-name"><span class="country-flag">🇺🇬</span> Uganda</div>
+            <div class="country-card-reg">PDPO · DPPA 2019</div>
+            <div class="country-card-stats">
+              <div class="cs-stat"><span class="cs-val">2</span><span class="cs-lbl">Actions</span></div>
+              <div class="cs-stat"><span class="cs-val">2025</span><span class="cs-lbl">Range</span></div>
+              <div class="cs-stat"><span class="cs-val">Orders</span><span class="cs-lbl">Remedy</span></div>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="controls">
-      <div class="search-wrap">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="search" id="kenya-search" placeholder="Search company, violation type, case number…" autocomplete="off" />
+  <!-- CHARTS -->
+  <section class="charts-section">
+    <div class="section-header">
+      <div class="section-title">Comparative Analytics</div>
+      <div class="section-desc">Cross-jurisdiction analysis of enforcement trends, violation types, and penalty data.</div>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">Enforcement Actions by Jurisdiction</div>
+        <div class="chart-subtitle">Total publicly documented enforcement actions per regulator</div>
+        <div class="chart-wrap"><canvas id="chart-actions"></canvas></div>
       </div>
-      <select id="kenya-filter-year">
-        <option value="">All years</option>
-        <option value="2023">2023</option>
-        <option value="2024">2024</option>
-        <option value="2025">2025</option>
-        <option value="2026">2026</option>
-      </select>
-      <select id="kenya-filter-sector"><option value="">All sectors</option></select>
-      <select id="kenya-filter-violation"><option value="">All violation types</option></select>
-      <select id="kenya-filter-outcome">
-        <option value="">All outcomes</option>
-        <option value="Upheld">Upheld</option>
-        <option value="Dismissed">Dismissed</option>
-        <option value="Partially Upheld">Partially Upheld</option>
-      </select>
-      <div class="controls-right">
-        <button class="clear-btn" id="kenya-clear-btn" onclick="kenyaClearFilters()">✕ Clear</button>
-        <span class="results-count"><span id="kenya-count">0</span> results</span>
+      <div class="chart-card">
+        <div class="chart-title">Violation Types Distribution</div>
+        <div class="chart-subtitle">Breakdown across all four jurisdictions</div>
+        <div class="chart-wrap"><canvas id="chart-violations"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Penalties by Jurisdiction</div>
+        <div class="chart-subtitle">Approximate USD equivalent (where publicly available)</div>
+        <div class="chart-wrap"><canvas id="chart-penalties"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Enforcement Activity by Year</div>
+        <div class="chart-subtitle">Actions per jurisdiction 2021–2026</div>
+        <div class="chart-wrap"><canvas id="chart-timeline"></canvas></div>
       </div>
     </div>
+  </section>
 
-    <div class="table-wrap">
-      <div class="page-disclaimer">
-        <span>ⓘ</span>
-        <span>All compensation figures are in Kenyan Shillings (KES) as ordered by the ODPC. Refer to the linked PDF for authoritative figures. Click any row to expand the case summary.</span>
-      </div>
-      <div id="kenya-loading" class="loading-state">Loading Kenya determinations<span class="loading-dot">…</span></div>
-      <table id="kenya-table" style="display:none">
-        <thead>
-          <tr>
-            <th data-col="case_number">Case No <span class="sort-icon">↕</span></th>
-            <th data-col="date_determined" class="sorted">Date <span class="sort-icon">↓</span></th>
-            <th data-col="respondent">Respondent <span class="sort-icon">↕</span></th>
-            <th data-col="sector">Sector <span class="sort-icon">↕</span></th>
-            <th class="no-sort">Violation</th>
-            <th data-col="outcome">Outcome <span class="sort-icon">↕</span></th>
-            <th data-col="compensation_kes">Compensation <span class="sort-icon">↕</span></th>
-            <th class="no-sort">PDF</th>
-          </tr>
-        </thead>
-        <tbody id="kenya-tbody"></tbody>
-      </table>
-      <div id="kenya-empty" class="empty-state" style="display:none">
-        <h3>No results found</h3>
-        <p>Try adjusting your search or clearing the filters.</p>
-      </div>
-      <div class="pagination-wrap" id="kenya-pagination-wrap" style="display:none">
-        <div class="pagination-info" id="kenya-pagination-info"></div>
-        <div class="pagination-controls" id="kenya-pagination-controls"></div>
-      </div>
-    </div>
-
-    <div class="cta-banner">
-      <div>
-        <h3>Facing an ODPC complaint or reviewing your data protection risk?</h3>
-        <p>Law Lab Africa advises fintechs, DPOs, and compliance teams across Kenya and East Africa. Get the <a href="https://www.lawlab.africa/#newsletter">Data Protection Digest</a> -- our bi-weekly roundup of ODPC enforcement and African data protection developments.</p>
-      </div>
-      <a href="https://www.lawlab.africa/contact" class="btn-cta-lg">Talk to us →</a>
-    </div>
-
+  <div class="disclaimer">
+    <strong>Note:</strong> This database reflects publicly available enforcement records compiled by Law Lab Africa as of March 2026. It is not exhaustive and does not constitute legal advice. Kenya data sourced from ODPC published determinations. South Africa data from Information Regulator public notices and legal press. Nigeria data from NDPC, FCCPC, and NITDA public records. Uganda data from PDPO decisions and legal analytics. <strong>Not legal advice.</strong>
   </div>
-</div>
 
-<!-- ======================== SOUTH AFRICA TAB ======================== -->
-<div class="tab-panel" id="panel-sa">
-  <div class="panel-inner">
+</main>
 
-    <div class="juris-header">
-      <div class="juris-grid">
-        <div class="juris-card">
-          <div class="juris-card-label">Regulator</div>
-          <div class="juris-card-value"><strong>Information Regulator (South Africa)</strong></div>
-        </div>
-        <div class="juris-card">
-          <div class="juris-card-label">Laws Enforced</div>
-          <div class="juris-card-value">Protection of Personal Information Act (POPIA) · Promotion of Access to Information Act (PAIA)</div>
-        </div>
-        <div class="juris-card">
-          <div class="juris-card-label">Enforcement Powers</div>
-          <div class="juris-card-value">
-            <span class="power-yes">✓ Enforcement notices</span> ·
-            <span class="power-yes">✓ Admin fines (up to ZAR 10M)</span> ·
-            <span class="power-yes">✓ Infringement notices</span> ·
-            <span class="power-yes">✓ Criminal prosecution referral</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="controls">
-      <div class="search-wrap">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="search" id="sa-search" placeholder="Search respondent, violation, sector…" autocomplete="off" />
-      </div>
-      <select id="sa-filter-law">
-        <option value="">POPIA + PAIA</option>
-        <option value="POPIA">POPIA only</option>
-        <option value="PAIA">PAIA only</option>
-      </select>
-      <select id="sa-filter-outcome">
-        <option value="">All outcomes</option>
-        <option value="fine">Fine</option>
-        <option value="order">Enforcement notice / Order</option>
-        <option value="investigation">Investigation / Referred</option>
-      </select>
-      <div class="controls-right">
-        <button class="clear-btn" id="sa-clear-btn" onclick="saEnfClearFilters()">✕ Clear</button>
-        <span class="results-count"><span id="sa-count">14</span> results</span>
-      </div>
-    </div>
-
-    <div class="table-wrap">
-      <table id="sa-table">
-        <thead>
-          <tr>
-            <th class="no-sort">Date</th>
-            <th class="no-sort">Respondent</th>
-            <th class="no-sort">Sector</th>
-            <th class="no-sort">Violation</th>
-            <th class="no-sort">Outcome</th>
-            <th class="no-sort">Penalty (ZAR)</th>
-          </tr>
-        </thead>
-        <tbody id="sa-tbody"></tbody>
-      </table>
-      <div id="sa-empty" class="empty-state" style="display:none">
-        <h3>No results found</h3>
-        <p>Try adjusting your search or clearing the filters.</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ======================== NIGERIA TAB ======================== -->
-<div class="tab-panel" id="panel-ng">
-  <div class="panel-inner">
-
-    <div class="juris-header">
-      <div class="juris-grid">
-        <div class="juris-card">
-          <div class="juris-card-label">Primary Regulator</div>
-          <div class="juris-card-value"><strong>Nigeria Data Protection Commission (NDPC)</strong> · Also: FCCPC (consumer data), NITDA (legacy NDPR 2019)</div>
-        </div>
-        <div class="juris-card">
-          <div class="juris-card-label">Law Enforced</div>
-          <div class="juris-card-value">Nigeria Data Protection Act 2023 (NDPA) · NDPR 2019 (legacy) · Federal Competition & Consumer Protection Act (FCCPC)</div>
-        </div>
-        <div class="juris-card">
-          <div class="juris-card-label">Enforcement Powers</div>
-          <div class="juris-card-value">
-            <span class="power-yes">✓ Admin fines (up to 2% of annual turnover)</span> ·
-            <span class="power-yes">✓ Corrective orders</span> ·
-            <span class="power-yes">✓ Criminal prosecution</span> ·
-            <span class="power-yes">✓ Licence revocation</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="controls">
-      <div class="search-wrap">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="search" id="ng-search" placeholder="Search respondent, violation, sector…" autocomplete="off" />
-      </div>
-      <select id="ng-filter-regulator">
-        <option value="">All regulators</option>
-        <option value="NDPC">NDPC</option>
-        <option value="FCCPC">FCCPC</option>
-        <option value="NITDA">NITDA (legacy)</option>
-      </select>
-      <select id="ng-filter-outcome">
-        <option value="">All outcomes</option>
-        <option value="fine">Fine</option>
-        <option value="investigation">Investigation</option>
-        <option value="order">Settlement / Order</option>
-      </select>
-      <div class="controls-right">
-        <button class="clear-btn" id="ng-clear-btn" onclick="ngEnfClearFilters()">✕ Clear</button>
-        <span class="results-count"><span id="ng-count">10</span> results</span>
-      </div>
-    </div>
-
-    <div class="table-wrap">
-      <table id="ng-table">
-        <thead>
-          <tr>
-            <th class="no-sort">Date</th>
-            <th class="no-sort">Respondent</th>
-            <th class="no-sort">Sector</th>
-            <th class="no-sort">Violation</th>
-            <th class="no-sort">Outcome</th>
-            <th class="no-sort">Penalty</th>
-          </tr>
-        </thead>
-        <tbody id="ng-tbody"></tbody>
-      </table>
-      <div id="ng-empty" class="empty-state" style="display:none">
-        <h3>No results found</h3>
-        <p>Try adjusting your search or clearing the filters.</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ======================== UGANDA TAB ======================== -->
-<div class="tab-panel" id="panel-ug">
-  <div class="panel-inner">
-
-    <div class="juris-header">
-      <div class="juris-grid">
-        <div class="juris-card">
-          <div class="juris-card-label">Regulator</div>
-          <div class="juris-card-value"><strong>Personal Data Protection Office (PDPO)</strong></div>
-        </div>
-        <div class="juris-card">
-          <div class="juris-card-label">Law Enforced</div>
-          <div class="juris-card-value">Data Protection and Privacy Act, 2019 (DPPA) · Data Protection and Privacy Regulations, 2021</div>
-        </div>
-        <div class="juris-card">
-          <div class="juris-card-label">Enforcement Powers</div>
-          <div class="juris-card-value">
-            <span class="power-limited">⚠ Declaratory orders only</span> (no admin fine powers) ·
-            <span class="power-yes">✓ Criminal prosecution referral</span> ·
-            <span class="power-no">✗ No administrative fines</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="juris-note">
-      <span class="juris-note-icon">ⓘ</span>
-      <span>
-        Uganda's PDPO issues declaratory orders only -- no administrative fine powers. Criminal prosecution is the secondary enforcement mechanism. Dataset reflects publicly available decisions; enforcement records are limited.
-      </span>
-    </div>
-
-    <div class="table-wrap">
-      <table id="ug-table">
-        <thead>
-          <tr>
-            <th class="no-sort">Date</th>
-            <th class="no-sort">Respondent</th>
-            <th class="no-sort">Sector</th>
-            <th class="no-sort">Violation</th>
-            <th class="no-sort">Outcome</th>
-            <th class="no-sort">Penalty</th>
-          </tr>
-        </thead>
-        <tbody id="ug-tbody"></tbody>
-      </table>
-    </div>
-
-  </div>
-</div>
+<!-- Tooltip -->
+<div class="map-tooltip" id="map-tooltip"></div>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-text">
-      African Data Protection Enforcement Dashboard | Law Lab Africa | research.lawlab.africa | Data last updated: March 2026 | Not legal advice
-    </div>
-    <div class="footer-bottom">
-      <p>Data sourced from public enforcement records. Compiled by <a href="https://www.lawlab.africa">Law Lab Africa</a>.</p>
-      <p><a href="https://www.lawlab.africa/contact">Suggest a correction or missing case</a></p>
-    </div>
+    <div>African Data Protection Enforcement Dashboard | <a href="https://www.lawlab.africa">Law Lab Africa</a> | <a href="https://research.lawlab.africa">research.lawlab.africa</a></div>
+    <div>Data updated March 2026 &nbsp;·&nbsp; Not legal advice &nbsp;·&nbsp; <a href="https://www.lawlab.africa/contact">Suggest a correction</a></div>
   </div>
 </footer>
 
 <script>
 // ============================================================
-// EMBEDDED DATA - South Africa (14 records)
+// TOOLTIP FOR NON-HIGHLIGHTED COUNTRIES
 // ============================================================
-const SA_DATA = [
-  {
-    id: "sa-001", date: "2024-02-27",
-    respondent: "FT Rams Consulting",
-    sector: "Education / Consulting", law: "POPIA",
-    violation: "Unlawful direct marketing; unsolicited emails; failure to respect opt-out requests",
-    outcome: "Enforcement notice", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "First enforcement notice issued by the Information Regulator for direct marketing violations. Company ignored multiple opt-out requests and continued sending unsolicited marketing messages.",
-    source: "https://www.cliffedekkerhofmeyr.com/en/news/publications/2024/Sector/Technology/technology-and-communications-alert-6-march-from-spam-to-slam-first-enforcement-notice-issued-by-the-information-regulator"
-  },
-  {
-    id: "sa-002", date: "2023-07-03",
-    respondent: "Dept of Justice & Constitutional Dev.",
-    sector: "Government", law: "POPIA",
-    violation: "Inadequate security measures; failure to notify data subjects of breach; non-compliance with enforcement notice",
-    outcome: "Enforcement notice + Admin fine", outcome_type: "fine",
-    penalty_str: "ZAR 5,000,000",
-    summary: "First administrative fine under POPIA following security breach. Department failed to implement adequate security safeguards and notify affected data subjects of the compromise.",
-    source: "https://www.polity.org.za/article/infringement-notice-and-r5-million-administrative-fine-issued-to-the-department-of-justice-and-constitutional-development-for-contravention-of-popia-2023-07-04"
-  },
-  {
-    id: "sa-003", date: "2023-04-06",
-    respondent: "South African Police Service (SAPS)",
-    sector: "Government", law: "POPIA",
-    violation: "Unlawful processing; failure to notify data subjects of security compromise",
-    outcome: "Enforcement notice", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "Enforcement notice required SAPS to notify data subjects of security breach, publish an apology, investigate responsible members, and provide POPIA training.",
-    source: "https://dataprotection.africa/south-africa-information-regulator-issues-decision-about-police-breach-of-popia/"
-  },
-  {
-    id: "sa-004", date: "2024-03-26",
-    respondent: "TransUnion (Pty) Ltd",
-    sector: "Fintech / Credit reporting", law: "POPIA",
-    violation: "Inadequate security measures following 2022 data breach; failure to implement remedial measures",
-    outcome: "Enforcement notice", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "Major credit bureau ordered to implement comprehensive remedial measures following 2022 data breach affecting millions of consumers. Given until May 26, 2024 to submit proof of compliance.",
-    source: "https://www.itweb.co.za/article/inforeg-slaps-transunion-with-enforcement-notice/wbrpO7g2K5nvDLZn"
-  },
-  {
-    id: "sa-005", date: "2024-09-11",
-    respondent: "Electoral Commission of SA (IEC)",
-    sector: "Government", law: "POPIA",
-    violation: "Inadequate access controls; unauthorised release of candidate personal information",
-    outcome: "Enforcement notice", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "Enforcement notice following unauthorised release of ANC and MK party candidate lists ahead of 2024 elections. IEC lacked adequate access control measures to protect confidentiality of personal information.",
-    source: "https://www.timeslive.co.za/news/south-africa/2024-09-11-regulator-issued-enforcement-notices-to-iec-whatsapp-for-breach-of-popia/"
-  },
-  {
-    id: "sa-006", date: "2024-09-10",
-    respondent: "WhatsApp LLC (Meta Platforms)",
-    sector: "Technology / Social media", law: "POPIA / PAIA",
-    violation: "Unlawful processing; inadequate consent; failure to specify purpose; inadequate transparency; inadequate security; PAIA manual inaccessible",
-    outcome: "Enforcement notice (settled Nov 2025)", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "Regulator identified differential privacy protections -- stronger GDPR standards for EU users than POPIA protections for SA users. Ordered to amend privacy policy and submit Personal Information Impact Assessment. Settlement reached November 2025.",
-    source: "https://www.michalsons.com/blog/whatsapp-enforcement-notice-popia-breaches/77829"
-  },
-  {
-    id: "sa-007", date: "2024-04",
-    respondent: "Blouberg Municipality",
-    sector: "Government", law: "POPIA",
-    violation: "Unlawful further processing of employee financial data; purpose limitation failure",
-    outcome: "Enforcement notice", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "Municipality issued enforcement notice for grossly violating privacy rights of a former employee by unlawfully processing personal financial disclosure information for purposes beyond original collection.",
-    source: "https://www.itweb.co.za/article/inforeg-exposes-popia-violators-as-data-breaches-mount/kLgB17ezby5M59N4"
-  },
-  {
-    id: "sa-008", date: "2024-09",
-    respondent: "Lancet Laboratories",
-    sector: "Health", law: "POPIA",
-    violation: "Multiple security compromises; inadequate security measures; failure to notify data subjects",
-    outcome: "Enforcement notice + Admin fine", outcome_type: "fine",
-    penalty_str: "Admin fine (amount undisclosed)",
-    summary: "Medical laboratory issued enforcement notice following multiple data breaches. Administrative fine imposed after failure to comply with enforcement notice. Ordered to urgently implement adequate security safeguards.",
-    source: "https://mybroadband.co.za/news/security/619073-large-medical-lab-in-south-africa-suffers-multiple-data-breaches.html"
-  },
-  {
-    id: "sa-009", date: "2024-12-23",
-    respondent: "Dept of Basic Education",
-    sector: "Government / Education", law: "POPIA",
-    violation: "Unlawful processing via public publication of matric results; consent failure; purpose limitation breach",
-    outcome: "Enforcement notice + Admin fine", outcome_type: "fine",
-    penalty_str: "ZAR 5,000,000",
-    summary: "Department ordered to cease publishing matric results in newspapers and media. Examination numbers make learners identifiable contrary to POPIA. Department challenged enforcement notice in court.",
-    source: "https://www.itweb.co.za/article/education-dept-issued-r5m-fine-for-popia-violation/Pero3qZ3axdvQb6m"
-  },
-  {
-    id: "sa-010", date: "2025-11-13",
-    respondent: "OUTA (Org Undoing Tax Abuse)",
-    sector: "NGO / Civil society", law: "PAIA",
-    violation: "PAIA non-compliance; failure to release RTMC fee composition records",
-    outcome: "Enforcement notice", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "Enforcement notice directing RTMC to release records of how January 2022 regulation fees were composed following OUTA access request. Matter subsequently referred to SAPS for non-compliance.",
-    source: "https://www.cliffedekkerhofmeyr.com/en/news/publications/2025/Practice/Corporate-Commercial/combined-corporate-and-commercial-and-technology-and-communications-alert-3-december-Recent-privacy-updates-in-South-Africa-and-abroad-"
-  },
-  {
-    id: "sa-011", date: "2025-11-13",
-    respondent: "State Security Agency (SSA)",
-    sector: "Government", law: "PAIA",
-    violation: "PAIA non-compliance; failure to disclose requested records",
-    outcome: "Enforcement notice (challenged in court)", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "Enforcement notice directing SSA to disclose requested records. SSA subsequently challenged the Regulator's decision through judicial review proceedings.",
-    source: "https://www.cliffedekkerhofmeyr.com/en/news/publications/2025/Practice/Corporate-Commercial/combined-corporate-and-commercial-and-technology-and-communications-alert-3-december-Recent-privacy-updates-in-South-Africa-and-abroad-"
-  },
-  {
-    id: "sa-012", date: "2025-11-13",
-    respondent: "Kudung CPA",
-    sector: "Professional services / Accounting", law: "PAIA",
-    violation: "PAIA non-compliance",
-    outcome: "Enforcement notice", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "Enforcement notice issued to professional services firm for failure to comply with the Promotion of Access to Information Act requirements.",
-    source: "https://www.cliffedekkerhofmeyr.com/en/news/publications/2025/Practice/Corporate-Commercial/combined-corporate-and-commercial-and-technology-and-communications-alert-3-december-Recent-privacy-updates-in-South-Africa-and-abroad-"
-  },
-  {
-    id: "sa-013", date: "2025-11-13",
-    respondent: "Oceana Empowerment Trust",
-    sector: "NGO / Civil society", law: "PAIA",
-    violation: "PAIA non-compliance; failure to release information relating to former employee dispute",
-    outcome: "Enforcement notice", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "Enforcement notice directing Trust to release information relating to a dispute with three former employees.",
-    source: "https://www.moonstone.co.za/information-regulator-turns-to-saps-over-paia-non-compliance/"
-  },
-  {
-    id: "sa-014", date: "2022-11",
-    respondent: "National Dept of Health",
-    sector: "Government / Health", law: "PAIA",
-    violation: "PAIA non-compliance; failure to disclose COVID-19 data collection information",
-    outcome: "Referred to enforcement committee", outcome_type: "investigation",
-    penalty_str: "\u2014",
-    summary: "Referred to enforcement committee for refusing to provide information about COVID-19 contact tracing and health data collected during the pandemic. Failed to respond within prescribed timeframe.",
-    source: "https://www.michalsons.com/blog/regulator-refers-the-department-of-health-to-enforcement-committee/64137"
-  }
-];
+const tooltip = document.getElementById('map-tooltip');
+const nonActive = document.querySelectorAll('.country');
 
-// ============================================================
-// EMBEDDED DATA - Nigeria (10 records)
-// ============================================================
-const NG_DATA = [
-  {
-    id: "ng-001", date: "2025-07-06",
-    respondent: "MultiChoice Nigeria Ltd",
-    sector: "Broadcast media / Pay-TV", regulator: "NDPC",
-    violation: "Unlawful processing; cross-border data transfer without consent; unauthorized access to sensitive data",
-    outcome: "Administrative fine", outcome_type: "fine",
-    penalty_str: "NGN 766,242,500",
-    summary: "NDPC fined Africa's largest pay-TV operator for intrusive data processing, unauthorized cross-border transfers, and failure to obtain subscriber consent. Investigation began Q2 2024 after allegations of surveillance and data misuse.",
-    source: "https://punchng.com/fg-fines-multichoice-n766m-over-privacy-breaches/"
-  },
-  {
-    id: "ng-002", date: "2025-02-18",
-    respondent: "Meta Platforms Inc.",
-    sector: "Social media / Digital advertising", regulator: "NDPC",
-    violation: "Consent failure; unlawful processing (behavioral advertising on Facebook and Instagram)",
-    outcome: "Admin fine + Settled (Oct 2025)", outcome_type: "fine",
-    penalty_str: "USD $32,800,000",
-    summary: "NDPC fined Meta for violating Nigerian users' privacy through behavioral advertising. Disputed via judicial review but settled October 2025 with corrective compliance orders.",
-    source: "https://businessday.ng/news/article/meta-ndpc-resolve-32-8m-privacy-dispute-out-of-court/"
-  },
-  {
-    id: "ng-003", date: "2024-07-19",
-    respondent: "Meta Platforms / WhatsApp LLC",
-    sector: "Messaging / Social media", regulator: "FCCPC",
-    violation: "Discriminatory data collection practices; unlawful tying of services; consumer protection violations",
-    outcome: "Admin fine (upheld on appeal Apr 2025)", outcome_type: "fine",
-    penalty_str: "USD $220,000,000 + USD $35,000 costs",
-    summary: "FCCPC fined Meta/WhatsApp $220M for unlawful data collection and service tying following 38-month investigation. Violations Tribunal upheld fine on appeal April 2025. Compliance required within 60 days.",
-    source: "https://fccpc.gov.ng/violations-tribunal-upholds-fccpcs-220m-fine-against-meta-whatsapp/"
-  },
-  {
-    id: "ng-004", date: "2024-08-21",
-    respondent: "Fidelity Bank Plc",
-    sector: "Financial services / Banking", regulator: "NDPC",
-    violation: "Unlawful processing; data collection without lawful basis or consent",
-    outcome: "Admin fine (disputed in court)", outcome_type: "fine",
-    penalty_str: "NGN 555,800,000",
-    summary: "NDPC fined Fidelity Bank for illegal personal data collection linked to account opening. Investigation began under legacy NDPR framework in 2019, continued under NDPA 2023. Bank is contesting the fine in court.",
-    source: "https://www.reuters.com/business/finance/nigerian-data-agency-fines-fidelity-bank-breaches-2024-08-22/"
-  },
-  {
-    id: "ng-005", date: "2025-03-20",
-    respondent: "TikTok Inc.",
-    sector: "Social media / Content platform", regulator: "NDPC",
-    violation: "Suspected unlawful processing; consent failure; data minimization breaches; opacity in data handling",
-    outcome: "Investigation (ongoing)", outcome_type: "investigation",
-    penalty_str: "Pending",
-    summary: "NDPC launched formal investigation into TikTok's data processing practices concerning online surveillance, transparency, and data minimization under NDPA 2023. Company stated willingness to cooperate.",
-    source: "https://techpoint.africa/news/ndpc-probes-tiktok-truecaller-for-alleged-data-privacy-violations/"
-  },
-  {
-    id: "ng-006", date: "2025-03-20",
-    respondent: "Truecaller AB",
-    sector: "Mobile applications / Communication", regulator: "NDPC",
-    violation: "Suspected unlawful processing; privacy rights breach (phone number database)",
-    outcome: "Investigation (ongoing)", outcome_type: "investigation",
-    penalty_str: "Pending",
-    summary: "NDPC investigation into Truecaller's NDPA 2023 compliance. Follows a prior NITDA investigation in September 2019 into the same company for related privacy concerns.",
-    source: "https://techpoint.africa/news/ndpc-probes-tiktok-truecaller-for-alleged-data-privacy-violations/"
-  },
-  {
-    id: "ng-007", date: "2026-02-16",
-    respondent: "Temu (Whaleco Technology Ltd)",
-    sector: "E-commerce / Mobile shopping", regulator: "NDPC",
-    violation: "Suspected unlawful processing; undisclosed data collection; cross-border data transfer; data minimization",
-    outcome: "Investigation (ongoing)", outcome_type: "investigation",
-    penalty_str: "Pending",
-    summary: "NDPC investigating Temu's data processing affecting approximately 12.7 million Nigerian users. Concerns include online tracking, lack of transparency, and data minimization violations. Platform confirmed receipt of inquiry.",
-    source: "https://techpoint.africa/news/ndpc-launches-investigation-into-temu/"
-  },
-  {
-    id: "ng-008", date: "2024-06-11",
-    respondent: "Seven companies (names undisclosed)",
-    sector: "Banking / Mixed", regulator: "NDPC",
-    violation: "Data breach; unauthorized processing (specific violations not individually itemized)",
-    outcome: "Settlement (aggregate)", outcome_type: "order",
-    penalty_str: "NGN 400,000,000 (aggregate)",
-    summary: "NDPC announced settlement of enforcement actions against seven companies (four banks, three others). Aggregate remedial fees of NGN 400M received. Individual company names and specific violations not publicly disclosed.",
-    source: "https://techpoint.africa/news/ndpc-gets-fines-companies-data-breaches/"
-  },
-  {
-    id: "ng-009", date: "2025-08-25",
-    respondent: "1,369 organizations (sector-wide)",
-    sector: "Financial services / Insurance / Gaming / Pension", regulator: "NDPC",
-    violation: "Registration failure; failure to file compliance audit returns; missing DPO designation; non-compliance with NDPA requirements",
-    outcome: "Compliance notice (enforcement pending)", outcome_type: "investigation",
-    penalty_str: "Pending",
-    summary: "NDPC issued blanket 21-day compliance notice to 1,369 organizations across banking, insurance, pension, and gaming sectors. Non-compliance triggers enforcement orders, administrative fines, and criminal prosecution.",
-    source: "https://www.africanlawbusiness.com/news/nigeria-launches-widespread-probe-into-data-protection-violations/"
-  },
-  {
-    id: "ng-010", date: "2021-08-19",
-    respondent: "SokoLoan (Soko Lending Co. Ltd)",
-    sector: "FinTech / Digital lending", regulator: "NITDA",
-    violation: "Privacy invasion; unauthorized data access; customer data misuse",
-    outcome: "Admin fine + operational restrictions", outcome_type: "fine",
-    penalty_str: "NGN 10,000,000",
-    summary: "NITDA imposed fine on digital lending platform for privacy invasion and unauthorized customer data access under NDPR 2019. Landmark NDPR-era case. Platform subsequently shut down by government for systematic violations.",
-    source: "https://nitda.gov.ng/nitda-sanctions-soko-loan-for-privacy-invasion/"
-  }
-];
-
-// ============================================================
-// EMBEDDED DATA - Uganda (2 records)
-// ============================================================
-const UG_DATA = [
-  {
-    id: "ug-001", date: "2025-07-18",
-    respondent: "Google LLC",
-    ref: "Complaint No. 08/11/24/6683",
-    sector: "Technology / Internet services",
-    violation: "Non-registration with PDPO; unlawful cross-border data transfer without safeguard compliance",
-    outcome: "Declaratory order", outcome_type: "order",
-    penalty_str: "\u2014",
-    summary: "PDPO found Google in breach for collecting and processing Ugandan users' personal data without PDPO registration and transferring data across borders without demonstrating equivalent data protection safeguards. Decision affirmed extraterritorial application of the DPPA to foreign entities. Complainants directed to pursue court compensation claims.",
-    source: "https://cipesa.org/2025/07/ugandan-regulator-finds-google-in-breach-of-countrys-data-protection-law-orders-local-registration/"
-  },
-  {
-    id: "ug-002", date: "2025-07-10",
-    respondent: "Ronald Mugulusi / Nano Loans Microfinance Ltd",
-    sector: "Financial services / Digital lending",
-    violation: "Non-registration with PDPO; unlawful processing; data misuse for debt recovery intimidation via TikTok",
-    outcome: "Criminal conviction", outcome_type: "criminal",
-    penalty_str: "UGX 300,000 (director fine)",
-    summary: "First-ever criminal conviction under Uganda's DPPA. Director convicted for operating unregistered and misusing borrower data by recording and disseminating video threats of public shaming via TikTok to enforce loan repayment. Plea bargain on non-registration count; court-sanctioned reconciliation with compensation on misuse count.",
-    source: "https://lexafrica.com/2025/09/uganda-data-protection-conviction-digital-privacy-enforcement-africa/"
-  }
-];
-
-// ============================================================
-// UTILITY FUNCTIONS
-// ============================================================
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-function formatDate(s) {
-  if (!s) return '\u2014';
-  const p = s.split('-');
-  if (p.length >= 2) {
-    const m = parseInt(p[1], 10);
-    return `${MONTHS[m-1] || ''} ${p[0]}`;
-  }
-  return s;
-}
-
-function formatKES(n) {
-  return n ? 'KES\u00a0' + Number(n).toLocaleString('en-KE') : null;
-}
-
-function kenyaOutcomeClass(o) {
-  if (!o || o.includes('[')) return 'outcome-unknown';
-  const l = o.toLowerCase();
-  if (l.includes('partially') || l.includes('settled')) return 'outcome-partial';
-  if (l.includes('upheld')) return 'outcome-upheld';
-  if (l.includes('dismiss')) return 'outcome-dismissed';
-  return 'outcome-unknown';
-}
-
-function enfOutcomeClass(type) {
-  switch (type) {
-    case 'fine': return 'outcome-fine';
-    case 'investigation': return 'outcome-investigation';
-    case 'order': return 'outcome-order';
-    case 'criminal': return 'outcome-criminal';
-    default: return 'outcome-unknown';
-  }
-}
-
-function needsVerify(v) {
-  return !v || (typeof v === 'string' && (v.includes('[VERIFY') || v.trim() === '' || v === 'See PDF'));
-}
-
-// ============================================================
-// TAB SWITCHING
-// ============================================================
-function switchTab(tabId) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-  document.getElementById('panel-' + tabId).classList.add('active');
-  const btn = document.querySelector(`.tab-btn[onclick="switchTab('${tabId}')"]`);
-  if (btn) { btn.classList.add('active'); btn.setAttribute('aria-selected', 'true'); }
-}
-
-// ============================================================
-// KENYA MODULE
-// ============================================================
-let kenyaAll = [], kenyaFiltered = [];
-let kenyaSortCol = 'date_determined', kenyaSortDir = 'desc';
-let kenyaExpandedId = null, kenyaCurrentPage = 1;
-const KENYA_PAGE_SIZE = 40;
-
-function kenyaBuildRow(d) {
-  const isExpanded = kenyaExpandedId === d.id;
-  const violations = Array.isArray(d.violation_type)
-    ? d.violation_type.filter(v => !v.includes('[VERIFY') && v !== 'See PDF').map(v => `<span class="violation-badge">${v}</span>`).join('')
-    : '';
-  const sector = needsVerify(d.sector) ? '<span style="color:var(--text-dim);font-size:12px">\u2014</span>' : `<span class="sector-badge">${d.sector}</span>`;
-  const comp = d.compensation_kes ? `<span class="compensation">${formatKES(d.compensation_kes)}</span>` : `<span class="compensation none">\u2014</span>`;
-  const outcome = needsVerify(d.outcome) ? '<span style="color:var(--text-dim);font-size:12px">\u2014</span>' : `<span class="outcome-badge ${kenyaOutcomeClass(d.outcome)}">${d.outcome}</span>`;
-  const respondent = needsVerify(d.respondent) ? '<span style="color:var(--text-dim);font-size:13px">\u2014</span>' : `<span class="respondent-name">${d.respondent}</span>`;
-  const tags = [];
-  if (d.enforcement_notice) tags.push('<span class="tag-enforcement">Enforcement Notice</span>');
-  if (d.prosecution_recommended) tags.push('<span class="tag-prosecution">Prosecution Rec.</span>');
-  const tagsHtml = tags.length ? `<div class="respondent-tags">${tags.join('')}</div>` : '';
-  const pdfLink = d.pdf_url && !d.pdf_url.includes('[VERIFY') && d.pdf_url !== 'See PDF'
-    ? `<a class="pdf-link" href="${d.pdf_url}" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>PDF</a>`
-    : '<span style="color:var(--text-dim);font-size:11px">\u2014</span>';
-  const caseLabel = (d.case_number || '').replace('ODPC Complaint No. ', '').replace('ODPC Complaint No.', '').replace('See PDF', '\u2014');
-  const expandedRow = isExpanded && d.violation_summary && !d.violation_summary.includes('[VERIFY') && d.violation_summary !== 'See PDF' ? `
-    <tr class="summary-row"><td colspan="8"><div class="summary-inner">
-      <div class="summary-label">Case summary</div>${d.violation_summary}
-      ${d.prosecution_note ? `<div class="summary-label" style="margin-top:8px;">Prosecution note</div>${d.prosecution_note}` : ''}
-      ${d.compensation_kes ? `<div class="summary-label" style="margin-top:8px;">Compensation awarded</div>${formatKES(d.compensation_kes)}` : ''}
-    </div></td></tr>` : '';
-  return `<tr class="data-row${isExpanded ? ' expanded' : ''}" data-id="${d.id}" onclick="kenyaToggleExpand('${d.id}')">
-    <td><span class="case-num"><span class="expand-icon">&#9654;</span>${caseLabel}</span></td>
-    <td>${formatDate(d.date_determined)}</td>
-    <td>${respondent}${tagsHtml}</td>
-    <td>${sector}</td>
-    <td>${violations || '<span style="color:var(--text-dim);font-size:11px">\u2014</span>'}</td>
-    <td>${outcome}</td>
-    <td>${comp}</td>
-    <td>${pdfLink}</td>
-  </tr>${expandedRow}`;
-}
-
-function kenyaRenderPage() {
-  const tbody = document.getElementById('kenya-tbody');
-  const empty = document.getElementById('kenya-empty');
-  const pw = document.getElementById('kenya-pagination-wrap');
-  if (!kenyaFiltered.length) { tbody.innerHTML = ''; empty.style.display = ''; pw.style.display = 'none'; return; }
-  empty.style.display = 'none';
-  const totalPages = Math.ceil(kenyaFiltered.length / KENYA_PAGE_SIZE);
-  kenyaCurrentPage = Math.min(kenyaCurrentPage, totalPages);
-  const start = (kenyaCurrentPage - 1) * KENYA_PAGE_SIZE;
-  const pageData = kenyaFiltered.slice(start, start + KENYA_PAGE_SIZE);
-  tbody.innerHTML = pageData.map(kenyaBuildRow).join('');
-  const end = Math.min(start + KENYA_PAGE_SIZE, kenyaFiltered.length);
-  document.getElementById('kenya-pagination-info').innerHTML = `Showing <strong>${start+1}&ndash;${end}</strong> of <strong>${kenyaFiltered.length}</strong> determinations`;
-  kenyaRenderPagination(totalPages);
-  pw.style.display = totalPages > 1 ? 'flex' : 'none';
-}
-
-function kenyaRenderPagination(totalPages) {
-  const c = document.getElementById('kenya-pagination-controls');
-  const parts = [];
-  parts.push(`<button class="page-btn" ${kenyaCurrentPage===1?'disabled':''} onclick="kenyaGoToPage(${kenyaCurrentPage-1})">&#8592; Prev</button>`);
-  const W = 2;
-  let nums = new Set([1, totalPages]);
-  for (let i = Math.max(1, kenyaCurrentPage - W); i <= Math.min(totalPages, kenyaCurrentPage + W); i++) nums.add(i);
-  nums = [...nums].sort((a, b) => a - b);
-  let prev = null;
-  for (const p of nums) {
-    if (prev !== null && p - prev > 1) parts.push(`<span class="page-ellipsis">&hellip;</span>`);
-    parts.push(`<button class="page-btn${p===kenyaCurrentPage?' active':''}" onclick="kenyaGoToPage(${p})">${p}</button>`);
-    prev = p;
-  }
-  parts.push(`<button class="page-btn" ${kenyaCurrentPage===totalPages?'disabled':''} onclick="kenyaGoToPage(${kenyaCurrentPage+1})">Next &#8594;</button>`);
-  c.innerHTML = parts.join('');
-}
-
-function kenyaGoToPage(n) {
-  kenyaCurrentPage = n; kenyaExpandedId = null; kenyaRenderPage();
-  document.getElementById('kenya-table').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function kenyaToggleExpand(id) {
-  kenyaExpandedId = kenyaExpandedId === id ? null : id; kenyaRenderPage();
-}
-
-function kenyaApplyFilters() {
-  const q = document.getElementById('kenya-search').value.toLowerCase().trim();
-  const year = document.getElementById('kenya-filter-year').value;
-  const sector = document.getElementById('kenya-filter-sector').value;
-  const outcome = document.getElementById('kenya-filter-outcome').value;
-  const violation = document.getElementById('kenya-filter-violation').value;
-  document.getElementById('kenya-clear-btn').classList.toggle('visible', !!(q || year || sector || outcome || violation));
-  kenyaFiltered = kenyaAll.filter(d => {
-    if (year && String(d.year) !== year) return false;
-    if (sector && d.sector !== sector) return false;
-    if (outcome && !d.outcome?.toLowerCase().includes(outcome.toLowerCase())) return false;
-    if (violation && !(d.violation_type || []).some(v => v === violation)) return false;
-    if (q) {
-      const hay = [d.case_number, d.respondent, d.sector, ...(d.violation_type || []), d.outcome, d.violation_summary].join(' ').toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
+nonActive.forEach(el => {
+  el.addEventListener('mouseenter', e => {
+    tooltip.textContent = 'Coming soon';
+    tooltip.classList.add('active');
   });
-  kenyaFiltered = [...kenyaFiltered].sort((a, b) => {
-    if (kenyaSortCol === 'compensation_kes') {
-      const av = a.compensation_kes || 0, bv = b.compensation_kes || 0;
-      return kenyaSortDir === 'asc' ? av - bv : bv - av;
-    }
-    const av = String(a[kenyaSortCol] ?? ''), bv = String(b[kenyaSortCol] ?? '');
-    return kenyaSortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+  el.addEventListener('mousemove', e => {
+    tooltip.style.left = (e.clientX + 14) + 'px';
+    tooltip.style.top = (e.clientY - 28) + 'px';
   });
-  document.getElementById('kenya-count').textContent = kenyaFiltered.length;
-  kenyaCurrentPage = 1; kenyaExpandedId = null; kenyaRenderPage();
-}
-
-function kenyaClearFilters() {
-  ['kenya-search', 'kenya-filter-year', 'kenya-filter-sector', 'kenya-filter-outcome', 'kenya-filter-violation'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el.tagName === 'INPUT') el.value = ''; else el.value = '';
+  el.addEventListener('mouseleave', () => {
+    tooltip.classList.remove('active');
   });
-  document.getElementById('kenya-clear-btn').classList.remove('visible');
-  kenyaApplyFilters();
-}
-
-function kenyaPopulateSectorFilter() {
-  const sectors = [...new Set(kenyaAll.map(d => d.sector).filter(s => s && !needsVerify(s)))].sort();
-  const sel = document.getElementById('kenya-filter-sector');
-  sectors.forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o); });
-}
-
-function kenyaPopulateViolationFilter() {
-  const raw = kenyaAll.flatMap(d => {
-    const vt = d.violation_type;
-    if (!vt) return [];
-    if (Array.isArray(vt)) return vt;
-    if (typeof vt === 'string') return [vt];
-    return [];
-  });
-  const violations = [...new Set(raw.filter(v => v && !v.includes('[VERIFY') && v !== 'See PDF' && v.trim() !== ''))].sort();
-  const sel = document.getElementById('kenya-filter-violation');
-  violations.forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v; sel.appendChild(o); });
-}
-
-// ============================================================
-// ENFORCEMENT TABLE MODULE (SA / NG / UG)
-// ============================================================
-function enfBuildRow(d, jurisdiction) {
-  const isExpanded = enfExpandedId[jurisdiction] === d.id;
-  const refText = d.ref ? `<div style="font-size:10px;color:var(--text-dim);font-family:var(--mono);margin-top:2px;">${d.ref}</div>` : '';
-  const respondentCell = `<span class="respondent-name">${d.respondent}</span>${refText}`;
-  const penaltyClass = d.penalty_str === '\u2014' ? 'no-value' : (d.penalty_str === 'Pending' ? 'pending' : 'has-value');
-  const outcomeClass = enfOutcomeClass(d.outcome_type);
-  const regulatorTag = d.regulator ? `<div class="regulator-tag">${d.regulator}</div>` : '';
-  const lawTag = d.law ? `<div style="display:inline-block;font-size:10px;padding:1px 6px;border-radius:3px;margin-top:3px;font-family:var(--mono);background:rgba(16,185,129,.08);color:#6ee7b7;border:1px solid rgba(16,185,129,.15);">${d.law}</div>` : '';
-  const expandedRow = isExpanded ? `
-    <tr class="summary-row"><td colspan="6"><div class="summary-inner">
-      <div class="summary-label">Summary</div>${d.summary}
-      <br><a class="source-link" href="${d.source}" target="_blank" rel="noopener"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Source</a>
-    </div></td></tr>` : '';
-  return `<tr class="data-row${isExpanded ? ' expanded' : ''}" data-id="${d.id}" onclick="enfToggleExpand('${jurisdiction}','${d.id}')">
-    <td>${formatDate(d.date)}</td>
-    <td>${respondentCell}${regulatorTag}${lawTag}</td>
-    <td><span class="sector-badge">${d.sector}</span></td>
-    <td><span style="font-size:12.5px;color:var(--text-muted);line-height:1.5;display:block;"><span class="expand-icon">&#9654;</span>${d.violation}</span></td>
-    <td><span class="outcome-badge ${outcomeClass}">${d.outcome}</span></td>
-    <td><span class="penalty-value ${penaltyClass}">${d.penalty_str}</span></td>
-  </tr>${expandedRow}`;
-}
-
-const enfExpandedId = { sa: null, ng: null, ug: null };
-
-function enfToggleExpand(jurisdiction, id) {
-  enfExpandedId[jurisdiction] = enfExpandedId[jurisdiction] === id ? null : id;
-  if (jurisdiction === 'sa') saRenderTable(saCurrentData);
-  if (jurisdiction === 'ng') ngRenderTable(ngCurrentData);
-  if (jurisdiction === 'ug') ugRenderTable(UG_DATA);
-}
-
-function enfRenderTable(tbodyId, emptyId, countId, data, jurisdiction) {
-  const tbody = document.getElementById(tbodyId);
-  const empty = emptyId ? document.getElementById(emptyId) : null;
-  if (!data.length) {
-    tbody.innerHTML = '';
-    if (empty) empty.style.display = '';
-    if (countId) document.getElementById(countId).textContent = '0';
-    return;
-  }
-  if (empty) empty.style.display = 'none';
-  tbody.innerHTML = data.map(d => enfBuildRow(d, jurisdiction)).join('');
-  if (countId) document.getElementById(countId).textContent = data.length;
-}
-
-// SA filtering
-let saCurrentData = [...SA_DATA];
-
-function saApplyFilters() {
-  const q = document.getElementById('sa-search').value.toLowerCase().trim();
-  const lawFilter = document.getElementById('sa-filter-law').value;
-  const outcomeFilter = document.getElementById('sa-filter-outcome').value;
-  document.getElementById('sa-clear-btn').classList.toggle('visible', !!(q || lawFilter || outcomeFilter));
-  saCurrentData = SA_DATA.filter(d => {
-    if (lawFilter && !d.law.includes(lawFilter)) return false;
-    if (outcomeFilter && d.outcome_type !== outcomeFilter) return false;
-    if (q) {
-      const hay = [d.respondent, d.sector, d.violation, d.outcome, d.law, d.summary].join(' ').toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
-  enfExpandedId.sa = null;
-  saRenderTable(saCurrentData);
-}
-
-function saRenderTable(data) {
-  enfRenderTable('sa-tbody', 'sa-empty', 'sa-count', data, 'sa');
-}
-
-function saEnfClearFilters() {
-  document.getElementById('sa-search').value = '';
-  document.getElementById('sa-filter-law').value = '';
-  document.getElementById('sa-filter-outcome').value = '';
-  document.getElementById('sa-clear-btn').classList.remove('visible');
-  saApplyFilters();
-}
-
-// NG filtering
-let ngCurrentData = [...NG_DATA];
-
-function ngApplyFilters() {
-  const q = document.getElementById('ng-search').value.toLowerCase().trim();
-  const regFilter = document.getElementById('ng-filter-regulator').value;
-  const outcomeFilter = document.getElementById('ng-filter-outcome').value;
-  document.getElementById('ng-clear-btn').classList.toggle('visible', !!(q || regFilter || outcomeFilter));
-  ngCurrentData = NG_DATA.filter(d => {
-    if (regFilter && d.regulator !== regFilter) return false;
-    if (outcomeFilter && d.outcome_type !== outcomeFilter) return false;
-    if (q) {
-      const hay = [d.respondent, d.sector, d.violation, d.outcome, d.regulator, d.summary].join(' ').toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
-  enfExpandedId.ng = null;
-  ngRenderTable(ngCurrentData);
-}
-
-function ngRenderTable(data) {
-  enfRenderTable('ng-tbody', 'ng-empty', 'ng-count', data, 'ng');
-}
-
-function ngEnfClearFilters() {
-  document.getElementById('ng-search').value = '';
-  document.getElementById('ng-filter-regulator').value = '';
-  document.getElementById('ng-filter-outcome').value = '';
-  document.getElementById('ng-clear-btn').classList.remove('visible');
-  ngApplyFilters();
-}
-
-function ugRenderTable(data) {
-  enfRenderTable('ug-tbody', null, null, data, 'ug');
-}
-
-// ============================================================
-// GLOBAL STATS
-// ============================================================
-function updateGlobalStats(kenyaCount) {
-  const total = kenyaCount + SA_DATA.length + NG_DATA.length + UG_DATA.length;
-  document.getElementById('stat-total').textContent = total.toLocaleString();
-  document.getElementById('tab-badge-kenya').textContent = kenyaCount;
-}
-
-// ============================================================
-// INIT
-// ============================================================
-// Render SA, NG, UG immediately
-saRenderTable(SA_DATA);
-ngRenderTable(NG_DATA);
-ugRenderTable(UG_DATA);
-
-// Event listeners - SA
-document.getElementById('sa-search').addEventListener('input', saApplyFilters);
-document.getElementById('sa-filter-law').addEventListener('change', saApplyFilters);
-document.getElementById('sa-filter-outcome').addEventListener('change', saApplyFilters);
-
-// Event listeners - NG
-document.getElementById('ng-search').addEventListener('input', ngApplyFilters);
-document.getElementById('ng-filter-regulator').addEventListener('change', ngApplyFilters);
-document.getElementById('ng-filter-outcome').addEventListener('change', ngApplyFilters);
-
-// Load Kenya data from JSON
-fetch('./data/determinations.json')
-  .then(r => r.json())
-  .then(json => {
-    kenyaAll = json.determinations;
-    document.getElementById('kenya-loading').style.display = 'none';
-    document.getElementById('kenya-table').style.display = '';
-    kenyaPopulateSectorFilter();
-    kenyaPopulateViolationFilter();
-    kenyaApplyFilters();
-    updateGlobalStats(kenyaAll.length);
-  })
-  .catch(err => {
-    document.getElementById('kenya-loading').textContent = 'Failed to load Kenya data.';
-    console.error('Failed to load Kenya data:', err);
-    updateGlobalStats(0);
-  });
-
-// Kenya event listeners
-document.getElementById('kenya-search').addEventListener('input', kenyaApplyFilters);
-['kenya-filter-year', 'kenya-filter-sector', 'kenya-filter-outcome', 'kenya-filter-violation'].forEach(id => {
-  document.getElementById(id).addEventListener('change', kenyaApplyFilters);
 });
 
-// Kenya sort
-document.querySelectorAll('#kenya-table thead th[data-col]').forEach(th => {
-  th.addEventListener('click', () => {
-    const col = th.dataset.col;
-    kenyaSortDir = kenyaSortCol === col ? (kenyaSortDir === 'asc' ? 'desc' : 'asc') : 'desc';
-    kenyaSortCol = col;
-    document.querySelectorAll('#kenya-table thead th').forEach(h => h.classList.remove('sorted'));
-    th.classList.add('sorted');
-    th.querySelector('.sort-icon').textContent = kenyaSortDir === 'asc' ? '\u2191' : '\u2193';
-    kenyaApplyFilters();
+// Tooltips for active countries
+const activeCountries = [
+  { id: 'nigeria', label: 'Nigeria — 10 enforcement actions' },
+  { id: 'kenya', label: 'Kenya — 310 enforcement actions' },
+  { id: 'uganda', label: 'Uganda — 2 enforcement actions' },
+  { id: 'southafrica', label: 'South Africa — 14 enforcement actions' },
+];
+activeCountries.forEach(c => {
+  const el = document.getElementById(c.id);
+  if (!el) return;
+  el.addEventListener('mouseenter', () => {
+    tooltip.textContent = c.label;
+    tooltip.classList.add('active');
   });
+  el.addEventListener('mousemove', e => {
+    tooltip.style.left = (e.clientX + 14) + 'px';
+    tooltip.style.top = (e.clientY - 28) + 'px';
+  });
+  el.addEventListener('mouseleave', () => tooltip.classList.remove('active'));
+});
+
+// ============================================================
+// CHART.JS DEFAULTS
+// ============================================================
+Chart.defaults.color = '#8892a4';
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 11;
+Chart.defaults.borderColor = '#1c2040';
+
+const TEAL = '#0e7490';
+const TEAL_LIGHT = '#22d3ee';
+const TEAL_MID = '#0891b2';
+
+// Chart 1: Enforcement Actions by Jurisdiction
+new Chart(document.getElementById('chart-actions'), {
+  type: 'bar',
+  data: {
+    labels: ['Kenya', 'South Africa', 'Nigeria', 'Uganda'],
+    datasets: [{
+      label: 'Enforcement Actions',
+      data: [310, 14, 10, 2],
+      backgroundColor: [
+        'rgba(14,116,144,.75)',
+        'rgba(14,116,144,.55)',
+        'rgba(14,116,144,.45)',
+        'rgba(14,116,144,.3)',
+      ],
+      borderColor: ['#0e7490', '#0891b2', '#06b6d4', '#67e8f9'],
+      borderWidth: 1.5,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0c0e1a',
+        borderColor: '#1c2040',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => ` ${ctx.parsed.y} actions`
+        }
+      }
+    },
+    scales: {
+      x: { grid: { color: '#1c2040' }, ticks: { color: '#8892a4' } },
+      y: { grid: { color: '#1c2040' }, ticks: { color: '#8892a4' }, beginAtZero: true }
+    }
+  }
+});
+
+// Chart 2: Violation Types
+new Chart(document.getElementById('chart-violations'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Unlawful Processing', 'Security/Breach Failure', 'Cross-border Transfer', 'Consent Failure', 'Registration Failure'],
+    datasets: [{
+      data: [35, 25, 20, 10, 10],
+      backgroundColor: [
+        'rgba(14,116,144,.8)',
+        'rgba(139,92,246,.7)',
+        'rgba(245,158,11,.7)',
+        'rgba(239,68,68,.65)',
+        'rgba(59,130,246,.65)',
+      ],
+      borderColor: ['#0e7490','#8b5cf6','#f59e0b','#ef4444','#3b82f6'],
+      borderWidth: 1.5,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '60%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { padding: 10, boxWidth: 10, font: { size: 10 } }
+      },
+      tooltip: {
+        backgroundColor: '#0c0e1a',
+        borderColor: '#1c2040',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => ` ${ctx.parsed}% of cases`
+        }
+      }
+    }
+  }
+});
+
+// Chart 3: Penalties by Jurisdiction (horizontal bar)
+new Chart(document.getElementById('chart-penalties'), {
+  type: 'bar',
+  data: {
+    labels: ['Nigeria (FCCPC+NDPC)', 'South Africa (IR)', 'Kenya (ODPC)', 'Uganda (PDPO)'],
+    datasets: [{
+      label: 'USD Equivalent',
+      data: [254000000, 2750000, 500000, 83],
+      backgroundColor: [
+        'rgba(14,116,144,.75)',
+        'rgba(14,116,144,.55)',
+        'rgba(14,116,144,.35)',
+        'rgba(14,116,144,.2)',
+      ],
+      borderColor: ['#0e7490','#0891b2','#06b6d4','#67e8f9'],
+      borderWidth: 1.5,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    indexAxis: 'y',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#0c0e1a',
+        borderColor: '#1c2040',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => {
+            const v = ctx.parsed.x;
+            if (v >= 1000000) return ` ~$${(v/1000000).toFixed(1)}M USD equiv.`;
+            if (v >= 1000) return ` ~$${(v/1000).toFixed(0)}K USD equiv.`;
+            return ` ~$${v} USD equiv.`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#1c2040' },
+        ticks: {
+          color: '#8892a4',
+          callback: v => v >= 1000000 ? '$' + (v/1000000) + 'M' : v >= 1000 ? '$' + (v/1000) + 'K' : '$' + v
+        }
+      },
+      y: { grid: { color: '#1c2040' }, ticks: { color: '#8892a4' } }
+    }
+  }
+});
+
+// Chart 4: Timeline
+new Chart(document.getElementById('chart-timeline'), {
+  type: 'line',
+  data: {
+    labels: ['2021','2022','2023','2024','2025','2026 (YTD)'],
+    datasets: [
+      {
+        label: 'Kenya',
+        data: [0, 0, 46, 117, 106, 41],
+        borderColor: '#0e7490',
+        backgroundColor: 'rgba(14,116,144,.1)',
+        tension: 0.35,
+        fill: true,
+        pointRadius: 4,
+        borderWidth: 2,
+      },
+      {
+        label: 'Nigeria',
+        data: [1, 1, 0, 4, 4, 1],
+        borderColor: '#22d3ee',
+        backgroundColor: 'rgba(34,211,238,.08)',
+        tension: 0.35,
+        fill: false,
+        pointRadius: 4,
+        borderWidth: 2,
+      },
+      {
+        label: 'South Africa',
+        data: [0, 1, 3, 8, 2, 0],
+        borderColor: '#8b5cf6',
+        backgroundColor: 'rgba(139,92,246,.08)',
+        tension: 0.35,
+        fill: false,
+        pointRadius: 4,
+        borderWidth: 2,
+      },
+      {
+        label: 'Uganda',
+        data: [0, 0, 0, 0, 2, 0],
+        borderColor: '#f59e0b',
+        backgroundColor: 'rgba(245,158,11,.08)',
+        tension: 0.35,
+        fill: false,
+        pointRadius: 4,
+        borderWidth: 2,
+      },
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { padding: 12, boxWidth: 10, font: { size: 10 } }
+      },
+      tooltip: {
+        backgroundColor: '#0c0e1a',
+        borderColor: '#1c2040',
+        borderWidth: 1,
+      }
+    },
+    scales: {
+      x: { grid: { color: '#1c2040' }, ticks: { color: '#8892a4' } },
+      y: { grid: { color: '#1c2040' }, ticks: { color: '#8892a4' }, beginAtZero: true }
+    }
+  }
 });
 </script>
+
 </body>
 </html>
