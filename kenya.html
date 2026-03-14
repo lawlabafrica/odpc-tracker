@@ -25,6 +25,8 @@
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
     .logo-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(.8)} }
+    .logo-cursor { color: #2563eb; font-weight: 700; animation: blink 1s infinite; }
+    @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
     .header-sub { font-size: 10px; color: var(--text-dim); font-weight: 400; letter-spacing: .05em; }
     .logo-stack { display: flex; flex-direction: column; gap: 1px; }
     nav { display: flex; gap: 4px; }
@@ -138,12 +140,8 @@
 
 <header>
   <div class="header-inner">
-    <a href="index.html" class="logo">
-      <div class="logo-dot"></div>
-      <div class="logo-stack">
-        <span>African Data Protection Enforcement Dashboard</span>
-        <span class="header-sub">Law Lab Africa · research.lawlab.africa</span>
-      </div>
+    <a href="https://www.lawlab.africa" class="logo">
+      LAW LAB AFRICA<span class="logo-cursor">█</span>
     </a>
     <nav>
       <a href="index.html" class="nav-link">Overview</a>
