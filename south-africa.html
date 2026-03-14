@@ -42,8 +42,9 @@
     .arch-badge { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 4px; border: 1px solid; }
     .arch-yes { background: rgba(16,185,129,.1); color: var(--green); border-color: rgba(16,185,129,.25); }
     .arch-no { background: rgba(239,68,68,.08); color: var(--red); border-color: rgba(239,68,68,.2); }
-    .country-svg { flex-shrink: 0; opacity: .8; }
-    svg.country-map { width: 130px; height: 120px; }
+    .country-svg { flex-shrink: 0; opacity: .8; width: 200px; max-width: 200px; }
+    .country-svg svg { width: 100%; max-width: 200px; height: auto; display: block; }
+    @media (max-width: 480px) { .country-svg { display: none; } }
     .stats-row { max-width: 1280px; margin: 0 auto; padding: 20px 24px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; border-bottom: 1px solid var(--border); }
     @media (max-width: 900px) { .stats-row { grid-template-columns: repeat(3, 1fr); } }
     .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 7px; padding: 14px 16px; }
@@ -97,6 +98,8 @@
     .footer-inner a { color: var(--text-muted); text-decoration: none; }
     .footer-inner a:hover { color: var(--teal-light); }
   </style>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
 <body>
 
@@ -137,11 +140,7 @@
       </div>
     </div>
     <div class="country-svg">
-      <svg class="country-map" viewBox="0 0 180 150" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 20,20 L 160,18 L 172,55 L 162,95 L 140,118 L 100,130 L 62,125 L 28,105 L 10,72 L 15,40 Z"
-          fill="rgba(14,116,144,0.12)" stroke="#0e7490" stroke-width="2.5" stroke-linejoin="round" />
-        <text x="90" y="78" text-anchor="middle" fill="rgba(34,211,238,0.4)" font-family="IBM Plex Mono,monospace" font-size="9" font-weight="600" letter-spacing="1">SOUTH AFRICA</text>
-      </svg>
+      <div id="country-map-south-africa"></div>
     </div>
   </div>
 </section>
@@ -398,6 +397,35 @@ function toggleRow(d, tr) {
 document.getElementById('sa-search').addEventListener('input', renderTable);
 document.getElementById('sa-outcome').addEventListener('change', renderTable);
 renderTable();
+</script>
+<script>
+(function() {
+  var container = document.getElementById('country-map-south-africa');
+  if (!container) return;
+  var svg = d3.select(container)
+    .append('svg')
+    .attr('viewBox', '0 0 200 200')
+    .attr('width', '100%')
+    .style('max-width', '200px')
+    .style('display', 'block');
+  var projection = d3.geoMercator()
+    .center([25.0, -29.0])
+    .scale(1200)
+    .translate([100, 100]);
+  var pathGen = d3.geoPath().projection(projection);
+  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(function(world) {
+    var features = topojson.feature(world, world.objects.countries).features;
+    var country = features.find(function(f) { return +f.id === 710; });
+    if (country) {
+      svg.append('path')
+        .datum(country)
+        .attr('d', pathGen)
+        .attr('fill', 'rgba(14,116,144,0.12)')
+        .attr('stroke', '#0e7490')
+        .attr('stroke-width', '2');
+    }
+  });
+})();
 </script>
 </body>
 </html>

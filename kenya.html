@@ -50,8 +50,9 @@
     .arch-limited { background: rgba(245,158,11,.1); color: var(--yellow); border-color: rgba(245,158,11,.25); }
 
     /* Country SVG map */
-    .country-svg { flex-shrink: 0; opacity: .8; }
-    svg.country-map { width: 110px; height: 130px; }
+    .country-svg { flex-shrink: 0; opacity: .8; width: 200px; max-width: 200px; }
+    .country-svg svg { width: 100%; max-width: 200px; height: auto; display: block; }
+    @media (max-width: 480px) { .country-svg { display: none; } }
 
     /* STATS CARDS */
     .stats-row { max-width: 1280px; margin: 0 auto; padding: 20px 24px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; border-bottom: 1px solid var(--border); }
@@ -130,6 +131,8 @@
     .footer-inner a { color: var(--text-muted); text-decoration: none; }
     .footer-inner a:hover { color: var(--teal-light); }
   </style>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
 <body>
 
@@ -170,11 +173,7 @@
       </div>
     </div>
     <div class="country-svg">
-      <svg class="country-map" viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 30,10 L 130,8 L 155,35 L 150,90 L 138,125 L 120,148 L 85,158 L 50,145 L 20,110 L 18,70 L 22,35 Z"
-          fill="rgba(14,116,144,0.12)" stroke="#0e7490" stroke-width="2.5" stroke-linejoin="round" />
-        <text x="80" y="90" text-anchor="middle" fill="rgba(34,211,238,0.4)" font-family="IBM Plex Mono,monospace" font-size="10" font-weight="600" letter-spacing="2">KENYA</text>
-      </svg>
+      <div id="country-map-kenya"></div>
     </div>
   </div>
 </section>
@@ -520,6 +519,35 @@ fetch('./data/determinations.json')
   .catch(err => {
     document.getElementById('ke-tbody').innerHTML = '<tr><td colspan="6" style="padding:24px;color:var(--red);text-align:center">Error loading data: ' + err.message + '</td></tr>';
   });
+</script>
+<script>
+(function() {
+  var container = document.getElementById('country-map-kenya');
+  if (!container) return;
+  var svg = d3.select(container)
+    .append('svg')
+    .attr('viewBox', '0 0 200 200')
+    .attr('width', '100%')
+    .style('max-width', '200px')
+    .style('display', 'block');
+  var projection = d3.geoMercator()
+    .center([37.9, 0.0])
+    .scale(1800)
+    .translate([100, 100]);
+  var pathGen = d3.geoPath().projection(projection);
+  d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(function(world) {
+    var features = topojson.feature(world, world.objects.countries).features;
+    var country = features.find(function(f) { return +f.id === 404; });
+    if (country) {
+      svg.append('path')
+        .datum(country)
+        .attr('d', pathGen)
+        .attr('fill', 'rgba(14,116,144,0.12)')
+        .attr('stroke', '#0e7490')
+        .attr('stroke-width', '2');
+    }
+  });
+})();
 </script>
 </body>
 </html>
