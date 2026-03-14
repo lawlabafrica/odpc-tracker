@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -68,6 +70,8 @@
     }
     .logo-dot { width: 8px; height: 8px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(.8)} }
+    .logo-cursor { color: #0e7490; font-weight: 700; animation: blink 1s infinite; }
+    @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
     .header-sub { font-size: 10px; color: var(--text-dim); font-weight: 400; letter-spacing: .05em; }
     .logo-stack { display: flex; flex-direction: column; gap: 1px; }
     nav { display: flex; gap: 4px; }
@@ -395,12 +399,8 @@
 
 <header>
   <div class="header-inner">
-    <a href="index.html" class="logo">
-      <div class="logo-dot"></div>
-      <div class="logo-stack">
-        <span>African Data Protection Enforcement Dashboard</span>
-        <span class="header-sub">Law Lab Africa · research.lawlab.africa</span>
-      </div>
+    <a href="https://www.lawlab.africa" class="logo">
+      LAW LAB AFRICA<span class="logo-cursor">█</span>
     </a>
     <nav>
       <a href="index.html" class="nav-link active">Overview</a>
@@ -418,36 +418,36 @@
       <span class="live-dot"></span>
       Live Enforcement Database
     </div>
-    <h1>African Data Protection<br><span>Enforcement</span> Dashboard</h1>
+    <h1>African Data Protection <span style="color:#ef4444">Enforcement</span> Dashboard</h1>
     <p class="hero-sub">The most comprehensive publicly available database of data protection enforcement actions across Africa. Four jurisdictions. 336 enforcement records. Compiled by Law Lab Africa.</p>
     <div class="stats-bar">
       <div class="stat-card">
-        <div class="stat-value">336</div>
+        <div class="stat-value" style="color:#0e7490">336</div>
         <div class="stat-label">Total Actions</div>
         <div class="stat-note">All jurisdictions</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">&gt;$254M</div>
+        <div class="stat-value" style="color:#ef4444">&gt;$254M</div>
         <div class="stat-label">Combined Penalties</div>
         <div class="stat-note">USD equivalent</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">4</div>
+        <div class="stat-value" style="color:#3b82f6">4</div>
         <div class="stat-label">Jurisdictions</div>
         <div class="stat-note">KE · ZA · NG · UG</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">Nigeria</div>
+        <div class="stat-value" style="color:#f59e0b">Nigeria</div>
         <div class="stat-label">Most Active Enforcer</div>
         <div class="stat-note">By penalty value</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">Unlawful<br>Processing</div>
+        <div class="stat-value" style="color:#8b5cf6">Unlawful<br>Processing</div>
         <div class="stat-label">Top Violation</div>
         <div class="stat-note">All jurisdictions</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">2021–26</div>
+        <div class="stat-value" style="color:#10b981">2021–26</div>
         <div class="stat-label">Data Range</div>
         <div class="stat-note">Updated Mar 2026</div>
       </div>
@@ -465,142 +465,9 @@
     </div>
     <div class="map-container">
       <div class="map-inner">
-        <div class="map-svg-wrap">
-          <svg id="africa-map" viewBox="0 0 960 1120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Africa showing enforcement jurisdictions">
-            <!-- ==================== NORTH AFRICA ==================== -->
-            <!-- Morocco -->
-            <path class="country" d="M 175,60 L 295,55 L 320,90 L 315,150 L 285,170 L 245,185 L 210,175 L 185,145 L 175,110 Z" />
-            <!-- Western Sahara -->
-            <path class="country" d="M 120,160 L 205,165 L 210,175 L 245,185 L 235,280 L 155,285 L 115,255 L 110,200 Z" />
-            <!-- Algeria -->
-            <path class="country" d="M 285,55 L 430,50 L 460,110 L 455,210 L 430,255 L 380,265 L 320,265 L 295,200 L 295,130 L 310,95 Z" />
-            <!-- Tunisia -->
-            <path class="country" d="M 380,55 L 420,52 L 435,80 L 430,130 L 405,145 L 380,125 L 368,90 Z" />
-            <!-- Libya -->
-            <path class="country" d="M 420,52 L 560,50 L 590,85 L 580,210 L 545,265 L 455,260 L 430,210 L 430,130 L 435,80 Z" />
-            <!-- Egypt -->
-            <path class="country" d="M 555,50 L 660,50 L 680,80 L 680,210 L 660,250 L 590,255 L 570,220 L 580,160 L 570,100 Z" />
-            <!-- Mauritania -->
-            <path class="country" d="M 115,255 L 155,285 L 235,280 L 255,330 L 250,380 L 200,400 L 145,400 L 110,365 L 108,310 Z" />
-            <!-- Mali -->
-            <path class="country" d="M 235,280 L 320,265 L 380,265 L 415,340 L 410,430 L 355,455 L 275,450 L 245,420 L 225,370 L 240,320 Z" />
-            <!-- Niger -->
-            <path class="country" d="M 380,265 L 455,260 L 530,280 L 545,330 L 535,415 L 500,445 L 450,460 L 410,440 L 415,380 L 410,340 Z" />
-            <!-- Chad -->
-            <path class="country" d="M 530,280 L 620,268 L 650,310 L 655,395 L 640,460 L 580,480 L 540,465 L 520,430 L 530,370 L 535,315 Z" />
-            <!-- Sudan -->
-            <path class="country" d="M 620,250 L 700,245 L 740,290 L 750,360 L 740,445 L 700,465 L 660,460 L 640,415 L 640,355 L 620,310 Z" />
-            <!-- Eritrea -->
-            <path class="country" d="M 700,245 L 755,250 L 775,290 L 760,320 L 735,330 L 700,310 L 700,280 Z" />
-            <!-- Djibouti -->
-            <path class="country" d="M 760,310 L 800,315 L 800,345 L 775,355 L 755,335 Z" />
-
-            <!-- ==================== WEST AFRICA ==================== -->
-            <!-- Senegal -->
-            <path class="country" d="M 108,365 L 145,355 L 175,360 L 185,390 L 165,410 L 128,408 L 105,390 Z" />
-            <!-- Gambia (tiny, inside Senegal) -->
-            <path class="country" d="M 120,388 L 160,384 L 162,396 L 125,400 Z" />
-            <!-- Guinea-Bissau -->
-            <path class="country" d="M 105,400 L 138,395 L 148,415 L 130,428 L 105,420 Z" />
-            <!-- Guinea -->
-            <path class="country" d="M 128,408 L 195,400 L 215,430 L 210,465 L 175,478 L 145,468 L 118,440 Z" />
-            <!-- Sierra Leone -->
-            <path class="country" d="M 130,462 L 185,455 L 195,485 L 178,505 L 148,508 L 128,488 Z" />
-            <!-- Liberia -->
-            <path class="country" d="M 160,495 L 210,480 L 228,510 L 215,535 L 182,542 L 155,520 Z" />
-            <!-- Cote d'Ivoire -->
-            <path class="country" d="M 195,448 L 280,448 L 300,490 L 285,535 L 235,545 L 200,528 L 178,500 L 185,465 Z" />
-            <!-- Ghana -->
-            <path class="country" d="M 280,448 L 330,445 L 350,485 L 345,535 L 305,540 L 268,530 L 262,495 Z" />
-            <!-- Togo -->
-            <path class="country" d="M 330,445 L 355,443 L 363,510 L 350,540 L 332,540 L 325,510 Z" />
-            <!-- Benin -->
-            <path class="country" d="M 355,443 L 385,443 L 398,505 L 388,540 L 360,540 L 350,510 Z" />
-            <!-- Burkina Faso -->
-            <path class="country" d="M 230,380 L 345,380 L 390,440 L 360,450 L 280,450 L 215,440 L 215,415 Z" />
-
-            <!-- ==================== NIGERIA (HIGHLIGHTED) ==================== -->
-            <a href="nigeria.html">
-              <path id="nigeria" class="country-active" d="M 388,440 L 488,432 L 520,460 L 528,510 L 522,545 L 490,568 L 448,572 L 398,562 L 372,532 L 368,490 L 378,458 Z" />
-              <text class="country-label" x="450" y="510">NIGERIA</text>
-              <text class="country-label-sub" x="450" y="523">10 actions</text>
-            </a>
-
-            <!-- Cameroon -->
-            <path class="country" d="M 488,432 L 555,418 L 580,448 L 585,500 L 580,555 L 545,578 L 510,568 L 490,540 L 490,490 Z" />
-            <!-- Central African Republic -->
-            <path class="country" d="M 555,418 L 660,418 L 680,455 L 668,520 L 640,545 L 565,548 L 540,530 L 535,480 L 545,450 Z" />
-            <!-- South Sudan -->
-            <path class="country" d="M 620,425 L 720,418 L 745,460 L 738,520 L 705,550 L 655,555 L 620,538 L 600,500 L 610,465 Z" />
-
-            <!-- ==================== EAST AFRICA ==================== -->
-            <!-- Ethiopia -->
-            <path class="country" d="M 700,318 L 800,305 L 840,355 L 840,440 L 810,480 L 770,500 L 720,490 L 690,460 L 680,410 L 695,365 Z" />
-            <!-- Somalia -->
-            <path class="country" d="M 800,305 L 840,310 L 880,360 L 875,445 L 850,510 L 810,560 L 775,555 L 758,512 L 775,455 L 800,400 Z" />
-
-            <!-- ==================== UGANDA (HIGHLIGHTED) ==================== -->
-            <a href="uganda.html">
-              <path id="uganda" class="country-active" d="M 630,512 L 692,508 L 715,545 L 706,580 L 678,592 L 640,585 L 618,558 L 618,530 Z" />
-              <text class="country-label" x="665" y="553">UGANDA</text>
-              <text class="country-label-sub" x="665" y="565">2 actions</text>
-            </a>
-
-            <!-- Rwanda (tiny) -->
-            <path class="country" d="M 662,580 L 688,578 L 695,600 L 672,605 Z" />
-            <!-- Burundi (tiny) -->
-            <path class="country" d="M 662,600 L 688,598 L 690,620 L 665,622 Z" />
-
-            <!-- ==================== KENYA (HIGHLIGHTED) ==================== -->
-            <a href="kenya.html">
-              <path id="kenya" class="country-active" d="M 715,468 L 800,458 L 830,488 L 830,555 L 800,600 L 762,618 L 718,608 L 692,578 L 692,545 L 712,510 Z" />
-              <text class="country-label" x="765" y="542">KENYA</text>
-              <text class="country-label-sub" x="765" y="555">310 actions</text>
-            </a>
-
-            <!-- Tanzania -->
-            <path class="country" d="M 640,588 L 762,578 L 810,610 L 820,690 L 810,748 L 762,770 L 700,775 L 650,755 L 622,720 L 620,660 Z" />
-            <!-- DR Congo -->
-            <path class="country" d="M 490,545 L 570,538 L 620,555 L 660,555 L 692,575 L 700,660 L 700,760 L 665,788 L 588,808 L 502,790 L 462,750 L 450,680 L 450,615 Z" />
-            <!-- Republic of Congo -->
-            <path class="country" d="M 460,560 L 500,550 L 525,580 L 520,640 L 498,660 L 460,655 L 442,618 Z" />
-            <!-- Gabon -->
-            <path class="country" d="M 470,528 L 510,520 L 535,545 L 530,578 L 500,585 L 468,572 Z" />
-            <!-- Eq. Guinea (tiny) -->
-            <path class="country" d="M 470,510 L 502,508 L 506,528 L 470,530 Z" />
-
-            <!-- ==================== SOUTHERN AFRICA ==================== -->
-            <!-- Angola -->
-            <path class="country" d="M 450,755 L 500,742 L 575,740 L 620,768 L 628,852 L 610,920 L 552,940 L 466,938 L 432,905 L 428,840 Z" />
-            <!-- Zambia -->
-            <path class="country" d="M 560,748 L 680,740 L 720,768 L 735,840 L 725,910 L 668,930 L 596,935 L 552,910 L 545,860 L 550,800 Z" />
-            <!-- Zimbabwe -->
-            <path class="country" d="M 620,900 L 700,888 L 740,908 L 738,970 L 700,995 L 645,998 L 605,972 L 592,930 Z" />
-            <!-- Malawi -->
-            <path class="country" d="M 705,770 L 740,762 L 762,812 L 752,880 L 722,910 L 695,898 L 682,862 Z" />
-            <!-- Mozambique -->
-            <path class="country" d="M 740,762 L 800,748 L 825,798 L 820,880 L 798,950 L 758,988 L 718,995 L 700,955 L 724,912 L 752,868 Z" />
-            <!-- Namibia -->
-            <path class="country" d="M 428,855 L 460,845 L 550,845 L 575,898 L 560,990 L 502,1012 L 438,1008 L 405,968 L 402,918 Z" />
-            <!-- Botswana -->
-            <path class="country" d="M 550,848 L 650,842 L 678,888 L 670,968 L 630,1008 L 558,1005 L 528,968 L 530,918 Z" />
-            <!-- eSwatini (tiny) -->
-            <path class="country" d="M 724,960 L 752,952 L 760,975 L 738,980 Z" />
-            <!-- Lesotho (tiny, inside SA) -->
-            <path class="country" d="M 618,1028 L 656,1018 L 665,1048 L 640,1058 L 614,1042 Z" />
-
-            <!-- ==================== SOUTH AFRICA (HIGHLIGHTED) ==================== -->
-            <a href="south-africa.html">
-              <path id="southafrica" class="country-active" d="M 400,990 L 500,972 L 560,968 L 640,970 L 720,965 L 768,988 L 780,1035 L 755,1080 L 680,1098 L 572,1102 L 455,1095 L 390,1062 L 382,1025 Z" />
-              <text class="country-label" x="582" y="1038">SOUTH AFRICA</text>
-              <text class="country-label-sub" x="582" y="1051">14 actions</text>
-            </a>
-
-            <!-- Madagascar -->
-            <path class="country" d="M 840,730 L 878,718 L 898,768 L 895,868 L 870,940 L 842,958 L 818,928 L 808,858 L 812,790 Z" />
-
-            <!-- Ocean tint (subtle) -->
-          </svg>
+        <div class="map-svg-wrap" style="position:relative;">
+          <div id="africa-map-container" style="width:100%;max-width:600px;margin:0 auto;position:relative;"></div>
+          <div id="map-tooltip" style="position:fixed;background:#1e293b;color:#e2e8f0;padding:6px 12px;border-radius:4px;font-size:11px;font-family:'IBM Plex Mono',monospace;pointer-events:none;opacity:0;transition:opacity 0.15s;border:1px solid #0e7490;z-index:9999;"></div>
 
           <div class="map-legend">
             <div class="legend-item"><div class="legend-dot-active"></div> Active jurisdiction</div>
@@ -688,9 +555,6 @@
 
 </main>
 
-<!-- Tooltip -->
-<div class="map-tooltip" id="map-tooltip"></div>
-
 <footer>
   <div class="footer-inner">
     <div>African Data Protection Enforcement Dashboard | <a href="https://www.lawlab.africa">Law Lab Africa</a> | <a href="https://research.lawlab.africa">research.lawlab.africa</a></div>
@@ -700,45 +564,95 @@
 
 <script>
 // ============================================================
-// TOOLTIP FOR NON-HIGHLIGHTED COUNTRIES
+// D3 AFRICA MAP
 // ============================================================
-const tooltip = document.getElementById('map-tooltip');
-const nonActive = document.querySelectorAll('.country');
+(async function() {
+  const ACTIVE = {
+    404: { name: 'Kenya',        url: 'kenya.html' },
+    566: { name: 'Nigeria',      url: 'nigeria.html' },
+    710: { name: 'South Africa', url: 'south-africa.html' },
+    800: { name: 'Uganda',       url: 'uganda.html' },
+  };
 
-nonActive.forEach(el => {
-  el.addEventListener('mouseenter', e => {
-    tooltip.textContent = 'Coming soon';
-    tooltip.classList.add('active');
-  });
-  el.addEventListener('mousemove', e => {
-    tooltip.style.left = (e.clientX + 14) + 'px';
-    tooltip.style.top = (e.clientY - 28) + 'px';
-  });
-  el.addEventListener('mouseleave', () => {
-    tooltip.classList.remove('active');
-  });
-});
+  // ISO 3166-1 numeric codes for all 54 African countries
+  const AFRICA_ISO = new Set([
+    12,24,204,72,854,108,120,132,140,148,174,180,178,262,818,
+    226,232,748,231,266,270,288,324,624,384,404,426,430,434,
+    450,454,466,478,480,504,508,516,562,566,646,678,686,694,
+    706,710,728,729,834,768,788,800,732,894,716
+  ]);
 
-// Tooltips for active countries
-const activeCountries = [
-  { id: 'nigeria', label: 'Nigeria — 10 enforcement actions' },
-  { id: 'kenya', label: 'Kenya — 310 enforcement actions' },
-  { id: 'uganda', label: 'Uganda — 2 enforcement actions' },
-  { id: 'southafrica', label: 'South Africa — 14 enforcement actions' },
-];
-activeCountries.forEach(c => {
-  const el = document.getElementById(c.id);
-  if (!el) return;
-  el.addEventListener('mouseenter', () => {
-    tooltip.textContent = c.label;
-    tooltip.classList.add('active');
-  });
-  el.addEventListener('mousemove', e => {
-    tooltip.style.left = (e.clientX + 14) + 'px';
-    tooltip.style.top = (e.clientY - 28) + 'px';
-  });
-  el.addEventListener('mouseleave', () => tooltip.classList.remove('active'));
-});
+  const W = 560, H = 620;
+
+  const svg = d3.select('#africa-map-container')
+    .append('svg')
+    .attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('width', '100%')
+    .style('display', 'block')
+    .style('max-width', W + 'px')
+    .style('margin', '0 auto');
+
+  const projection = d3.geoMercator()
+    .center([20, 0])
+    .scale(400)
+    .translate([W / 2, H / 2]);
+
+  const pathGen = d3.geoPath().projection(projection);
+  const tooltip = document.getElementById('map-tooltip');
+
+  try {
+    const world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+    const allFeatures = topojson.feature(world, world.objects.countries).features;
+    const africaFeatures = allFeatures.filter(f => AFRICA_ISO.has(+f.id));
+
+    // Draw country paths
+    svg.selectAll('path.map-country')
+      .data(africaFeatures)
+      .enter()
+      .append('path')
+      .attr('class', d => ACTIVE[+d.id] ? 'country-active' : 'country')
+      .attr('d', pathGen)
+      .style('cursor', d => ACTIVE[+d.id] ? 'pointer' : 'default')
+      .on('mouseenter', function(event, d) {
+        const info = ACTIVE[+d.id];
+        tooltip.textContent = info
+          ? info.name + ' — Click to view enforcement data'
+          : 'Coming soon';
+        tooltip.style.opacity = '1';
+        tooltip.style.left = (event.clientX + 14) + 'px';
+        tooltip.style.top  = (event.clientY - 28) + 'px';
+      })
+      .on('mousemove', function(event) {
+        tooltip.style.left = (event.clientX + 14) + 'px';
+        tooltip.style.top  = (event.clientY - 28) + 'px';
+      })
+      .on('mouseleave', function() {
+        tooltip.style.opacity = '0';
+      })
+      .on('click', function(event, d) {
+        const info = ACTIVE[+d.id];
+        if (info) window.location.href = info.url;
+      });
+
+    // Labels for the 4 active countries
+    Object.entries(ACTIVE).forEach(([isoNum, info]) => {
+      const feature = africaFeatures.find(f => +f.id === +isoNum);
+      if (!feature) return;
+      const centroid = pathGen.centroid(feature);
+      if (!centroid || isNaN(centroid[0])) return;
+
+      svg.append('text')
+        .attr('class', 'country-label')
+        .attr('x', centroid[0])
+        .attr('y', centroid[1] + 4)
+        .text(info.name.toUpperCase())
+        .style('pointer-events', 'none');
+    });
+
+  } catch(err) {
+    console.error('D3 map load error:', err);
+  }
+})();
 
 // ============================================================
 // CHART.JS DEFAULTS
