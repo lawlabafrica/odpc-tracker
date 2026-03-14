@@ -378,6 +378,140 @@
     }
     .disclaimer strong { color: var(--text-dim); }
 
+    /* GLOBAL SEARCH */
+    .search-section { margin-bottom: 60px; }
+    .search-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .search-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(14,116,144,.4), transparent);
+    }
+    .gs-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .gs-input-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 200px;
+    }
+    .gs-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      pointer-events: none;
+      font-size: 14px;
+    }
+    .gs-input {
+      width: 100%;
+      padding: 8px 11px 8px 32px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 12px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .gs-input:focus { border-color: var(--teal); }
+    .gs-input::placeholder { color: var(--text-dim); }
+    .gs-select {
+      padding: 8px 28px 8px 11px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 12px;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238892a4' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 9px center;
+      background-color: var(--surface2);
+      transition: border-color .15s;
+    }
+    .gs-select:focus { border-color: var(--teal); }
+    .gs-status {
+      font-size: 11px;
+      color: var(--text-dim);
+      padding: 6px 0 10px;
+      letter-spacing: .03em;
+    }
+    .gs-table-wrap { overflow-x: auto; }
+    .gs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+    .gs-table thead th {
+      padding: 8px 12px;
+      text-align: left;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .gs-table tbody tr {
+      border-bottom: 1px solid rgba(28,32,64,.7);
+      cursor: pointer;
+      transition: background .12s;
+    }
+    .gs-table tbody tr:hover { background: rgba(14,116,144,.06); }
+    .gs-table tbody td {
+      padding: 9px 12px;
+      vertical-align: top;
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+    .gs-juris-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .gs-ke { background: rgba(14,116,144,.15); color: #22d3ee; border: 1px solid rgba(14,116,144,.3); }
+    .gs-za { background: rgba(139,92,246,.15); color: #a78bfa; border: 1px solid rgba(139,92,246,.3); }
+    .gs-ng { background: rgba(245,158,11,.15); color: #fbbf24; border: 1px solid rgba(245,158,11,.3); }
+    .gs-ug { background: rgba(239,68,68,.15); color: #f87171; border: 1px solid rgba(239,68,68,.3); }
+    .gs-ob {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .gs-ob-fine { background: rgba(239,68,68,.15); color: #f87171; }
+    .gs-ob-order { background: rgba(59,130,246,.15); color: #93c5fd; }
+    .gs-ob-investigation { background: rgba(245,158,11,.12); color: #fbbf24; }
+    .gs-ob-upheld { background: rgba(16,185,129,.15); color: #6ee7b7; }
+    .gs-ob-dismissed { background: rgba(100,116,139,.15); color: #94a3b8; }
+    .gs-ob-criminal { background: rgba(139,92,246,.15); color: #c4b5fd; }
+
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
@@ -519,6 +653,57 @@
     </div>
   </section>
 
+  <!-- GLOBAL SEARCH -->
+  <section class="search-section" id="global-search">
+    <div class="section-header">
+      <div class="section-title">Global Enforcement Search</div>
+      <div class="section-desc">Search and filter across all four jurisdictions in real time.</div>
+    </div>
+    <div class="search-card">
+      <div class="gs-controls">
+        <div class="gs-input-wrap">
+          <span class="gs-icon">⌕</span>
+          <input type="text" id="gs-text" class="gs-input" placeholder="Search all jurisdictions..." autocomplete="off" spellcheck="false" />
+        </div>
+        <select id="gs-jurisdiction" class="gs-select">
+          <option value="">All Jurisdictions</option>
+          <option value="Kenya">Kenya</option>
+          <option value="South Africa">South Africa</option>
+          <option value="Nigeria">Nigeria</option>
+          <option value="Uganda">Uganda</option>
+        </select>
+        <select id="gs-violation" class="gs-select">
+          <option value="">All Violation Types</option>
+          <option value="Unlawful Processing">Unlawful Processing</option>
+          <option value="Consent Failure">Consent Failure</option>
+          <option value="Cross-Border Transfer">Cross-Border Transfer</option>
+          <option value="Security/Breach Failure">Security/Breach Failure</option>
+          <option value="Registration Failure">Registration Failure</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div id="gs-status" class="gs-status">Search across 336 enforcement actions in 4 jurisdictions</div>
+      <div id="gs-results-wrap" style="display:none;">
+        <div class="gs-table-wrap">
+          <table class="gs-table">
+            <thead>
+              <tr>
+                <th>Jurisdiction</th>
+                <th>Date</th>
+                <th>Respondent</th>
+                <th>Sector</th>
+                <th>Violation Type</th>
+                <th>Outcome</th>
+                <th>Penalty</th>
+              </tr>
+            </thead>
+            <tbody id="gs-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CHARTS -->
   <section class="charts-section">
     <div class="section-header">
@@ -574,6 +759,65 @@
     800: { name: 'Uganda',       url: 'uganda.html' },
   };
 
+  // ISO 3166-1 numeric → {name, law} for African countries (non-active)
+  const AFRICA_COUNTRY_META = {
+    12:  { name: 'Algeria',           law: null },
+    24:  { name: 'Angola',            law: null },
+    72:  { name: 'Botswana',          law: null },
+    108: { name: 'Burundi',           law: null },
+    120: { name: 'Cameroon',          law: null },
+    132: { name: 'Cabo Verde',        law: null },
+    140: { name: 'Central African Republic', law: null },
+    148: { name: 'Chad',              law: null },
+    174: { name: 'Comoros',           law: null },
+    175: { name: 'Mayotte',           law: null },
+    178: { name: 'Republic of the Congo', law: null },
+    180: { name: 'DR Congo',          law: null },
+    204: { name: 'Benin',             law: 'Loi n\u00b0 2009-09' },
+    232: { name: 'Eritrea',           law: null },
+    262: { name: 'Djibouti',          law: null },
+    266: { name: 'Gabon',             law: null },
+    270: { name: 'Gambia',            law: null },
+    288: { name: 'Ghana',             law: 'Data Protection Act 2012 (Act 843)' },
+    324: { name: 'Guinea',            law: null },
+    384: { name: "C\u00f4te d'Ivoire", law: 'Loi n\u00b02013-450' },
+    388: { name: 'Jamaica',           law: null },
+    426: { name: 'Lesotho',           law: null },
+    430: { name: 'Liberia',           law: null },
+    434: { name: 'Libya',             law: null },
+    450: { name: 'Madagascar',        law: null },
+    454: { name: 'Malawi',            law: 'Electronic Transactions and Cyber Security Act 2016' },
+    466: { name: 'Mali',              law: null },
+    478: { name: 'Mauritania',        law: null },
+    480: { name: 'Mauritius',         law: 'Data Protection Act 2017' },
+    504: { name: 'Morocco',           law: 'Law 09-08 on Personal Data Protection' },
+    508: { name: 'Mozambique',        law: null },
+    516: { name: 'Namibia',           law: null },
+    562: { name: 'Niger',             law: null },
+    624: { name: 'Guinea-Bissau',     law: null },
+    638: { name: 'R\u00e9union',      law: null },
+    646: { name: 'Rwanda',            law: 'Law No. 058/2021 on Personal Data Protection' },
+    678: { name: 'S\u00e3o Tom\u00e9 and Pr\u00edncipe', law: null },
+    686: { name: 'Senegal',           law: 'Loi n\u00b0 2008-12 sur les Donn\u00e9es Personnelles' },
+    694: { name: 'Sierra Leone',      law: null },
+    706: { name: 'Somalia',           law: null },
+    716: { name: 'Zimbabwe',          law: 'Data Protection Act 2021' },
+    724: { name: 'Spain',             law: null },
+    728: { name: 'South Sudan',       law: null },
+    729: { name: 'Sudan',             law: null },
+    732: { name: 'Western Sahara',    law: null },
+    748: { name: 'Eswatini',          law: null },
+    768: { name: 'Togo',              law: null },
+    788: { name: 'Tunisia',           law: 'Organic Law No. 63-2004' },
+    818: { name: 'Egypt',             law: 'Personal Data Protection Law 151/2020' },
+    826: { name: 'United Kingdom',    law: null },
+    834: { name: 'Tanzania',          law: 'Personal Data Protection Act 2022' },
+    854: { name: 'Burkina Faso',      law: 'Loi n\u00b0010-2004/AN' },
+    894: { name: 'Zambia',            law: 'Data Protection Act 2021' },
+    231: { name: 'Ethiopia',          law: 'Personal Data Protection Proclamation 2024' },
+    226: { name: 'Equatorial Guinea', law: null },
+  };
+
   // ISO 3166-1 numeric codes for all 54 African countries
   const AFRICA_ISO = new Set([
     12,24,204,72,854,108,120,132,140,148,174,180,178,262,818,
@@ -615,9 +859,18 @@
       .style('cursor', d => ACTIVE[+d.id] ? 'pointer' : 'default')
       .on('mouseenter', function(event, d) {
         const info = ACTIVE[+d.id];
-        tooltip.textContent = info
-          ? info.name + ' — Click to view enforcement data'
-          : 'Coming soon';
+        if (info) {
+          tooltip.textContent = info.name + ' — Click to view enforcement data';
+        } else {
+          const meta = AFRICA_COUNTRY_META[+d.id];
+          if (meta) {
+            tooltip.textContent = meta.law
+              ? meta.name + ' \u00b7 ' + meta.law + ' \u00b7 Coming soon'
+              : meta.name + ' \u00b7 No data protection law \u00b7 Coming soon';
+          } else {
+            tooltip.textContent = 'Coming soon';
+          }
+        }
         tooltip.style.opacity = '1';
         tooltip.style.left = (event.clientX + 14) + 'px';
         tooltip.style.top  = (event.clientY - 28) + 'px';
@@ -866,6 +1119,191 @@ new Chart(document.getElementById('chart-timeline'), {
     }
   }
 });
+</script>
+
+<script>
+// ============================================================
+// GLOBAL SEARCH
+// ============================================================
+(async function() {
+
+  // ---- Embedded SA data ----
+  const SA_DATA = [
+    { date:"2024-02-27", respondent:"FT Rams Consulting", sector:"Education / Consulting", violation:"Unlawful direct marketing; unsolicited emails; failure to respect opt-out requests", outcome:"Enforcement notice", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2023-07-03", respondent:"Dept of Justice & Constitutional Dev.", sector:"Government", violation:"Inadequate security measures; failure to notify data subjects of breach; non-compliance with enforcement notice", outcome:"Enforcement notice + Admin fine", outcome_type:"fine", penalty_str:"ZAR 5,000,000", url:"south-africa.html" },
+    { date:"2023-04-06", respondent:"South African Police Service (SAPS)", sector:"Government", violation:"Unlawful processing; failure to notify data subjects of security compromise", outcome:"Enforcement notice", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2024-03-26", respondent:"TransUnion (Pty) Ltd", sector:"Fintech / Credit reporting", violation:"Inadequate security measures following 2022 data breach; failure to implement remedial measures", outcome:"Enforcement notice", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2024-09-11", respondent:"Electoral Commission of SA (IEC)", sector:"Government", violation:"Inadequate access controls; unauthorised release of candidate personal information", outcome:"Enforcement notice", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2024-09-10", respondent:"WhatsApp LLC (Meta Platforms)", sector:"Technology / Social media", violation:"Unlawful processing; inadequate consent; failure to specify purpose; inadequate transparency; inadequate security", outcome:"Enforcement notice (settled Nov 2025)", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2024-04", respondent:"Blouberg Municipality", sector:"Government", violation:"Unlawful further processing of employee financial data; purpose limitation failure", outcome:"Enforcement notice", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2024-09", respondent:"Lancet Laboratories", sector:"Health", violation:"Multiple security compromises; inadequate security measures; failure to notify data subjects", outcome:"Enforcement notice + Admin fine", outcome_type:"fine", penalty_str:"Admin fine (amount undisclosed)", url:"south-africa.html" },
+    { date:"2024-12-23", respondent:"Dept of Basic Education", sector:"Government / Education", violation:"Unlawful processing via publication of matric results; consent failure; purpose limitation breach", outcome:"Enforcement notice + Admin fine", outcome_type:"fine", penalty_str:"ZAR 5,000,000", url:"south-africa.html" },
+    { date:"2025-11-13", respondent:"OUTA (Org Undoing Tax Abuse)", sector:"NGO / Civil society", violation:"PAIA non-compliance; failure to release RTMC fee composition records", outcome:"Enforcement notice", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2025-11-13", respondent:"State Security Agency (SSA)", sector:"Government", violation:"PAIA non-compliance; failure to disclose requested records", outcome:"Enforcement notice (challenged in court)", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2025-11-13", respondent:"Kudung CPA", sector:"Professional services / Accounting", violation:"PAIA non-compliance", outcome:"Enforcement notice", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2025-11-13", respondent:"Oceana Empowerment Trust", sector:"NGO / Civil society", violation:"PAIA non-compliance; failure to release information on former employee dispute", outcome:"Enforcement notice", outcome_type:"order", penalty_str:"—", url:"south-africa.html" },
+    { date:"2022-11", respondent:"National Dept of Health", sector:"Government / Health", violation:"PAIA non-compliance; failure to disclose COVID-19 data collection information", outcome:"Referred to enforcement committee", outcome_type:"investigation", penalty_str:"—", url:"south-africa.html" },
+  ];
+
+  // ---- Embedded NG data ----
+  const NG_DATA = [
+    { date:"2025-07-06", respondent:"MultiChoice Nigeria Ltd", sector:"Broadcast media / Pay-TV", violation:"Unlawful processing; cross-border data transfer without consent; unauthorized access to sensitive data", outcome:"Administrative fine", outcome_type:"fine", penalty_str:"NGN 766,242,500", url:"nigeria.html" },
+    { date:"2025-02-18", respondent:"Meta Platforms Inc.", sector:"Social media / Digital advertising", violation:"Consent failure; unlawful processing via behavioral advertising on Facebook and Instagram", outcome:"Admin fine + Settled Oct 2025", outcome_type:"fine", penalty_str:"USD $32,800,000", url:"nigeria.html" },
+    { date:"2024-07-19", respondent:"Meta Platforms / WhatsApp LLC", sector:"Messaging / Social media", violation:"Discriminatory data collection; unlawful tying of services; consumer protection violations", outcome:"Admin fine (upheld on appeal Apr 2025)", outcome_type:"fine", penalty_str:"USD $220,000,000 + $35,000 costs", url:"nigeria.html" },
+    { date:"2024-08-21", respondent:"Fidelity Bank Plc", sector:"Financial services / Banking", violation:"Unlawful processing; data collection without lawful basis or consent", outcome:"Admin fine (disputed in court)", outcome_type:"fine", penalty_str:"NGN 555,800,000", url:"nigeria.html" },
+    { date:"2025-03-20", respondent:"TikTok Inc.", sector:"Social media / Content platform", violation:"Suspected unlawful processing; consent failure; data minimization breaches; opacity in data handling", outcome:"Investigation (ongoing)", outcome_type:"investigation", penalty_str:"Pending", url:"nigeria.html" },
+    { date:"2025-03-20", respondent:"Truecaller AB", sector:"Mobile applications / Communication", violation:"Suspected unlawful processing; privacy rights breach via phone number database", outcome:"Investigation (ongoing)", outcome_type:"investigation", penalty_str:"Pending", url:"nigeria.html" },
+    { date:"2026-02-16", respondent:"Temu (Whaleco Technology Ltd)", sector:"E-commerce / Mobile shopping", violation:"Suspected unlawful processing; undisclosed data collection; cross-border transfer; data minimization", outcome:"Investigation (ongoing)", outcome_type:"investigation", penalty_str:"Pending", url:"nigeria.html" },
+    { date:"2024-06-11", respondent:"Seven companies (names undisclosed)", sector:"Banking / Mixed", violation:"Data breach; unauthorized processing (4 banks + 3 other companies)", outcome:"Settlement (aggregate)", outcome_type:"order", penalty_str:"NGN 400,000,000 (aggregate)", url:"nigeria.html" },
+    { date:"2025-08-25", respondent:"1,369 organizations (sector-wide)", sector:"Financial services / Insurance / Gaming / Pension", violation:"Registration failure; non-filing of compliance audit returns; missing DPO designation; non-compliance with NDPA requirements", outcome:"Compliance notice (enforcement pending)", outcome_type:"investigation", penalty_str:"Pending", url:"nigeria.html" },
+    { date:"2021-08-19", respondent:"SokoLoan (Soko Lending Co. Ltd)", sector:"FinTech / Digital lending", violation:"Privacy invasion; unauthorized data access; customer data misuse", outcome:"Admin fine + operational restrictions", outcome_type:"fine", penalty_str:"NGN 10,000,000", url:"nigeria.html" },
+  ];
+
+  // ---- Embedded UG data ----
+  const UG_DATA = [
+    { date:"2025-07-18", respondent:"Google LLC", sector:"Technology / Internet services", violation:"Non-registration with PDPO; unlawful cross-border data transfer without safeguard compliance", outcome:"Declaratory order", outcome_type:"order", penalty_str:"—", url:"uganda.html" },
+    { date:"2025-07-10", respondent:"Ronald Mugulusi / Nano Loans Microfinance Ltd", sector:"Financial services / Digital lending", violation:"Non-registration with PDPO; unlawful processing and data misuse for debt recovery intimidation via TikTok", outcome:"Criminal conviction", outcome_type:"criminal", penalty_str:"UGX 300,000 (director fine)", url:"uganda.html" },
+  ];
+
+  // ---- Violation categorisation ----
+  function classifyViolation(str) {
+    const s = (str || '').toLowerCase();
+    if (s.includes('unlawful processing') || s.includes('unlawful data') || s.includes('further processing') || s.includes('unauthorized processing')) return 'Unlawful Processing';
+    if (s.includes('consent') || s.includes('lack of consent')) return 'Consent Failure';
+    if (s.includes('cross-border') || s.includes('cross border') || s.includes('transborder')) return 'Cross-Border Transfer';
+    if (s.includes('breach') || s.includes('security') || s.includes('data loss') || s.includes('compromise')) return 'Security/Breach Failure';
+    if (s.includes('registr')) return 'Registration Failure';
+    return 'Other';
+  }
+
+  function classifyKeViolation(types) {
+    if (!types || !types.length) return 'Other';
+    const str = types.join(' ').toLowerCase();
+    if (str.includes('unlawful processing') || str.includes('unlawful data') || str.includes('further processing')) return 'Unlawful Processing';
+    if (str.includes('consent') || str.includes('lack of consent')) return 'Consent Failure';
+    if (str.includes('cross-border') || str.includes('cross border')) return 'Cross-Border Transfer';
+    if (str.includes('breach') || str.includes('security') || str.includes('data loss')) return 'Security/Breach Failure';
+    if (str.includes('registr')) return 'Registration Failure';
+    return 'Other';
+  }
+
+  function keOutcomeType(outcome) {
+    const o = (outcome || '').toLowerCase();
+    if (o === 'upheld') return 'upheld';
+    if (o === 'dismissed') return 'dismissed';
+    return 'investigation';
+  }
+
+  function outcomeClass(type) {
+    switch(type) {
+      case 'fine':          return 'gs-ob-fine';
+      case 'order':         return 'gs-ob-order';
+      case 'investigation': return 'gs-ob-investigation';
+      case 'criminal':      return 'gs-ob-criminal';
+      case 'upheld':        return 'gs-ob-upheld';
+      case 'dismissed':     return 'gs-ob-dismissed';
+      default:              return 'gs-ob-order';
+    }
+  }
+
+  function escH(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  // ---- Normalise all records ----
+  function normaliseSA(d) {
+    return { jurisdiction:'South Africa', jClass:'gs-za', date:d.date, respondent:d.respondent, sector:d.sector, violation:d.violation, violationCat:classifyViolation(d.violation), outcome:d.outcome, outcomeType:d.outcome_type, penalty:d.penalty_str, url:d.url };
+  }
+  function normaliseNG(d) {
+    return { jurisdiction:'Nigeria', jClass:'gs-ng', date:d.date, respondent:d.respondent, sector:d.sector, violation:d.violation, violationCat:classifyViolation(d.violation), outcome:d.outcome, outcomeType:d.outcome_type, penalty:d.penalty_str, url:d.url };
+  }
+  function normaliseUG(d) {
+    return { jurisdiction:'Uganda', jClass:'gs-ug', date:d.date, respondent:d.respondent, sector:d.sector, violation:d.violation, violationCat:classifyViolation(d.violation), outcome:d.outcome, outcomeType:d.outcome_type, penalty:d.penalty_str, url:d.url };
+  }
+  function normaliseKE(d) {
+    const vTypes = d.violation_type || [];
+    const vStr = vTypes.join('; ') || '—';
+    const pen = d.compensation_kes ? 'KES ' + Number(d.compensation_kes).toLocaleString() : '—';
+    return { jurisdiction:'Kenya', jClass:'gs-ke', date:d.date_determined||'—', respondent:d.respondent, sector:d.sector||'—', violation:vStr, violationCat:classifyKeViolation(vTypes), outcome:d.outcome||'—', outcomeType:keOutcomeType(d.outcome), penalty:pen, url:'kenya.html' };
+  }
+
+  let ALL_RECORDS = [
+    ...SA_DATA.map(normaliseSA),
+    ...NG_DATA.map(normaliseNG),
+    ...UG_DATA.map(normaliseUG),
+  ];
+
+  // Load Kenya data async
+  try {
+    const keData = await fetch('./data/determinations.json').then(r => r.json());
+    const keRecords = (keData.determinations || []).map(normaliseKE);
+    ALL_RECORDS = [...keRecords, ...ALL_RECORDS];
+  } catch(e) {
+    console.warn('Could not load Kenya determinations.json:', e);
+  }
+
+  // ---- Render ----
+  const tbody = document.getElementById('gs-tbody');
+  const statusEl = document.getElementById('gs-status');
+  const resultsWrap = document.getElementById('gs-results-wrap');
+
+  function render(records) {
+    if (!records.length) {
+      resultsWrap.style.display = 'none';
+      statusEl.textContent = 'No results found.';
+      return;
+    }
+    const jurisSet = new Set(records.map(r => r.jurisdiction));
+    statusEl.textContent = 'Showing ' + records.length + ' result' + (records.length !== 1 ? 's' : '') + ' across ' + jurisSet.size + ' jurisdiction' + (jurisSet.size !== 1 ? 's' : '');
+    resultsWrap.style.display = '';
+    tbody.innerHTML = '';
+    records.slice(0, 200).forEach(r => {
+      const tr = document.createElement('tr');
+      tr.addEventListener('click', () => window.location.href = r.url);
+      const obClass = outcomeClass(r.outcomeType);
+      tr.innerHTML =
+        '<td><span class="gs-juris-badge ' + escH(r.jClass) + '">' + escH(r.jurisdiction) + '</span></td>' +
+        '<td style="white-space:nowrap;color:var(--text-dim)">' + escH(r.date) + '</td>' +
+        '<td style="color:var(--text);font-weight:500">' + escH(r.respondent) + '</td>' +
+        '<td>' + escH(r.sector) + '</td>' +
+        '<td style="max-width:220px;color:var(--text-dim)">' + escH(r.violation) + '</td>' +
+        '<td><span class="gs-ob ' + obClass + '">' + escH(r.outcome) + '</span></td>' +
+        '<td style="white-space:nowrap">' + escH(r.penalty) + '</td>';
+      tbody.appendChild(tr);
+    });
+    if (records.length > 200) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td colspan="7" style="padding:12px;text-align:center;color:var(--text-dim);font-size:11px">Showing first 200 of ' + records.length + ' results. Refine your search to narrow results.</td>';
+      tbody.appendChild(tr);
+    }
+  }
+
+  function filter() {
+    const q = document.getElementById('gs-text').value.toLowerCase().trim();
+    const jur = document.getElementById('gs-jurisdiction').value;
+    const vCat = document.getElementById('gs-violation').value;
+
+    if (!q && !jur && !vCat) {
+      resultsWrap.style.display = 'none';
+      statusEl.textContent = 'Search across ' + ALL_RECORDS.length + ' enforcement actions in 4 jurisdictions';
+      return;
+    }
+
+    const results = ALL_RECORDS.filter(r => {
+      if (jur && r.jurisdiction !== jur) return false;
+      if (vCat && r.violationCat !== vCat) return false;
+      if (q) {
+        const haystack = [r.respondent, r.sector, r.violation, r.outcome, r.penalty].join(' ').toLowerCase();
+        if (!haystack.includes(q)) return false;
+      }
+      return true;
+    });
+    render(results);
+  }
+
+  document.getElementById('gs-text').addEventListener('input', filter);
+  document.getElementById('gs-jurisdiction').addEventListener('change', filter);
+  document.getElementById('gs-violation').addEventListener('change', filter);
+
+})();
 </script>
 
 </body>

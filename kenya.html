@@ -528,15 +528,12 @@ fetch('./data/determinations.json')
     .attr('width', '100%')
     .style('max-width', '200px')
     .style('display', 'block');
-  var projection = d3.geoMercator()
-    .center([37.9, 0.0])
-    .scale(1800)
-    .translate([100, 100]);
-  var pathGen = d3.geoPath().projection(projection);
   d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(function(world) {
     var features = topojson.feature(world, world.objects.countries).features;
     var country = features.find(function(f) { return +f.id === 404; });
     if (country) {
+      var projection = d3.geoMercator().fitSize([200, 200], country);
+      var pathGen = d3.geoPath().projection(projection);
       svg.append('path')
         .datum(country)
         .attr('d', pathGen)
